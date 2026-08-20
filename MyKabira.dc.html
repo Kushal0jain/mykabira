@@ -30,14 +30,17 @@
   .noscroll::-webkit-scrollbar{height:6px;}
   .noscroll::-webkit-scrollbar-thumb{background:#3a2650;border-radius:6px;}
   html,body{background:#120a1c;overflow-x:hidden;}
+  .adm-backdrop{display:none;}
+  .adm-backdrop-open{display:block;position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:99;}
   @media (max-width:899px){
     .g2,.g3,.g4,.gsplit,.gfoot{grid-template-columns:1fr !important;}
     .nav-desktop{display:none !important;}
     .nav-burger{display:block !important;}
     .adm-shell{flex-direction:column !important;}
-    .adm-side{width:100% !important;display:grid !important;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px !important;padding:12px !important;border-right:none !important;border-bottom:1px solid #3a2650;}
-    .adm-side > div{padding:9px 10px !important;margin:0 !important;font-size:13px;gap:8px !important;white-space:nowrap;}
-    .adm-side > div:first-child{grid-column:1/-1;padding:2px 4px 10px !important;}
+    .adm-side{display:none !important;}
+    .adm-side.adm-side-open{display:flex !important;flex-direction:column !important;position:fixed;top:0;left:0;bottom:0;width:min(300px,85vw) !important;z-index:100;overflow-y:auto;box-shadow:12px 0 40px rgba(0,0,0,0.55);border-right:1px solid #3a2650 !important;padding:18px 14px !important;}
+    .adm-side.adm-side-open > div{padding:11px 14px !important;font-size:13.5px;}
+    .adm-menu-btn{display:inline-flex !important;}
     .adm-top{flex-wrap:wrap;gap:10px;padding:12px 16px !important;}
     .adm-main{padding:16px 12px !important;}
     .topbar{padding:6px 12px !important;font-size:11px !important;gap:4px !important;justify-content:center !important;text-align:center;}
@@ -1203,7 +1206,8 @@
 
 <sc-if value="{{isAdminShell}}" hint-placeholder-val="{{false}}">
   <div class="adm-shell" style="display:flex;flex-direction:{{ adminShellDir }};min-height:100vh;background:#120a1c;">
-    <div class="adm-side" style="width:{{ adminSideWidth }};box-sizing:border-box;background:#241533;border-right:1px solid #3a2650;display:flex;flex-direction:{{ adminSideDir }};flex-wrap:wrap;gap:2px;padding:20px 14px;">
+    <div onClick="{{ toggleAdminMenu }}" class="{{ adminBackdropClass }}"></div>
+    <div class="adm-side {{ adminMenuClass }}" style="width:{{ adminSideWidth }};box-sizing:border-box;background:#241533;border-right:1px solid #3a2650;display:flex;flex-direction:{{ adminSideDir }};flex-wrap:wrap;gap:2px;padding:20px 14px;">
       <div style="display:flex;align-items:center;gap:8px;padding:0 6px 20px;border-bottom:1px solid #3a2650;margin-bottom:16px;">
         <img src="assets/mykabira-icon-blackbg.png" alt="MyKabira" style="height:24px;width:auto;display:block;border-radius:5px;"/>
         <span style="font-family:'DM Serif Display',serif;font-size:14px;color:#C9A6F0;">Admin</span>
@@ -1225,7 +1229,10 @@
 
     <div style="flex:1;display:flex;flex-direction:column;">
       <div class="adm-top" style="background:#241533;border-bottom:1px solid #3a2650;padding:16px 28px;display:flex;justify-content:space-between;align-items:center;">
-        <span style="font-weight:600;font-size:16px;">{{ adminScreenTitle }}</span>
+        <span style="display:flex;align-items:center;gap:10px;">
+          <button onClick="{{ toggleAdminMenu }}" class="adm-menu-btn" style="display:none;background:#1c0f2b;border:1px solid #3a2650;color:#EDE6F2;padding:8px 12px;border-radius:6px;font-size:15px;cursor:pointer;align-items:center;">☰</button>
+          <span style="font-weight:600;font-size:16px;">{{ adminScreenTitle }}</span>
+        </span>
         <div style="display:flex;align-items:center;gap:12px;">
           <div style="width:34px;height:34px;border-radius:50%;background:#5B2A86;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;">AR</div>
           <span style="font-size:14px;font-weight:500;">mykabira</span>
@@ -1234,6 +1241,30 @@
       </div>
 
       <div class="adm-main" style="padding:28px;overflow:auto;">
+
+        <sc-if value="{{isAdminEdit}}" hint-placeholder-val="{{false}}">
+          <div style="max-width:760px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:16px;">
+              <span onClick="{{ closeEditor }}" style="cursor:pointer;color:#C9A6F0;font-size:13.5px;font-weight:600;">← Back to list</span>
+              <button onClick="{{ editorDelete }}" style="background:transparent;color:#e07a7a;border:1px solid #7a3b45;padding:9px 16px;border-radius:6px;font-size:12.5px;font-weight:600;cursor:pointer;">Delete this item</button>
+            </div>
+            <div style="background:#241533;border:1px solid #3a2650;border-radius:10px;padding:22px;display:flex;flex-direction:column;gap:14px;">
+              <div style="font-family:'DM Serif Display',serif;font-size:20px;color:#EDE6F2;">{{ editorTitle }}</div>
+              <sc-for list="{{ editorFields }}" as="ef" hint-placeholder-count="6">
+                <label style="font-size:12px;color:#b9a8cf;">{{ ef.label }}
+                  <sc-if value="{{ ef.isText }}" hint-placeholder-val="{{true}}">
+                    <input value="{{ ef.value }}" onChange="{{ ef.onChange }}" style="display:block;width:100%;box-sizing:border-box;margin-top:5px;padding:10px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:13px;"/>
+                  </sc-if>
+                  <sc-if value="{{ ef.isArea }}" hint-placeholder-val="{{false}}">
+                    <textarea rows="{{ ef.rows }}" value="{{ ef.value }}" onChange="{{ ef.onChange }}" style="display:block;width:100%;box-sizing:border-box;margin-top:5px;padding:10px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:13px;font-family:inherit;resize:vertical;"></textarea>
+                  </sc-if>
+                </label>
+              </sc-for>
+              <div style="font-size:11.5px;color:#8a7a9e;line-height:1.6;">{{ editorHint }}</div>
+              <button onClick="{{ closeEditor }}" style="background:#5B2A86;color:#fff;border:none;padding:12px;border-radius:6px;font-weight:600;font-size:13.5px;cursor:pointer;">Done — back to list</button>
+            </div>
+          </div>
+        </sc-if>
 
         <sc-if value="{{isAdminDashboard}}" hint-placeholder-val="{{false}}">
           <div>
@@ -1257,8 +1288,8 @@
 
         <sc-if value="{{isAdminDestinations}}" hint-placeholder-val="{{false}}">
           <div>
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;">
-              <div style="display:flex;gap:10px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:18px;">
+              <div style="display:flex;gap:10px;flex-wrap:wrap;">
                 <sc-for list="{{ adminTabs }}" as="at" hint-placeholder-count="3">
                   <button onClick="{{ at.select }}" style="{{ at.style }} padding:8px 16px;border-radius:6px;font-size:13px;cursor:pointer;">{{ at.label }}</button>
                 </sc-for>
@@ -1266,22 +1297,22 @@
               <button onClick="{{ addDestination }}" style="background:#5B2A86;color:#fff;border:none;padding:9px 18px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;">+ Add Destination</button>
             </div>
             <div style="background:#241533;border-radius:8px;border:1px solid #3a2650;overflow-x:auto;">
-              <div style="display:grid;min-width:680px;grid-template-columns:54px 1.5fr 1.9fr 1.9fr 0.8fr 0.7fr 0.6fr;padding:12px 16px;background:#1c0f2b;font-size:12px;color:#b9a8cf;font-weight:600;">
-                <span>Photo</span><span>Name</span><span>Tagline</span><span>Image URL</span><span>Price</span><span>Order</span><span>Actions</span>
+              <div style="display:grid;min-width:640px;grid-template-columns:54px 1.6fr 2.2fr 0.9fr 0.8fr 0.7fr;padding:12px 16px;background:#1c0f2b;font-size:12px;color:#b9a8cf;font-weight:600;">
+                <span>Photo</span><span>Name</span><span>Tagline</span><span>Price</span><span>Order</span><span>Actions</span>
               </div>
               <sc-for list="{{ adminDestinations }}" as="ad" hint-placeholder-count="8">
-                <div style="display:grid;min-width:680px;grid-template-columns:54px 1.5fr 1.9fr 1.9fr 0.8fr 0.7fr 0.6fr;padding:10px 16px;align-items:center;border-top:1px solid #2c1a40;font-size:13px;">
+                <div onClick="{{ ad.open }}" style="display:grid;min-width:640px;grid-template-columns:54px 1.6fr 2.2fr 0.9fr 0.8fr 0.7fr;padding:12px 16px;align-items:center;border-top:1px solid #2c1a40;font-size:13px;cursor:pointer;" style-hover="background:#2c1a40;">
                   <span style="width:36px;height:36px;border-radius:6px;background:{{ ad.bg }};"></span>
-                  <input value="{{ ad.name }}" onChange="{{ ad.onName }}" style="width:94%;box-sizing:border-box;padding:8px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:12.5px;"/>
-                  <input value="{{ ad.tagline }}" onChange="{{ ad.onTagline }}" style="width:94%;box-sizing:border-box;padding:8px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:12.5px;"/>
-                  <input value="{{ ad.img }}" onChange="{{ ad.onImg }}" placeholder="uploads/…" style="width:94%;box-sizing:border-box;padding:8px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:12.5px;"/>
-                  <input value="{{ ad.price }}" onChange="{{ ad.onPrice }}" style="width:94%;box-sizing:border-box;padding:8px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:12.5px;"/>
+                  <span style="font-weight:500;">{{ ad.name }}</span>
+                  <span style="color:#b9a8cf;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-right:10px;">{{ ad.tagline }}</span>
+                  <span style="color:#E8A34A;">₹{{ ad.price }}</span>
                   <span style="display:flex;gap:6px;">
                     <svg onClick="{{ ad.moveUp }}" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" style="cursor:pointer;"><polyline points="18 15 12 9 6 15"/></svg>
                     <svg onClick="{{ ad.moveDown }}" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" style="cursor:pointer;"><polyline points="6 9 12 15 18 9"/></svg>
                   </span>
-                  <span style="display:flex;gap:10px;">
-                    <svg onClick="{{ ad.remove }}" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c0524a" stroke-width="2" style="cursor:pointer;"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>
+                  <span style="display:flex;gap:12px;">
+                    <svg onClick="{{ ad.open }}" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C9A6F0" stroke-width="2" style="cursor:pointer;"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>
+                    <svg onClick="{{ ad.remove }}" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c0524a" stroke-width="2" style="cursor:pointer;"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
                   </span>
                 </div>
               </sc-for>
@@ -1295,18 +1326,20 @@
               <button onClick="{{ addPackage }}" style="background:#5B2A86;color:#fff;border:none;padding:9px 18px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;">+ Add Package</button>
             </div>
             <div style="background:#241533;border-radius:8px;border:1px solid #3a2650;overflow-x:auto;">
-              <div style="display:grid;min-width:680px;grid-template-columns:1.6fr 1.1fr 1.7fr 0.7fr 0.8fr 0.8fr 0.5fr;padding:12px 16px;background:#1c0f2b;font-size:12px;color:#b9a8cf;font-weight:600;">
-                <span>Package</span><span>Duration</span><span>Image URL</span><span>Rating</span><span>Original</span><span>Discounted</span><span>Actions</span>
+              <div style="display:grid;min-width:640px;grid-template-columns:1.8fr 1.3fr 0.8fr 0.9fr 0.9fr 0.7fr;padding:12px 16px;background:#1c0f2b;font-size:12px;color:#b9a8cf;font-weight:600;">
+                <span>Package</span><span>Duration</span><span>Rating</span><span>Original</span><span>Discounted</span><span>Actions</span>
               </div>
               <sc-for list="{{ adminPackages }}" as="pk" hint-placeholder-count="4">
-                <div style="display:grid;min-width:680px;grid-template-columns:1.6fr 1.1fr 1.7fr 0.7fr 0.8fr 0.8fr 0.5fr;padding:12px 16px;align-items:center;border-top:1px solid #2c1a40;font-size:13px;">
-                  <input value="{{ pk.name }}" onChange="{{ pk.onName }}" style="width:94%;box-sizing:border-box;padding:8px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:12.5px;"/>
-                  <input value="{{ pk.duration }}" onChange="{{ pk.onDuration }}" style="width:94%;box-sizing:border-box;padding:8px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:12.5px;"/>
-                  <input value="{{ pk.img }}" onChange="{{ pk.onImg }}" placeholder="uploads/…" style="width:94%;box-sizing:border-box;padding:8px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:12.5px;"/>
-                  <input value="{{ pk.rating }}" onChange="{{ pk.onRating }}" style="width:94%;box-sizing:border-box;padding:8px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:12.5px;"/>
-                  <input value="{{ pk.original }}" onChange="{{ pk.onOriginal }}" style="width:94%;box-sizing:border-box;padding:8px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:12.5px;"/>
-                  <input value="{{ pk.discounted }}" onChange="{{ pk.onDiscounted }}" style="width:94%;box-sizing:border-box;padding:8px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:12.5px;"/>
-                  <svg onClick="{{ pk.remove }}" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c0524a" stroke-width="2" style="cursor:pointer;"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+                <div onClick="{{ pk.open }}" style="display:grid;min-width:640px;grid-template-columns:1.8fr 1.3fr 0.8fr 0.9fr 0.9fr 0.7fr;padding:12px 16px;align-items:center;border-top:1px solid #2c1a40;font-size:13px;cursor:pointer;" style-hover="background:#2c1a40;">
+                  <span style="font-weight:500;">{{ pk.name }}</span>
+                  <span style="color:#b9a8cf;">{{ pk.duration }}</span>
+                  <span>★ {{ pk.rating }}</span>
+                  <span style="color:#b9a8cf;text-decoration:line-through;">₹{{ pk.original }}</span>
+                  <span style="color:#E8A34A;font-weight:600;">₹{{ pk.discounted }}</span>
+                  <span style="display:flex;gap:12px;">
+                    <svg onClick="{{ pk.open }}" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C9A6F0" stroke-width="2" style="cursor:pointer;"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>
+                    <svg onClick="{{ pk.remove }}" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c0524a" stroke-width="2" style="cursor:pointer;"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+                  </span>
                 </div>
               </sc-for>
             </div>
@@ -1319,16 +1352,19 @@
               <button onClick="{{ addTestimonial }}" style="background:#5B2A86;color:#fff;border:none;padding:9px 18px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;">+ Add Testimonial</button>
             </div>
             <div style="background:#241533;border-radius:8px;border:1px solid #3a2650;overflow-x:auto;">
-              <div style="display:grid;min-width:680px;grid-template-columns:1.3fr 0.6fr 3fr 1fr 0.6fr;padding:12px 16px;background:#1c0f2b;font-size:12px;color:#b9a8cf;font-weight:600;">
+              <div style="display:grid;min-width:640px;grid-template-columns:1.3fr 0.7fr 3fr 1fr 0.7fr;padding:12px 16px;background:#1c0f2b;font-size:12px;color:#b9a8cf;font-weight:600;">
                 <span>Name</span><span>Rating</span><span>Quote</span><span>Destination</span><span>Actions</span>
               </div>
               <sc-for list="{{ adminTestimonials }}" as="ts" hint-placeholder-count="6">
-                <div style="display:grid;min-width:680px;grid-template-columns:1.3fr 0.6fr 3fr 1fr 0.6fr;padding:12px 16px;align-items:center;border-top:1px solid #2c1a40;font-size:13px;">
-                  <input value="{{ ts.name }}" onChange="{{ ts.onName }}" style="width:94%;box-sizing:border-box;padding:8px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:12.5px;"/>
-                  <input value="{{ ts.rating }}" onChange="{{ ts.onRating }}" style="width:94%;box-sizing:border-box;padding:8px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:12.5px;"/>
-                  <input value="{{ ts.quote }}" onChange="{{ ts.onQuote }}" style="width:94%;box-sizing:border-box;padding:8px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:12.5px;"/>
-                  <input value="{{ ts.destination }}" onChange="{{ ts.onDestination }}" style="width:94%;box-sizing:border-box;padding:8px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:12.5px;"/>
-                  <svg onClick="{{ ts.remove }}" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c0524a" stroke-width="2" style="cursor:pointer;"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+                <div onClick="{{ ts.open }}" style="display:grid;min-width:640px;grid-template-columns:1.3fr 0.7fr 3fr 1fr 0.7fr;padding:12px 16px;align-items:center;border-top:1px solid #2c1a40;font-size:13px;cursor:pointer;" style-hover="background:#2c1a40;">
+                  <span style="font-weight:500;">{{ ts.name }}</span>
+                  <span>★ {{ ts.rating }}</span>
+                  <span style="color:#b9a8cf;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-right:10px;">{{ ts.quote }}</span>
+                  <span>{{ ts.destination }}</span>
+                  <span style="display:flex;gap:12px;">
+                    <svg onClick="{{ ts.open }}" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C9A6F0" stroke-width="2" style="cursor:pointer;"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>
+                    <svg onClick="{{ ts.remove }}" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c0524a" stroke-width="2" style="cursor:pointer;"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+                  </span>
                 </div>
               </sc-for>
             </div>
@@ -1341,17 +1377,19 @@
               <button onClick="{{ addPost }}" style="background:#5B2A86;color:#fff;border:none;padding:9px 18px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;">+ Add Article</button>
             </div>
             <div style="background:#241533;border-radius:8px;border:1px solid #3a2650;overflow-x:auto;">
-              <div style="display:grid;min-width:680px;grid-template-columns:1.9fr 0.9fr 1.7fr 0.9fr 0.8fr 0.5fr;padding:12px 16px;background:#1c0f2b;font-size:12px;color:#b9a8cf;font-weight:600;">
-                <span>Title</span><span>Category</span><span>Image URL</span><span>Author</span><span>Published</span><span>Actions</span>
+              <div style="display:grid;min-width:640px;grid-template-columns:2.2fr 1fr 1fr 0.9fr 0.7fr;padding:12px 16px;background:#1c0f2b;font-size:12px;color:#b9a8cf;font-weight:600;">
+                <span>Title</span><span>Category</span><span>Author</span><span>Published</span><span>Actions</span>
               </div>
               <sc-for list="{{ adminPosts }}" as="ap" hint-placeholder-count="7">
-                <div style="display:grid;min-width:680px;grid-template-columns:1.9fr 0.9fr 1.7fr 0.9fr 0.8fr 0.5fr;padding:12px 16px;align-items:center;border-top:1px solid #2c1a40;font-size:13px;">
-                  <input value="{{ ap.title }}" onChange="{{ ap.onTitle }}" style="width:94%;box-sizing:border-box;padding:8px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:12.5px;"/>
-                  <input value="{{ ap.category }}" onChange="{{ ap.onCategory }}" style="width:94%;box-sizing:border-box;padding:8px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:12.5px;"/>
-                  <input value="{{ ap.img }}" onChange="{{ ap.onImg }}" placeholder="uploads/…" style="width:94%;box-sizing:border-box;padding:8px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:12.5px;"/>
-                  <input value="{{ ap.author }}" onChange="{{ ap.onAuthor }}" style="width:94%;box-sizing:border-box;padding:8px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:12.5px;"/>
+                <div onClick="{{ ap.open }}" style="display:grid;min-width:640px;grid-template-columns:2.2fr 1fr 1fr 0.9fr 0.7fr;padding:12px 16px;align-items:center;border-top:1px solid #2c1a40;font-size:13px;cursor:pointer;" style-hover="background:#2c1a40;">
+                  <span style="font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-right:10px;">{{ ap.title }}</span>
+                  <span style="color:#b9a8cf;">{{ ap.category }}</span>
+                  <span style="color:#b9a8cf;">{{ ap.author }}</span>
                   <span style="color:#b9a8cf;">{{ ap.date }}</span>
-                  <svg onClick="{{ ap.remove }}" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c0524a" stroke-width="2" style="cursor:pointer;"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+                  <span style="display:flex;gap:12px;">
+                    <svg onClick="{{ ap.open }}" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C9A6F0" stroke-width="2" style="cursor:pointer;"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>
+                    <svg onClick="{{ ap.remove }}" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c0524a" stroke-width="2" style="cursor:pointer;"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+                  </span>
                 </div>
               </sc-for>
             </div>
@@ -1364,14 +1402,17 @@
               <button onClick="{{ addFaq }}" style="background:#5B2A86;color:#fff;border:none;padding:9px 18px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;">+ Add FAQ</button>
             </div>
             <div style="background:#241533;border-radius:8px;border:1px solid #3a2650;overflow-x:auto;">
-              <div style="display:grid;min-width:680px;grid-template-columns:2fr 3.4fr 0.5fr;padding:12px 16px;background:#1c0f2b;font-size:12px;color:#b9a8cf;font-weight:600;">
+              <div style="display:grid;min-width:640px;grid-template-columns:2fr 3.4fr 0.6fr;padding:12px 16px;background:#1c0f2b;font-size:12px;color:#b9a8cf;font-weight:600;">
                 <span>Question</span><span>Answer</span><span>Actions</span>
               </div>
               <sc-for list="{{ adminFaqs }}" as="af" hint-placeholder-count="8">
-                <div style="display:grid;min-width:680px;grid-template-columns:2fr 3.4fr 0.5fr;padding:12px 16px;align-items:center;border-top:1px solid #2c1a40;font-size:13px;gap:10px;">
-                  <input value="{{ af.q }}" onChange="{{ af.onQ }}" style="width:94%;box-sizing:border-box;padding:8px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:12.5px;"/>
-                  <textarea rows="2" value="{{ af.a }}" onChange="{{ af.onA }}" style="width:94%;box-sizing:border-box;padding:8px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:12.5px;font-family:inherit;resize:vertical;"></textarea>
-                  <svg onClick="{{ af.remove }}" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c0524a" stroke-width="2" style="cursor:pointer;"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+                <div onClick="{{ af.open }}" style="display:grid;min-width:640px;grid-template-columns:2fr 3.4fr 0.6fr;padding:12px 16px;align-items:center;border-top:1px solid #2c1a40;font-size:13px;cursor:pointer;" style-hover="background:#2c1a40;">
+                  <span style="font-weight:500;">{{ af.q }}</span>
+                  <span style="color:#b9a8cf;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-right:10px;">{{ af.a }}</span>
+                  <span style="display:flex;gap:12px;">
+                    <svg onClick="{{ af.open }}" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C9A6F0" stroke-width="2" style="cursor:pointer;"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>
+                    <svg onClick="{{ af.remove }}" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c0524a" stroke-width="2" style="cursor:pointer;"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+                  </span>
                 </div>
               </sc-for>
             </div>
@@ -1460,10 +1501,10 @@
               <span>Name</span><span>Phone</span><span>Destination</span><span>Message</span><span>Date</span><span>Status</span>
             </div>
             <sc-for list="{{ enquiries }}" as="en" hint-placeholder-count="8">
-              <div style="display:grid;min-width:680px;grid-template-columns:1.3fr 1.2fr 1fr 2fr 1fr 1fr;padding:12px 16px;align-items:center;border-top:1px solid #2c1a40;font-size:13px;">
+              <div onClick="{{ en.open }}" style="display:grid;min-width:680px;grid-template-columns:1.3fr 1.2fr 1fr 2fr 1fr 1fr;padding:12px 16px;align-items:center;border-top:1px solid #2c1a40;font-size:13px;cursor:pointer;" style-hover="background:#2c1a40;">
                 <span>{{ en.name }}</span><span style="color:#b9a8cf;">{{ en.phone }}</span><span>{{ en.destination }}</span>
                 <span style="color:#b9a8cf;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{ en.message }}</span><span style="color:#b9a8cf;">{{ en.date }}</span>
-                <select value="{{ en.status }}" onChange="{{ en.onStatusChange }}" style="padding:6px 8px;border-radius:5px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;font-size:12px;">
+                <select value="{{ en.status }}" onClick="{{ en.stopProp }}" onChange="{{ en.onStatusChange }}" style="padding:6px 8px;border-radius:5px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;font-size:12px;">
                   <option value="New">New</option><option value="Contacted">Contacted</option><option value="Closed">Closed</option>
                 </select>
               </div>
@@ -1536,6 +1577,9 @@ class Component extends DCLogic {
     ],
     seoPage: 'home',
     contentTab: 'Services',
+    editTarget: null,
+    editReturn: 'admin-dashboard',
+    adminMenuOpen: false,
     seoGlobal: { siteName: 'MyKabira Travel' },
     seoByPage: {
       home: { title: 'Custom Trips, Honeymoons & Tour Packages', description: 'Personalised travel planning across India and abroad. 13 years, 25,000+ travellers, 4.8-star rated. Flights, hotels, visas and 24/7 on-trip support.', keywords: 'travel agency mumbai, tour packages, custom trips, honeymoon packages' },
@@ -2039,7 +2083,7 @@ class Component extends DCLogic {
 
   num = (v) => Number(String(v).replace(/[^0-9]/g, '')) || 0;
 
-  validScreens = ['home', 'destinations', 'packages', 'about', 'blog', 'contact', 'blog-detail', 'destination-detail', 'admin-login', 'admin-dashboard', 'admin-destinations', 'admin-packages', 'admin-testimonials', 'admin-blog', 'admin-faqs', 'admin-content', 'admin-seo', 'admin-hero', 'admin-stats', 'admin-enquiries', 'admin-settings'];
+  validScreens = ['home', 'destinations', 'packages', 'about', 'blog', 'contact', 'blog-detail', 'destination-detail', 'admin-login', 'admin-dashboard', 'admin-destinations', 'admin-packages', 'admin-testimonials', 'admin-blog', 'admin-faqs', 'admin-content', 'admin-seo', 'admin-edit', 'admin-hero', 'admin-stats', 'admin-enquiries', 'admin-settings'];
 
   scrollTop = () => { if (typeof window !== 'undefined' && window.scrollTo) window.scrollTo(0, 0); };
   syncHash = (h) => { try { if (typeof window !== 'undefined' && window.location.hash !== h) window.location.hash = h; } catch (e) {} };
@@ -2053,7 +2097,7 @@ class Component extends DCLogic {
     if (this.validScreens.indexOf(parts[0]) >= 0) this.setState({ screen: parts[0], mobileMenuOpen: false });
   };
 
-  setScreen = (scr) => { this.setState({ screen: scr, mobileMenuOpen: false }); if (scr !== 'destination-detail' && scr !== 'blog-detail') this.syncHash('#/' + scr); this.scrollTop(); };
+  setScreen = (scr) => { this.setState({ screen: scr, mobileMenuOpen: false, adminMenuOpen: false }); if (scr !== 'destination-detail' && scr !== 'blog-detail') this.syncHash('#/' + scr); this.scrollTop(); };
   setDestTab = (t) => this.setState({ destTab: t });
   goHome = () => this.setScreen('home');
   goDestinations = () => this.setScreen('destinations');
@@ -2182,6 +2226,22 @@ class Component extends DCLogic {
   removeTestimonial(idx) { this.setState(s => ({ testimonialsList: s.testimonialsList.filter((_, i) => i !== idx) })); }
 
   setContentTab = (t) => this.setState({ contentTab: t });
+  stop = (e) => { if (e && e.stopPropagation) e.stopPropagation(); };
+  toggleAdminMenu = () => this.setState(st => ({ adminMenuOpen: !st.adminMenuOpen }));
+  openEditor(kind, ref, ret) { this.setState({ editTarget: { kind, ...ref }, editReturn: ret, screen: 'admin-edit', adminMenuOpen: false }); this.scrollTop(); }
+  closeEditor = () => this.setScreen(this.state.editReturn || 'admin-dashboard');
+  editorDelete = () => {
+    const t = this.state.editTarget;
+    if (t) {
+      if (t.kind === 'dest') this.removeDestination(t.cat, t.idx);
+      else if (t.kind === 'pkg') this.removePackage(t.idx);
+      else if (t.kind === 'testimonial') this.removeTestimonial(t.idx);
+      else if (t.kind === 'post') this.removePost(t.idx);
+      else if (t.kind === 'faq') this.removeFaq(t.idx);
+      else if (t.kind === 'enquiry') this.setState(st => ({ enquiries: st.enquiries.filter((_, j) => j !== t.idx) }));
+    }
+    this.closeEditor();
+  };
   editContent(key, idx, field, value) {
     const list = this.getList(key);
     this.setState({ [key]: list.map((it, j) => j === idx ? { ...it, [field]: value } : it) });
@@ -2195,9 +2255,19 @@ class Component extends DCLogic {
     this.setState({ [sec.key]: [...this.getList(sec.key), { ...sec.blank }] });
   };
   editListItem(key, idx, field, value) {
+    if (key === 'packagesList' && field === 'name') {
+      const cur = this.state.packagesList[idx];
+      const p = this.getPhotos();
+      if (cur && cur.name !== value && p.pkg[cur.name] != null) this.setState({ photosMap: { ...p, pkg: { ...p.pkg, [value]: p.pkg[cur.name] } } });
+    }
     this.setState(s => ({ [key]: s[key].map((it, j) => j === idx ? { ...it, [field]: value } : it) }));
   }
   editDestinationField(cat, idx, field, value) {
+    if (field === 'name') {
+      const cur = (this.state.destinationsByCategory[cat] || [])[idx];
+      const p = this.getPhotos();
+      if (cur && cur.name !== value && p.dest[cur.name] != null) this.setState({ photosMap: { ...p, dest: { ...p.dest, [value]: p.dest[cur.name] } } });
+    }
     this.setState(s => ({ destinationsByCategory: { ...s.destinationsByCategory, [cat]: s.destinationsByCategory[cat].map((it, j) => j === idx ? { ...it, [field]: value } : it) } }));
   }
 
@@ -2332,14 +2402,10 @@ class Component extends DCLogic {
     const adminCat = s.destinationsByCategory[s.adminTab] || [];
     const adminDestinations = adminCat.map((d, i) => ({
       ...d, bg: this.photoBg(this.getPhotos().dest[d.name], i),
-      img: this.getPhotos().dest[d.name] || '',
-      onImg: (e) => this.editPhoto('dest', d.name, e.target.value),
-      moveUp: () => this.moveDestination(s.adminTab, i, -1),
-      moveDown: () => this.moveDestination(s.adminTab, i, 1),
-      onName: (e) => this.editDestinationField(s.adminTab, i, 'name', e.target.value),
-      onTagline: (e) => this.editDestinationField(s.adminTab, i, 'tagline', e.target.value),
-      onPrice: (e) => this.editDestinationField(s.adminTab, i, 'price', e.target.value),
-      remove: () => this.removeDestination(s.adminTab, i)
+      open: () => this.openEditor('dest', { cat: s.adminTab, idx: i }, 'admin-destinations'),
+      moveUp: (e) => { this.stop(e); this.moveDestination(s.adminTab, i, -1); },
+      moveDown: (e) => { this.stop(e); this.moveDestination(s.adminTab, i, 1); },
+      remove: (e) => { this.stop(e); this.removeDestination(s.adminTab, i); }
     }));
 
     const totalDestinations = allDecorated.length;
@@ -2406,12 +2472,8 @@ class Component extends DCLogic {
     const blogPosts = catPosts.slice(1);
     const homePosts = allPosts.slice(0, 3);
     const adminPosts = s.blogPosts.map((p, i) => ({ ...p,
-      img: this.getPhotos().post[p.id] || '',
-      onImg: (e) => this.editPhoto('post', p.id, e.target.value),
-      onTitle: (e) => this.editListItem('blogPosts', i, 'title', e.target.value),
-      onCategory: (e) => this.editListItem('blogPosts', i, 'category', e.target.value),
-      onAuthor: (e) => this.editListItem('blogPosts', i, 'author', e.target.value),
-      remove: () => this.removePost(i) }));
+      open: () => this.openEditor('post', { idx: i }, 'admin-blog'),
+      remove: (e) => { this.stop(e); this.removePost(i); } }));
     const selectedPost = allPosts.find(p => p.id === s.selectedPostId) || featuredPost;
     const relatedPosts = allPosts.filter(p => p.id !== (selectedPost && selectedPost.id)).slice(0, 3);
 
@@ -2428,6 +2490,74 @@ class Component extends DCLogic {
     }));
 
     this.applySeo({ selectedDest, selectedPost });
+
+    let editorTitle = '', editorHint = '', editorFields = [];
+    const et = s.editTarget;
+    const mkF = (label, value, onChange, area, rows) => ({ label, value: value == null ? '' : String(value), onChange, isArea: !!area, isText: !area, rows: rows || 3 });
+    if (s.screen === 'admin-edit' && et) {
+      if (et.kind === 'dest') {
+        const item = (s.destinationsByCategory[et.cat] || [])[et.idx];
+        if (item) {
+          editorTitle = 'Destination — ' + item.name;
+          editorHint = 'Image URL can be a project path (uploads/dest-bali.jpg) or any https:// image link. Changes apply to the live site instantly.';
+          const ef = (label, f) => mkF(label, item[f], (e) => this.editDestinationField(et.cat, et.idx, f, e.target.value));
+          editorFields = [ef('Name', 'name'), ef('Tagline', 'tagline'), ef('Starting price (₹)', 'price'),
+            mkF('Image URL', this.getPhotos().dest[item.name], (e) => this.editPhoto('dest', item.name, e.target.value))];
+        }
+      } else if (et.kind === 'pkg') {
+        const item = s.packagesList[et.idx];
+        if (item) {
+          editorTitle = 'Package — ' + item.name;
+          editorHint = 'Cities, inclusions and exclusions are comma separated. Itinerary: one line per day in the form  D1 | Title | Detail.';
+          const ef = (label, f, area, rows) => mkF(label, item[f], (e) => this.editListItem('packagesList', et.idx, f, e.target.value), area, rows);
+          const listF = (label, f) => mkF(label, (item[f] || []).join(', '), (e) => this.editListItem('packagesList', et.idx, f, e.target.value.split(',').map(x => x.trim()).filter(Boolean)));
+          editorFields = [ef('Name', 'name'), ef('Duration', 'duration'), ef('Category', 'category'), ef('Rating', 'rating'), ef('Reviews count', 'reviews'),
+            ef('Original price (₹)', 'original'), ef('Discounted price (₹)', 'discounted'),
+            mkF('Image URL', this.getPhotos().pkg[item.name], (e) => this.editPhoto('pkg', item.name, e.target.value)),
+            ef('Summary', 'summary', true, 3), listF('Cities (comma separated)', 'cities'), listF('Inclusions (comma separated)', 'inclusions'), listF('Exclusions (comma separated)', 'exclusions'),
+            mkF('Itinerary — one day per line: Day | Title | Detail', (item.days || []).map(d => d.day + ' | ' + d.title + ' | ' + d.detail).join('\n'),
+              (e) => this.editListItem('packagesList', et.idx, 'days', e.target.value.split('\n').map(l => { const pr = l.split('|').map(x => x.trim()); return { day: pr[0] || '', title: pr[1] || '', detail: pr[2] || '' }; }).filter(d => d.day || d.title)), true, 9)];
+        }
+      } else if (et.kind === 'testimonial') {
+        const item = s.testimonialsList[et.idx];
+        if (item) {
+          editorTitle = 'Testimonial — ' + item.name;
+          editorHint = 'Rating accepts values like 5 or 4.5.';
+          const ef = (label, f, area) => mkF(label, item[f], (e) => this.editListItem('testimonialsList', et.idx, f, e.target.value), area);
+          editorFields = [ef('Traveller name', 'name'), ef('Rating', 'rating'), ef('Destination', 'destination'), ef('Quote', 'quote', true)];
+        }
+      } else if (et.kind === 'post') {
+        const item = s.blogPosts[et.idx];
+        if (item) {
+          editorTitle = 'Article — ' + item.title;
+          editorHint = 'Body: separate sections with a blank line; the first line of each section becomes its heading. Tags are comma separated.';
+          const ef = (label, f, area, rows) => mkF(label, item[f], (e) => this.editListItem('blogPosts', et.idx, f, e.target.value), area, rows);
+          editorFields = [ef('Title', 'title'), ef('Category', 'category'), ef('Author', 'author'), ef('Published date', 'date'), ef('Read time', 'readTime'),
+            mkF('Image URL', this.getPhotos().post[item.id], (e) => this.editPhoto('post', item.id, e.target.value)),
+            mkF('Tags (comma separated)', (item.tags || []).join(', '), (e) => this.editListItem('blogPosts', et.idx, 'tags', e.target.value.split(',').map(x => x.trim()).filter(Boolean))),
+            ef('Excerpt / standfirst', 'excerpt', true, 3),
+            mkF('Article body', (item.body || []).map(b => b.h + '\n' + b.p).join('\n\n'),
+              (e) => this.editListItem('blogPosts', et.idx, 'body', e.target.value.split(/\n\s*\n/).map(bl => { const ls = bl.split('\n'); return { h: (ls[0] || '').trim(), p: ls.slice(1).join(' ').trim() }; }).filter(x => x.h || x.p)), true, 14)];
+        }
+      } else if (et.kind === 'faq') {
+        const item = s.faqList[et.idx];
+        if (item) {
+          editorTitle = 'FAQ — ' + item.q;
+          editorHint = 'Shown on Home, Packages, About and Contact.';
+          editorFields = [mkF('Question', item.q, (e) => this.editListItem('faqList', et.idx, 'q', e.target.value)),
+            mkF('Answer', item.a, (e) => this.editListItem('faqList', et.idx, 'a', e.target.value), true, 5)];
+        }
+      } else if (et.kind === 'enquiry') {
+        const item = s.enquiries[et.idx];
+        if (item) {
+          editorTitle = 'Enquiry — ' + item.name;
+          editorHint = 'Status can also be changed from the list view dropdown.';
+          const ef = (label, f, area) => mkF(label, item[f], (e) => this.editListItem('enquiries', et.idx, f, e.target.value), area);
+          editorFields = [ef('Name', 'name'), ef('Phone', 'phone'), ef('Destination', 'destination'), ef('Date', 'date'), ef('Status (New / Contacted / Closed)', 'status'), ef('Message', 'message', true)];
+        }
+      }
+    }
+    if (s.screen === 'admin-edit' && !editorFields.length) { editorTitle = 'Nothing selected'; editorHint = 'Go back to a manager list and click an item to edit it.'; }
 
     // ---- faqs / testimonials -------------------------------------------
     const faqs = s.faqList.map((f, i) => ({
@@ -2464,11 +2594,14 @@ class Component extends DCLogic {
 
     const tickerBase = this.getList('offersList').map(o => o.text);
 
-    const enquiries = s.enquiries.map(en => ({ ...en, onStatusChange: (e) => this.updateEnquiryStatus(en.id, e.target.value) }));
+    const enquiries = s.enquiries.map((en, i) => ({ ...en,
+      open: () => this.openEditor('enquiry', { idx: i }, 'admin-enquiries'),
+      stopProp: (e) => this.stop(e),
+      onStatusChange: (e) => { this.stop(e); this.updateEnquiryStatus(en.id, e.target.value); } }));
 
     const titles = {
       'admin-dashboard': 'Dashboard', 'admin-destinations': 'Destinations Manager', 'admin-packages': 'Packages Manager',
-      'admin-testimonials': 'Testimonials Manager', 'admin-blog': 'Blog Manager', 'admin-faqs': 'FAQ Manager', 'admin-content': 'Site Content', 'admin-seo': 'SEO Manager', 'admin-hero': 'Hero / Banner Manager',
+      'admin-testimonials': 'Testimonials Manager', 'admin-blog': 'Blog Manager', 'admin-faqs': 'FAQ Manager', 'admin-content': 'Site Content', 'admin-seo': 'SEO Manager', 'admin-edit': 'Edit Item', 'admin-hero': 'Hero / Banner Manager',
       'admin-stats': 'Stats Counter Manager', 'admin-enquiries': 'Enquiries / Leads Inbox', 'admin-settings': 'Site Settings'
     };
 
@@ -2495,6 +2628,12 @@ class Component extends DCLogic {
       isAdminFaqs: s.screen === 'admin-faqs',
       isAdminSeo: s.screen === 'admin-seo',
       isAdminContent: s.screen === 'admin-content',
+      isAdminEdit: s.screen === 'admin-edit',
+      editorTitle, editorHint, editorFields,
+      closeEditor: this.closeEditor, editorDelete: this.editorDelete,
+      toggleAdminMenu: this.toggleAdminMenu,
+      adminMenuClass: s.adminMenuOpen ? 'adm-side-open' : '',
+      adminBackdropClass: s.adminMenuOpen ? 'adm-backdrop adm-backdrop-open' : 'adm-backdrop',
       isAdminHero: s.screen === 'admin-hero',
       isAdminStats: s.screen === 'admin-stats',
       isAdminEnquiries: s.screen === 'admin-enquiries',
@@ -2543,14 +2682,8 @@ class Component extends DCLogic {
       pkgSort: s.pkgSort, onPkgSortChange: this.onPkgSortChange,
       packagePerks: this.getList('perksList'),
       adminPackages: s.packagesList.map((p, i) => ({ ...p,
-        img: this.getPhotos().pkg[p.name] || '',
-        onImg: (e) => this.editPhoto('pkg', p.name, e.target.value),
-        onName: (e) => this.editListItem('packagesList', i, 'name', e.target.value),
-        onDuration: (e) => this.editListItem('packagesList', i, 'duration', e.target.value),
-        onRating: (e) => this.editListItem('packagesList', i, 'rating', e.target.value),
-        onOriginal: (e) => this.editListItem('packagesList', i, 'original', e.target.value),
-        onDiscounted: (e) => this.editListItem('packagesList', i, 'discounted', e.target.value),
-        remove: () => this.removePackage(i) })),
+        open: () => this.openEditor('pkg', { idx: i }, 'admin-packages'),
+        remove: (e) => { this.stop(e); this.removePackage(i); } })),
 
       // blog
       blogCats, blogPosts, featuredPost, homePosts, postCount: catPosts.length,
@@ -2606,11 +2739,8 @@ class Component extends DCLogic {
       enquiries, recentEnquiries: enquiries.slice(0, 4),
       newEnquiriesCount: s.enquiries.filter(en => en.status === 'New').length,
       adminTestimonials: s.testimonialsList.map((t, i) => ({ ...t,
-        onName: (e) => this.editListItem('testimonialsList', i, 'name', e.target.value),
-        onRating: (e) => this.editListItem('testimonialsList', i, 'rating', e.target.value),
-        onQuote: (e) => this.editListItem('testimonialsList', i, 'quote', e.target.value),
-        onDestination: (e) => this.editListItem('testimonialsList', i, 'destination', e.target.value),
-        remove: () => this.removeTestimonial(i) })),
+        open: () => this.openEditor('testimonial', { idx: i }, 'admin-testimonials'),
+        remove: (e) => { this.stop(e); this.removeTestimonial(i); } })),
       heroForm: s.heroForm,
       onHeadlineChange: this.onHeadlineChange, onTaglineChange: this.onTaglineChange, onSubtextChange: this.onSubtextChange,
       onCtaPrimaryChange: this.onCtaPrimaryChange, onCtaSecondaryChange: this.onCtaSecondaryChange,
@@ -2623,9 +2753,8 @@ class Component extends DCLogic {
       onPrimaryColorChange: this.onPrimaryColorChange, onAccentColorChange: this.onAccentColorChange,
       addDestination: this.addDestination, addPackage: this.addPackage, addTestimonial: this.addTestimonial, addPost: this.addPost, addFaq: this.addFaq,
       adminFaqs: s.faqList.map((f, i) => ({ ...f,
-        onQ: (e) => this.editListItem('faqList', i, 'q', e.target.value),
-        onA: (e) => this.editListItem('faqList', i, 'a', e.target.value),
-        remove: () => this.removeFaq(i) })),
+        open: () => this.openEditor('faq', { idx: i }, 'admin-faqs'),
+        remove: (e) => { this.stop(e); this.removeFaq(i); } })),
       dashNav: navStyle('admin-dashboard'), destNav: navStyle('admin-destinations'), pkgNav: navStyle('admin-packages'),
       testiNav: navStyle('admin-testimonials'), blogNav: navStyle('admin-blog'), faqNav: navStyle('admin-faqs'), seoNav: navStyle('admin-seo'), contentNav: navStyle('admin-content'), heroNav: navStyle('admin-hero'),
       statsNav: navStyle('admin-stats'), enqNav: navStyle('admin-enquiries'), settingsNav: navStyle('admin-settings')
