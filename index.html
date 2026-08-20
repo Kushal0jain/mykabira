@@ -1255,6 +1255,9 @@
                   <sc-if value="{{ ef.isText }}" hint-placeholder-val="{{true}}">
                     <input value="{{ ef.value }}" onChange="{{ ef.onChange }}" style="display:block;width:100%;box-sizing:border-box;margin-top:5px;padding:10px;background:#F1EADF;color:#2B2118;border:1px solid #E3D9C8;border-radius:6px;font-size:13px;"/>
                   </sc-if>
+                  <sc-if value="{{ ef.isImg }}" hint-placeholder-val="{{false}}">
+                    <div style="margin-top:8px;height:120px;border-radius:8px;border:1px solid #E3D9C8;background:{{ ef.previewBg }};"></div>
+                  </sc-if>
                   <sc-if value="{{ ef.isArea }}" hint-placeholder-val="{{false}}">
                     <textarea rows="{{ ef.rows }}" value="{{ ef.value }}" onChange="{{ ef.onChange }}" style="display:block;width:100%;box-sizing:border-box;margin-top:5px;padding:10px;background:#F1EADF;color:#2B2118;border:1px solid #E3D9C8;border-radius:6px;font-size:13px;font-family:inherit;resize:vertical;"></textarea>
                   </sc-if>
@@ -1435,6 +1438,9 @@
                   <sc-for list="{{ cr.fields }}" as="cf" hint-placeholder-count="4">
                     <label style="flex:1;min-width:130px;font-size:11px;color:#6E6257;">{{ cf.label }}
                       <input value="{{ cf.value }}" onChange="{{ cf.onChange }}" style="display:block;width:100%;box-sizing:border-box;margin-top:4px;padding:9px;background:#F1EADF;color:#2B2118;border:1px solid #E3D9C8;border-radius:6px;font-size:12.5px;"/>
+                      <sc-if value="{{ cf.isImg }}" hint-placeholder-val="{{false}}">
+                        <div style="margin-top:6px;height:80px;border-radius:6px;border:1px solid #E3D9C8;background:{{ cf.previewBg }};"></div>
+                      </sc-if>
                     </label>
                   </sc-for>
                   <svg onClick="{{ cr.remove }}" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#c0524a" stroke-width="2" style="cursor:pointer;margin-bottom:10px;flex-shrink:0;"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
@@ -1518,7 +1524,8 @@
             <label style="font-size:12px;color:#6E6257;">WhatsApp<input value="{{ settingsForm.whatsapp }}" onChange="{{ onWhatsappChange }}" style="display:block;width:100%;box-sizing:border-box;margin-top:4px;padding:10px;background:#F1EADF;color:#2B2118;border:1px solid #E3D9C8;border-radius:6px;font-size:13px;"/></label>
             <label style="font-size:12px;color:#6E6257;">Email<input value="{{ settingsForm.email }}" onChange="{{ onEmailChange }}" style="display:block;width:100%;box-sizing:border-box;margin-top:4px;padding:10px;background:#F1EADF;color:#2B2118;border:1px solid #E3D9C8;border-radius:6px;font-size:13px;"/></label>
             <label style="font-size:12px;color:#6E6257;">Address<input value="{{ settingsForm.address }}" onChange="{{ onAddressChange }}" style="display:block;width:100%;box-sizing:border-box;margin-top:4px;padding:10px;background:#F1EADF;color:#2B2118;border:1px solid #E3D9C8;border-radius:6px;font-size:13px;"/></label>
-            <label style="font-size:12px;color:#6E6257;">Contact Map Image URL<input value="{{ settingsForm.mapImage }}" onChange="{{ onMapImageChange }}" style="display:block;width:100%;box-sizing:border-box;margin-top:4px;padding:10px;background:#F1EADF;color:#2B2118;border:1px solid #E3D9C8;border-radius:6px;font-size:13px;"/></label>
+            <label style="font-size:12px;color:#6E6257;">Contact Map Image URL<input value="{{ settingsForm.mapImage }}" onChange="{{ onMapImageChange }}" style="display:block;width:100%;box-sizing:border-box;margin-top:4px;padding:10px;background:#F1EADF;color:#2B2118;border:1px solid #E3D9C8;border-radius:6px;font-size:13px;"/>
+            <div style="margin-top:8px;height:110px;border-radius:8px;border:1px solid #E3D9C8;background:{{ mapPreviewBg }};"></div></label>
             <div style="display:flex;gap:12px;">
               <label style="font-size:12px;color:#6E6257;flex:1;">Instagram<input value="{{ settingsForm.instagram }}" onChange="{{ onInstagramChange }}" style="display:block;width:100%;box-sizing:border-box;margin-top:4px;padding:10px;background:#F1EADF;color:#2B2118;border:1px solid #E3D9C8;border-radius:6px;font-size:13px;"/></label>
               <label style="font-size:12px;color:#6E6257;flex:1;">Facebook<input value="{{ settingsForm.facebook }}" onChange="{{ onFacebookChange }}" style="display:block;width:100%;box-sizing:border-box;margin-top:4px;padding:10px;background:#F1EADF;color:#2B2118;border:1px solid #E3D9C8;border-radius:6px;font-size:13px;"/></label>
@@ -2419,7 +2426,8 @@ class Component extends DCLogic {
     const cSec = this.contentSections[s.contentTab];
     const contentTabs = Object.keys(this.contentSections).map(t => ({ label: t, style: pillStyle(s.contentTab === t), select: () => this.setContentTab(t) }));
     const contentRows = this.getList(cSec.key).map((item, i) => ({
-      fields: cSec.fields.map(fd => ({ label: fd.label, value: item[fd.f] == null ? '' : String(item[fd.f]), onChange: (e) => this.editContent(cSec.key, i, fd.f, e.target.value) })),
+      fields: cSec.fields.map(fd => ({ label: fd.label, value: item[fd.f] == null ? '' : String(item[fd.f]), onChange: (e) => this.editContent(cSec.key, i, fd.f, e.target.value),
+        isImg: fd.f === 'img', previewBg: item[fd.f] ? "url('" + item[fd.f] + "') center/cover no-repeat" : '#F1EADF' })),
       remove: () => this.removeContent(cSec.key, i)
     }));
 
@@ -2557,6 +2565,7 @@ class Component extends DCLogic {
         }
       }
     }
+    editorFields = editorFields.map(f => f.label.indexOf('Image URL') === 0 ? { ...f, isImg: true, previewBg: f.value ? "url('" + f.value + "') center/cover no-repeat" : '#F1EADF' } : f);
     if (s.screen === 'admin-edit' && !editorFields.length) { editorTitle = 'Nothing selected'; editorHint = 'Go back to a manager list and click an item to edit it.'; }
 
     // ---- faqs / testimonials -------------------------------------------
@@ -2713,6 +2722,7 @@ class Component extends DCLogic {
       heroPreviewBg: s.heroForm.image ? "url('" + s.heroForm.image + "') center/cover no-repeat" : '#FAF7F2',
       mapBg: s.settingsForm.mapImage ? "linear-gradient(rgba(18,10,28,0.55),rgba(18,10,28,0.8)), url('" + s.settingsForm.mapImage + "') center/cover no-repeat" : 'linear-gradient(135deg,#F1EADF,#E3D9C8)',
       onHeroImageChange: this.onHeroImageChange, onMapImageChange: this.onMapImageChange,
+      mapPreviewBg: s.settingsForm.mapImage ? "url('" + s.settingsForm.mapImage + "') center/cover no-repeat" : '#F1EADF',
       seoGlobal: s.seoGlobal, onSeoSiteNameChange: this.onSeoSiteNameChange,
       seoForm: s.seoByPage[s.seoPage],
       seoTitleLen: s.seoByPage[s.seoPage].title.length,
