@@ -180,7 +180,7 @@
           <button onClick="{{ tab.select }}" style="{{ tab.style }} padding:10px 22px;border-radius:22px;font-weight:600;font-size:14px;cursor:pointer;">{{ tab.label }}</button>
         </sc-for>
       </div>
-      <div class="g4" style="display:grid;grid-template-columns:{{ gridFour }};gap:22px;">
+      <div class="g4" style="display:grid;grid-template-columns:{{ gridFour }};gap:20px;">
         <sc-for list="{{ homeDestinations }}" as="dest" hint-placeholder-count="8">
           <div class="rise" style="border-radius:12px;overflow:hidden;background:#FFFFFF;border:1px solid #E3D9C8;box-shadow:0 2px 10px rgba(43,33,24,0.07);cursor:pointer;position:relative;" style-hover="transform:translateY(-6px);box-shadow:0 18px 34px rgba(43,33,24,0.14);border-color:#8B4FC9;">
             <div onClick="{{ dest.select }}" style="height:160px;background:{{ dest.bg }};display:flex;align-items:center;justify-content:center;position:relative;">
@@ -270,7 +270,7 @@
               <div style="font-size:13px;color:#C77B16;font-weight:600;margin-bottom:8px;">★ {{ pkg.rating }} · {{ pkg.reviews }} reviews</div>
               <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;">
                 <sc-for list="{{ pkg.cities }}" as="city" hint-placeholder-count="3">
-                  <span style="background:#E3D9C8;color:#2B2118;font-size:11px;padding:4px 8px;border-radius:10px;">{{ city }}</span>
+                  <span style="background:#E3D9C8;color:#2B2118;font-size:11px;padding:4px 8px;border-radius:12px;">{{ city }}</span>
                 </sc-for>
               </div>
               <div style="margin-bottom:14px;">
@@ -297,7 +297,7 @@
       </div>
       <div class="g2" style="flex:1;min-width:320px;display:grid;grid-template-columns:{{ gridTwo }};gap:16px;">
         <sc-for list="{{ whyUs }}" as="w" hint-placeholder-count="6">
-          <div style="background:#FFFFFF;border:1px solid #E3D9C8;border-radius:10px;padding:18px;" style-hover="border-color:#8B4FC9;transform:translateY(-3px);">
+          <div style="background:#FFFFFF;border:1px solid #E3D9C8;border-radius:12px;padding:18px;" style-hover="border-color:#8B4FC9;transform:translateY(-3px);">
             <div style="font-size:22px;margin-bottom:8px;">{{ w.icon }}</div>
             <div style="font-weight:600;font-size:14px;margin-bottom:5px;">{{ w.title }}</div>
             <div style="font-size:12.5px;color:#6E6257;line-height:1.55;">{{ w.detail }}</div>
@@ -355,7 +355,7 @@
       <p style="color:#6E6257;font-size:14.5px;text-align:center;margin:0 0 32px;">Everything travellers ask us before they book</p>
       <div style="max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:12px;">
         <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="8">
-          <div style="background:#FFFFFF;border:1px solid {{ f.borderColor }};border-radius:10px;overflow:hidden;">
+          <div style="background:#FFFFFF;border:1px solid {{ f.borderColor }};border-radius:12px;overflow:hidden;">
             <div onClick="{{ f.toggle }}" style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding:17px 20px;cursor:pointer;font-size:14.5px;font-weight:600;" style-hover="background:#EFE7DA;">
               <span>{{ f.q }}</span><span style="color:#E8622A;font-size:20px;flex-shrink:0;display:inline-block;transition:transform .3s ease;transform:{{ f.rot }};">+</span>
             </div>
@@ -387,7 +387,7 @@
       </sc-for>
     </div>
 
-    <div style="background:linear-gradient(120deg,#5B2A86,#2A0E4A);padding:56px 6vw;text-align:center;">
+    <div style="background:linear-gradient(120deg,#5B2A86,#2A0E4A);padding:64px 6vw;text-align:center;">
       <h2 style="font-family:'DM Serif Display',serif;color:#fff;font-size:clamp(24px,4.5vw,34px);margin:0 0 10px;">Ready to Plan Your Dream Trip?</h2>
       <p style="color:#e2d6f0;font-size:15px;margin:0 0 24px;">Talk to a real travel consultant — no bots, no call centres.</p>
       <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;">
@@ -435,7 +435,7 @@
         <span style="font-size:13px;color:#C77B16;">♥ {{ wishCount }} saved</span>
       </div>
 
-      <div class="g4" style="display:grid;grid-template-columns:{{ gridFour }};gap:22px;">
+      <div class="g4" style="display:grid;grid-template-columns:{{ gridFour }};gap:20px;">
         <sc-for list="{{ filteredDestinations }}" as="dest" hint-placeholder-count="8">
           <div class="rise" style="border-radius:12px;overflow:hidden;background:#FFFFFF;border:1px solid #E3D9C8;position:relative;" style-hover="transform:translateY(-6px);box-shadow:0 18px 34px rgba(43,33,24,0.14);border-color:#8B4FC9;">
             <div onClick="{{ dest.select }}" style="height:170px;background:{{ dest.bg }};display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;">
@@ -447,8 +447,8 @@
               <div style="font-weight:600;font-size:16px;margin-bottom:4px;">{{ dest.name }}</div>
               <div style="font-size:12.5px;color:#6E6257;margin-bottom:12px;min-height:34px;">{{ dest.tagline }}</div>
               <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
-                <span style="background:#F1EADF;border:1px solid #E3D9C8;color:#6E6257;font-size:11px;padding:4px 8px;border-radius:10px;">☀ {{ dest.bestTime }}</span>
-                <span style="background:#F1EADF;border:1px solid #E3D9C8;color:#6E6257;font-size:11px;padding:4px 8px;border-radius:10px;">⏱ {{ dest.idealDays }}</span>
+                <span style="background:#F1EADF;border:1px solid #E3D9C8;color:#6E6257;font-size:11px;padding:4px 8px;border-radius:12px;">☀ {{ dest.bestTime }}</span>
+                <span style="background:#F1EADF;border:1px solid #E3D9C8;color:#6E6257;font-size:11px;padding:4px 8px;border-radius:12px;">⏱ {{ dest.idealDays }}</span>
               </div>
               <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid #E3D9C8;padding-top:12px;">
                 <span>
@@ -473,7 +473,7 @@
       </sc-if>
     </div>
 
-    <div style="padding:56px 6vw;background:#FAF7F2;text-align:center;">
+    <div style="padding:64px 6vw;background:#FAF7F2;text-align:center;">
       <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(22px,3.8vw,30px);color:#2B2118;margin:0 0 10px;">Save It, Then Let Us Plan It</h2>
       <p style="color:#6E6257;font-size:14.5px;max-width:560px;margin:0 auto 24px;">Heart the destinations you like as you browse — you have <strong style="color:#C77B16;">{{ wishCount }}</strong> saved. Mention them in your enquiry and we will build the trip around them.</p>
       <div style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap;">
@@ -482,7 +482,7 @@
       </div>
     </div>
 
-    <div style="padding:60px 6vw;background:#F1EADF;">
+    <div style="padding:64px 6vw;background:#F1EADF;">
       <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(23px,4vw,32px);color:#2B2118;text-align:center;margin:0 0 8px;">Browse by Travel Style</h2>
       <p style="color:#6E6257;font-size:14.5px;text-align:center;margin:0 0 32px;">Not sure where to start? Pick the kind of trip you want.</p>
       <div class="g3" style="display:grid;grid-template-columns:{{ gridThree }};gap:18px;">
@@ -542,7 +542,7 @@
                   <p style="font-size:13.5px;color:#6E6257;line-height:1.6;margin:0 0 12px;max-width:520px;">{{ pkg.summary }}</p>
                   <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;">
                     <sc-for list="{{ pkg.cities }}" as="city" hint-placeholder-count="3">
-                      <span style="background:#F1EADF;border:1px solid #E3D9C8;color:#2B2118;font-size:11.5px;padding:5px 10px;border-radius:10px;">📍 {{ city }}</span>
+                      <span style="background:#F1EADF;border:1px solid #E3D9C8;color:#2B2118;font-size:11.5px;padding:5px 10px;border-radius:12px;">📍 {{ city }}</span>
                     </sc-for>
                   </div>
                   <div style="display:flex;flex-wrap:wrap;gap:14px;font-size:12px;color:#6E6257;">
@@ -603,7 +603,7 @@
       </sc-if>
     </div>
 
-    <div style="padding:56px 6vw;background:#F5EFE6;">
+    <div style="padding:64px 6vw;background:#F5EFE6;">
       <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(22px,3.8vw,30px);color:#2B2118;text-align:center;margin:0 0 28px;">Travellers on These Packages</h2>
       <div class="g3" style="display:grid;grid-template-columns:{{ gridThree }};gap:20px;">
         <sc-for list="{{ packagesTestimonials }}" as="pt" hint-placeholder-count="3">
@@ -617,11 +617,11 @@
       </div>
     </div>
 
-    <div style="padding:56px 6vw;background:#FAF7F2;">
+    <div style="padding:64px 6vw;background:#FAF7F2;">
       <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(22px,3.8vw,30px);color:#2B2118;text-align:center;margin:0 0 28px;">Package Questions, Answered</h2>
       <div style="max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:12px;">
         <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="8">
-          <div style="background:#FFFFFF;border:1px solid {{ f.borderColor }};border-radius:10px;overflow:hidden;">
+          <div style="background:#FFFFFF;border:1px solid {{ f.borderColor }};border-radius:12px;overflow:hidden;">
             <div onClick="{{ f.toggle }}" style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding:17px 20px;cursor:pointer;font-size:14.5px;font-weight:600;" style-hover="background:#EFE7DA;">
               <span>{{ f.q }}</span><span style="color:#E8622A;font-size:20px;flex-shrink:0;display:inline-block;transition:transform .3s ease;transform:{{ f.rot }};">+</span>
             </div>
@@ -631,11 +631,11 @@
       </div>
     </div>
 
-    <div style="padding:56px 6vw;background:#F1EADF;">
+    <div style="padding:64px 6vw;background:#F1EADF;">
       <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(22px,3.8vw,30px);color:#2B2118;text-align:center;margin:0 0 28px;">Every Package Includes</h2>
       <div class="g4" style="display:grid;grid-template-columns:{{ gridFour }};gap:18px;">
         <sc-for list="{{ packagePerks }}" as="pp" hint-placeholder-count="4">
-          <div style="background:#FFFFFF;border:1px solid #E3D9C8;border-radius:10px;padding:20px;text-align:center;" style-hover="border-color:#E8622A;transform:translateY(-4px);">
+          <div style="background:#FFFFFF;border:1px solid #E3D9C8;border-radius:12px;padding:20px;text-align:center;" style-hover="border-color:#E8622A;transform:translateY(-4px);">
             <div style="font-size:26px;margin-bottom:10px;">{{ pp.icon }}</div>
             <div style="font-weight:600;font-size:14px;margin-bottom:6px;">{{ pp.title }}</div>
             <div style="font-size:12.5px;color:#6E6257;line-height:1.55;">{{ pp.detail }}</div>
@@ -702,7 +702,7 @@
       <p style="color:#6E6257;font-size:14.5px;text-align:center;margin:0 0 40px;">Milestones that shaped how we plan travel today</p>
       <div style="max-width:820px;margin:0 auto;display:flex;flex-direction:column;">
         <sc-for list="{{ milestones }}" as="m" hint-placeholder-count="6">
-          <div style="display:flex;gap:22px;align-items:flex-start;">
+          <div style="display:flex;gap:20px;align-items:flex-start;">
             <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;">
               <span style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#5B2A86,#E8622A);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:700;">{{ m.year }}</span>
               <span style="width:2px;flex:1;min-height:34px;background:#E3D9C8;"></span>
@@ -732,7 +732,7 @@
       </div>
     </div>
 
-    <div style="padding:56px 6vw;background:linear-gradient(90deg,#5B2A86,#7B3FA6);color:#F5EFE6;">
+    <div style="padding:64px 6vw;background:linear-gradient(90deg,#5B2A86,#7B3FA6);color:#F5EFE6;">
       <div class="g4" style="display:grid;grid-template-columns:{{ gridFour }};gap:24px;text-align:center;">
         <sc-for list="{{ aboutStats }}" as="ast" hint-placeholder-count="4">
           <div>
@@ -757,7 +757,7 @@
       </div>
     </div>
 
-    <div style="padding:56px 6vw;background:#FAF7F2;">
+    <div style="padding:64px 6vw;background:#FAF7F2;">
       <h3 style="font-family:'DM Serif Display',serif;font-size:24px;color:#2B2118;text-align:center;margin:0 0 8px;">Accreditations &amp; Partners</h3>
       <p style="color:#6E6257;font-size:13.5px;text-align:center;margin:0 0 28px;">Recognised by the bodies that matter, backed by partners on the ground</p>
       <div style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap;">
@@ -767,11 +767,11 @@
       </div>
     </div>
 
-    <div style="padding:60px 6vw;background:#F1EADF;">
+    <div style="padding:64px 6vw;background:#F1EADF;">
       <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(23px,4vw,32px);color:#2B2118;text-align:center;margin:0 0 30px;">Questions About Working With Us</h2>
       <div style="max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:12px;">
         <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="8">
-          <div style="background:#FFFFFF;border:1px solid {{ f.borderColor }};border-radius:10px;overflow:hidden;">
+          <div style="background:#FFFFFF;border:1px solid {{ f.borderColor }};border-radius:12px;overflow:hidden;">
             <div onClick="{{ f.toggle }}" style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding:17px 20px;cursor:pointer;font-size:14.5px;font-weight:600;" style-hover="background:#EFE7DA;">
               <span>{{ f.q }}</span><span style="color:#E8622A;font-size:20px;flex-shrink:0;display:inline-block;transition:transform .3s ease;transform:{{ f.rot }};">+</span>
             </div>
@@ -781,7 +781,7 @@
       </div>
     </div>
 
-    <div style="background:linear-gradient(120deg,#5B2A86,#2A0E4A);padding:56px 6vw;text-align:center;">
+    <div style="background:linear-gradient(120deg,#5B2A86,#2A0E4A);padding:64px 6vw;text-align:center;">
       <h2 style="font-family:'DM Serif Display',serif;color:#fff;font-size:clamp(23px,4vw,32px);margin:0 0 10px;">Let us plan something good</h2>
       <p style="color:#e2d6f0;font-size:15px;margin:0 0 24px;">One conversation is usually enough to know if we are the right fit.</p>
       <button onClick="{{ openEnquiry }}" style="background:#E8622A;color:#fff;border:none;padding:14px 30px;border-radius:6px;font-weight:600;font-size:15px;cursor:pointer;" style-hover="transform:translateY(-2px);">Start planning →</button>
@@ -823,7 +823,7 @@
         </div>
       </div>
 
-      <div class="g3" style="display:grid;grid-template-columns:{{ gridThree }};gap:22px;">
+      <div class="g3" style="display:grid;grid-template-columns:{{ gridThree }};gap:20px;">
         <sc-for list="{{ blogPosts }}" as="bp" hint-placeholder-count="6">
           <div onClick="{{ bp.open }}" class="rise" style="background:#FFFFFF;border:1px solid #E3D9C8;border-radius:12px;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;" style-hover="transform:translateY(-6px);border-color:#8B4FC9;box-shadow:0 18px 32px rgba(43,33,24,0.13);">
             <div style="height:150px;background:{{ bp.bg }};position:relative;">
@@ -850,8 +850,9 @@
       </sc-if>
       <sc-if value="{{newsletterOpen}}" hint-placeholder-val="{{true}}">
         <form onSubmit="{{ submitNewsletter }}" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;max-width:460px;margin:0 auto;">
-          <input required type="email" value="{{ newsletterEmail }}" onChange="{{ onNewsletterChange }}" placeholder="you@email.com" style="flex:1;min-width:220px;padding:13px 16px;background:rgba(255,255,255,0.94);color:#2B2118;border:1px solid #8B4FC9;border-radius:8px;font-size:14px;"/>
+          <input value="{{ newsletterEmail }}" onChange="{{ onNewsletterChange }}" placeholder="you@email.com" style="flex:1;min-width:220px;padding:13px 16px;background:rgba(255,255,255,0.94);color:#2B2118;border:1px solid #8B4FC9;border-radius:8px;font-size:14px;"/>
           <button type="submit" style="background:#E8622A;color:#fff;border:none;padding:13px 26px;border-radius:8px;font-weight:600;font-size:14px;cursor:pointer;" style-hover="background:#ff7038;">Subscribe</button>
+          <sc-if value="{{ errNewsletter }}" hint-placeholder-val="{{false}}"><div style="width:100%;color:#FFD9D2;font-size:12px;text-align:center;">⚠ {{ errNewsletter }}</div></sc-if>
         </form>
       </sc-if>
     </div>
@@ -957,7 +958,7 @@
         <h3 style="font-family:'DM Serif Display',serif;font-size:21px;color:#2B2118;margin:0 0 14px;">Trip highlights</h3>
         <div class="g2" style="display:grid;grid-template-columns:{{ gridTwo }};gap:12px;margin-bottom:32px;">
           <sc-for list="{{ selectedDest.highlights }}" as="hl" hint-placeholder-count="6">
-            <div style="display:flex;gap:10px;align-items:flex-start;background:#FFFFFF;border:1px solid #E3D9C8;border-radius:10px;padding:14px;" style-hover="border-color:#8B4FC9;">
+            <div style="display:flex;gap:10px;align-items:flex-start;background:#FFFFFF;border:1px solid #E3D9C8;border-radius:12px;padding:14px;" style-hover="border-color:#8B4FC9;">
               <span style="color:#E8622A;font-size:15px;">◆</span>
               <span style="font-size:13.5px;color:#6E6257;line-height:1.6;">{{ hl }}</span>
             </div>
@@ -967,7 +968,7 @@
         <h3 style="font-family:'DM Serif Display',serif;font-size:21px;color:#2B2118;margin:0 0 14px;">Suggested day plan</h3>
         <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:32px;">
           <sc-for list="{{ detailDays }}" as="dd" hint-placeholder-count="5">
-            <div style="background:#FFFFFF;border:1px solid {{ dd.borderColor }};border-radius:10px;overflow:hidden;">
+            <div style="background:#FFFFFF;border:1px solid {{ dd.borderColor }};border-radius:12px;overflow:hidden;">
               <div onClick="{{ dd.toggle }}" style="display:flex;align-items:center;gap:14px;padding:15px 18px;cursor:pointer;" style-hover="background:#EFE7DA;">
                 <span style="width:38px;height:38px;border-radius:50%;background:#5B2A86;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:700;flex-shrink:0;">{{ dd.day }}</span>
                 <span style="flex:1;font-size:14px;font-weight:600;">{{ dd.title }}</span>
@@ -980,16 +981,16 @@
 
         <h3 style="font-family:'DM Serif Display',serif;font-size:21px;color:#2B2118;margin:0 0 14px;">Gallery</h3>
         <div class="g4" style="display:grid;grid-template-columns:{{ gridFour }};gap:12px;margin-bottom:32px;">
-          <div style="height:110px;border-radius:10px;background:url(uploads/collage-1.jpg) center/cover no-repeat;cursor:pointer;" style-hover="transform:scale(1.04);"></div>
-          <div style="height:110px;border-radius:10px;background:url(uploads/collage-2.jpg) center/cover no-repeat;cursor:pointer;" style-hover="transform:scale(1.04);"></div>
-          <div style="height:110px;border-radius:10px;background:url(uploads/collage-3.jpg) center/cover no-repeat;cursor:pointer;" style-hover="transform:scale(1.04);"></div>
-          <div style="height:110px;border-radius:10px;background:url(uploads/collage-4.jpg) center/cover no-repeat;cursor:pointer;" style-hover="transform:scale(1.04);"></div>
+          <div style="height:110px;border-radius:12px;background:url(uploads/collage-1.jpg) center/cover no-repeat;cursor:pointer;" style-hover="transform:scale(1.04);"></div>
+          <div style="height:110px;border-radius:12px;background:url(uploads/collage-2.jpg) center/cover no-repeat;cursor:pointer;" style-hover="transform:scale(1.04);"></div>
+          <div style="height:110px;border-radius:12px;background:url(uploads/collage-3.jpg) center/cover no-repeat;cursor:pointer;" style-hover="transform:scale(1.04);"></div>
+          <div style="height:110px;border-radius:12px;background:url(uploads/collage-4.jpg) center/cover no-repeat;cursor:pointer;" style-hover="transform:scale(1.04);"></div>
         </div>
 
         <h3 style="font-family:'DM Serif Display',serif;font-size:21px;color:#2B2118;margin:0 0 14px;">You might also like</h3>
         <div class="g3" style="display:grid;grid-template-columns:{{ gridThree }};gap:16px;">
           <sc-for list="{{ relatedDestinations }}" as="rd" hint-placeholder-count="3">
-            <div onClick="{{ rd.select }}" style="background:#FFFFFF;border:1px solid #E3D9C8;border-radius:10px;overflow:hidden;cursor:pointer;" style-hover="transform:translateY(-4px);border-color:#8B4FC9;">
+            <div onClick="{{ rd.select }}" style="background:#FFFFFF;border:1px solid #E3D9C8;border-radius:12px;overflow:hidden;cursor:pointer;" style-hover="transform:translateY(-4px);border-color:#8B4FC9;">
               <div style="height:90px;background:{{ rd.bg }};"></div>
               <div style="padding:12px;">
                 <div style="font-size:14px;font-weight:600;">{{ rd.name }}</div>
@@ -1016,8 +1017,10 @@
         <div style="background:#FFFFFF;border:1px solid #E3D9C8;border-radius:12px;padding:20px;">
           <div style="font-family:'DM Serif Display',serif;font-size:17px;margin-bottom:12px;">Quick enquiry</div>
           <form onSubmit="{{ submitContact }}" style="display:flex;flex-direction:column;gap:10px;">
-            <input required placeholder="Your name" value="{{ contactForm.name }}" onChange="{{ setContactName }}" style="padding:11px;background:#F1EADF;color:#2B2118;border:1px solid #E3D9C8;border-radius:6px;font-size:13px;"/>
-            <input required placeholder="Phone number" value="{{ contactForm.phone }}" onChange="{{ setContactPhone }}" style="padding:11px;background:#F1EADF;color:#2B2118;border:1px solid #E3D9C8;border-radius:6px;font-size:13px;"/>
+            <input placeholder="Your name" value="{{ contactForm.name }}" onChange="{{ setContactName }}" style="padding:11px;background:#F1EADF;color:#2B2118;border:1px solid #E3D9C8;border-radius:6px;font-size:13px;"/>
+            <sc-if value="{{ errName }}" hint-placeholder-val="{{false}}"><div style="color:#c0392b;font-size:11.5px;margin-top:-4px;">⚠ {{ errName }}</div></sc-if>
+            <input placeholder="Phone number" value="{{ contactForm.phone }}" onChange="{{ setContactPhone }}" style="padding:11px;background:#F1EADF;color:#2B2118;border:1px solid #E3D9C8;border-radius:6px;font-size:13px;"/>
+            <sc-if value="{{ errPhone }}" hint-placeholder-val="{{false}}"><div style="color:#c0392b;font-size:11.5px;margin-top:-4px;">⚠ {{ errPhone }}</div></sc-if>
             <textarea placeholder="Dates, group size, any preferences?" rows="3" value="{{ contactForm.message }}" onChange="{{ setContactMessage }}" style="padding:11px;background:#F1EADF;color:#2B2118;border:1px solid #E3D9C8;border-radius:6px;font-size:13px;font-family:inherit;"></textarea>
             <button type="submit" style="background:#E8622A;color:#fff;border:none;padding:12px;border-radius:6px;font-weight:600;font-size:13px;cursor:pointer;" style-hover="background:#ff7038;">Send enquiry</button>
           </form>
@@ -1058,10 +1061,13 @@
           <form onSubmit="{{ submitContact }}" style="background:#FFFFFF;border:1px solid #E3D9C8;border-radius:12px;padding:30px;display:flex;flex-direction:column;gap:16px;">
             <div style="font-family:'DM Serif Display',serif;font-size:22px;color:#2B2118;">Tell us about your trip</div>
             <div class="g2" style="display:grid;grid-template-columns:{{ gridTwo }};gap:14px;">
-              <label style="font-size:12px;color:#97897C;">Full name *<input required placeholder="Your name" value="{{ contactForm.name }}" onChange="{{ setContactName }}" style="display:block;width:100%;box-sizing:border-box;margin-top:6px;padding:12px;background:#F1EADF;color:#2B2118;border:1px solid #E3D9C8;border-radius:6px;font-size:14px;"/></label>
-              <label style="font-size:12px;color:#97897C;">Phone *<input required placeholder="+91" value="{{ contactForm.phone }}" onChange="{{ setContactPhone }}" style="display:block;width:100%;box-sizing:border-box;margin-top:6px;padding:12px;background:#F1EADF;color:#2B2118;border:1px solid #E3D9C8;border-radius:6px;font-size:14px;"/></label>
+              <label style="font-size:12px;color:#97897C;">Full name *<input placeholder="Your name" value="{{ contactForm.name }}" onChange="{{ setContactName }}" style="display:block;width:100%;box-sizing:border-box;margin-top:6px;padding:12px;background:#F1EADF;color:#2B2118;border:1px solid #E3D9C8;border-radius:6px;font-size:14px;"/>
+            <sc-if value="{{ errName }}" hint-placeholder-val="{{false}}"><div style="color:#c0392b;font-size:11.5px;margin-top:5px;">⚠ {{ errName }}</div></sc-if></label>
+              <label style="font-size:12px;color:#97897C;">Phone *<input placeholder="+91" value="{{ contactForm.phone }}" onChange="{{ setContactPhone }}" style="display:block;width:100%;box-sizing:border-box;margin-top:6px;padding:12px;background:#F1EADF;color:#2B2118;border:1px solid #E3D9C8;border-radius:6px;font-size:14px;"/>
+            <sc-if value="{{ errPhone }}" hint-placeholder-val="{{false}}"><div style="color:#c0392b;font-size:11.5px;margin-top:5px;">⚠ {{ errPhone }}</div></sc-if></label>
             </div>
-            <label style="font-size:12px;color:#97897C;">Email *<input required type="email" placeholder="you@email.com" value="{{ contactForm.email }}" onChange="{{ setContactEmail }}" style="display:block;width:100%;box-sizing:border-box;margin-top:6px;padding:12px;background:#F1EADF;color:#2B2118;border:1px solid #E3D9C8;border-radius:6px;font-size:14px;"/></label>
+            <label style="font-size:12px;color:#97897C;">Email *<input placeholder="you@email.com" value="{{ contactForm.email }}" onChange="{{ setContactEmail }}" style="display:block;width:100%;box-sizing:border-box;margin-top:6px;padding:12px;background:#F1EADF;color:#2B2118;border:1px solid #E3D9C8;border-radius:6px;font-size:14px;"/>
+            <sc-if value="{{ errEmail }}" hint-placeholder-val="{{false}}"><div style="color:#c0392b;font-size:11.5px;margin-top:5px;">⚠ {{ errEmail }}</div></sc-if></label>
             <div class="g2" style="display:grid;grid-template-columns:{{ gridTwo }};gap:14px;">
               <label style="font-size:12px;color:#97897C;">Destination<input placeholder="e.g. Bali" value="{{ contactForm.destination }}" onChange="{{ setContactDestination }}" style="display:block;width:100%;box-sizing:border-box;margin-top:6px;padding:12px;background:#F1EADF;color:#2B2118;border:1px solid #E3D9C8;border-radius:6px;font-size:14px;"/></label>
               <label style="font-size:12px;color:#97897C;">Travellers<select value="{{ contactForm.travellers }}" onChange="{{ setContactTravellers }}" style="display:block;width:100%;box-sizing:border-box;margin-top:6px;padding:12px;background:#F1EADF;color:#2B2118;border:1px solid #E3D9C8;border-radius:6px;font-size:14px;"><option value="1">Solo</option><option value="2">2 travellers</option><option value="3-4">3 – 4</option><option value="5+">5 or more</option></select></label>
@@ -1095,14 +1101,14 @@
       </div>
     </div>
 
-    <div style="padding:56px 6vw;background:#F1EADF;">
+    <div style="padding:64px 6vw;background:#F1EADF;">
       <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(22px,3.8vw,30px);color:#2B2118;text-align:center;margin:0 0 28px;">Our Offices</h2>
       <div class="g3" style="display:grid;grid-template-columns:{{ gridThree }};gap:18px;">
         <sc-for list="{{ offices }}" as="of" hint-placeholder-count="3">
           <div style="background:#FFFFFF;border:1px solid #E3D9C8;border-radius:12px;padding:22px;" style-hover="border-color:#E8622A;transform:translateY(-4px);">
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
               <div style="font-family:'DM Serif Display',serif;font-size:19px;color:#2B2118;">{{ of.city }}</div>
-              <span style="font-size:10.5px;background:#E3D9C8;color:#4A3B5C;padding:4px 9px;border-radius:10px;">{{ of.tag }}</span>
+              <span style="font-size:10.5px;background:#E3D9C8;color:#4A3B5C;padding:4px 9px;border-radius:12px;">{{ of.tag }}</span>
             </div>
             <div style="font-size:13px;color:#6E6257;line-height:1.65;margin-bottom:10px;">{{ of.address }}</div>
             <div style="font-size:13px;color:#C77B16;">{{ of.phone }}</div>
@@ -1111,11 +1117,11 @@
       </div>
     </div>
 
-    <div style="padding:56px 6vw;background:#FAF7F2;">
+    <div style="padding:64px 6vw;background:#FAF7F2;">
       <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(22px,3.8vw,30px);color:#2B2118;text-align:center;margin:0 0 28px;">Before You Ask</h2>
       <div style="max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:12px;">
         <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="8">
-          <div style="background:#FFFFFF;border:1px solid {{ f.borderColor }};border-radius:10px;overflow:hidden;">
+          <div style="background:#FFFFFF;border:1px solid {{ f.borderColor }};border-radius:12px;overflow:hidden;">
             <div onClick="{{ f.toggle }}" style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding:17px 20px;cursor:pointer;font-size:14.5px;font-weight:600;" style-hover="background:#EFE7DA;">
               <span>{{ f.q }}</span><span style="color:#E8622A;font-size:20px;flex-shrink:0;display:inline-block;transition:transform .3s ease;transform:{{ f.rot }};">+</span>
             </div>
@@ -1146,9 +1152,12 @@
           <form onSubmit="{{ submitContact }}" style="display:flex;flex-direction:column;gap:13px;">
             <div style="font-family:'DM Serif Display',serif;font-size:22px;color:#2B2118;">Plan my trip</div>
             <p style="color:#6E6257;font-size:13px;margin:-6px 0 2px;">Tell us the idea — we reply within one working day.</p>
-            <input required placeholder="Your name" value="{{ contactForm.name }}" onChange="{{ setContactName }}" style="padding:12px;background:#F1EADF;color:#2B2118;border:1px solid #E3D9C8;border-radius:6px;font-size:14px;"/>
-            <input required placeholder="Phone" value="{{ contactForm.phone }}" onChange="{{ setContactPhone }}" style="padding:12px;background:#F1EADF;color:#2B2118;border:1px solid #E3D9C8;border-radius:6px;font-size:14px;"/>
-            <input type="email" placeholder="Email (optional)" value="{{ contactForm.email }}" onChange="{{ setContactEmail }}" style="padding:12px;background:#F1EADF;color:#2B2118;border:1px solid #E3D9C8;border-radius:6px;font-size:14px;"/>
+            <input placeholder="Your name" value="{{ contactForm.name }}" onChange="{{ setContactName }}" style="padding:12px;background:#F1EADF;color:#2B2118;border:1px solid #E3D9C8;border-radius:6px;font-size:14px;"/>
+            <sc-if value="{{ errName }}" hint-placeholder-val="{{false}}"><div style="color:#c0392b;font-size:11.5px;margin-top:-6px;">⚠ {{ errName }}</div></sc-if>
+            <input placeholder="Phone" value="{{ contactForm.phone }}" onChange="{{ setContactPhone }}" style="padding:12px;background:#F1EADF;color:#2B2118;border:1px solid #E3D9C8;border-radius:6px;font-size:14px;"/>
+            <sc-if value="{{ errPhone }}" hint-placeholder-val="{{false}}"><div style="color:#c0392b;font-size:11.5px;margin-top:-6px;">⚠ {{ errPhone }}</div></sc-if>
+            <input placeholder="Email (optional)" value="{{ contactForm.email }}" onChange="{{ setContactEmail }}" style="padding:12px;background:#F1EADF;color:#2B2118;border:1px solid #E3D9C8;border-radius:6px;font-size:14px;"/>
+            <sc-if value="{{ errEmail }}" hint-placeholder-val="{{false}}"><div style="color:#c0392b;font-size:11.5px;margin-top:-6px;">⚠ {{ errEmail }}</div></sc-if>
             <input placeholder="Destination, e.g. Bali" value="{{ contactForm.destination }}" onChange="{{ setContactDestination }}" style="padding:12px;background:#F1EADF;color:#2B2118;border:1px solid #E3D9C8;border-radius:6px;font-size:14px;"/>
             <div style="display:flex;gap:8px;flex-wrap:wrap;">
               <sc-for list="{{ tripTypeChips }}" as="mt" hint-placeholder-count="5">
@@ -1164,9 +1173,39 @@
     </div>
   </sc-if>
 
+  <sc-if value="{{chatOpen}}" hint-placeholder-val="{{false}}">
+    <div style="position:fixed;bottom:96px;right:24px;z-index:110;width:min(340px,90vw);background:#fff;border:1px solid #E3D9C8;border-radius:14px;box-shadow:0 24px 60px rgba(20,12,30,0.3);overflow:hidden;display:flex;flex-direction:column;max-height:70vh;">
+      <div style="background:linear-gradient(90deg,#5B2A86,#7B3FA6);color:#fff;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;">
+        <span>
+          <div style="font-weight:600;font-size:14px;">Chat with MyKabira</div>
+          <div style="font-size:11px;opacity:0.85;">{{ chatStatus }}</div>
+        </span>
+        <span onClick="{{ toggleChat }}" style="cursor:pointer;font-size:19px;line-height:1;opacity:0.85;" style-hover="opacity:1;">×</span>
+      </div>
+      <sc-if value="{{chatHasEnquiry}}" hint-placeholder-val="{{true}}">
+        <div style="flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:8px;min-height:140px;background:#FAF7F2;">
+          <sc-for list="{{ chatMessages }}" as="cm" hint-placeholder-count="3">
+            <div style="display:flex;justify-content:{{ cm.row }};"><span style="{{ cm.bubble }} padding:9px 13px;font-size:13px;max-width:82%;line-height:1.55;">{{ cm.text }}</span></div>
+          </sc-for>
+        </div>
+        <form onSubmit="{{ sendUserChat }}" style="display:flex;gap:8px;padding:12px;border-top:1px solid #E3D9C8;background:#fff;">
+          <input value="{{ chatDraft }}" onChange="{{ onChatDraft }}" placeholder="Type a message…" style="flex:1;min-width:0;padding:10px 12px;background:#F1EADF;color:#2B2118;border:1px solid #E3D9C8;border-radius:8px;font-size:13px;"/>
+          <button type="submit" style="background:#E8622A;color:#fff;border:none;padding:10px 15px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;" style-hover="background:#ff7038;">➤</button>
+        </form>
+      </sc-if>
+      <sc-if value="{{chatNoEnquiry}}" hint-placeholder-val="{{false}}">
+        <div style="padding:24px;text-align:center;">
+          <div style="font-size:28px;margin-bottom:10px;">💬</div>
+          <p style="font-size:13px;color:#6E6257;margin:0 0 16px;line-height:1.65;">Send an enquiry first — then chat directly with your travel consultant right here.</p>
+          <button onClick="{{ openEnquiry }}" style="background:#5B2A86;color:#fff;border:none;padding:12px 22px;border-radius:6px;font-weight:600;font-size:13px;cursor:pointer;" style-hover="background:#7B3FA6;">Send an enquiry</button>
+        </div>
+      </sc-if>
+    </div>
+  </sc-if>
+
   <div style="position:fixed;bottom:24px;right:24px;z-index:60;display:flex;flex-direction:column;gap:12px;align-items:flex-end;">
     <button onClick="{{ scrollToTop }}" title="Back to top" style="width:46px;height:46px;border-radius:50%;background:#FFFFFF;color:#2B2118;border:1px solid #E3D9C8;font-size:18px;cursor:pointer;box-shadow:0 8px 20px rgba(43,33,24,0.15);" style-hover="background:#5B2A86;color:#fff;">↑</button>
-    <button onClick="{{ openEnquiry }}" title="WhatsApp us" style="width:54px;height:54px;border-radius:50%;background:#25D366;border:none;font-size:24px;cursor:pointer;box-shadow:0 10px 24px rgba(37,211,102,0.45);" style-hover="transform:scale(1.1);">💬</button>
+    <button onClick="{{ toggleChat }}" title="Chat with us" style="width:54px;height:54px;border-radius:50%;background:#25D366;border:none;font-size:24px;cursor:pointer;box-shadow:0 10px 24px rgba(37,211,102,0.45);" style-hover="transform:scale(1.1);">💬</button>
   </div>
 
   <div style="background:#221433;color:#c9bdd9;padding:56px 6vw 24px;border-top:1px solid #35204d;">
@@ -1228,13 +1267,15 @@
 </sc-if>
 <sc-if value="{{isAdminLogin}}" hint-placeholder-val="{{false}}">
   <div style="min-height:100vh;background:linear-gradient(120deg,#2A0E4A,#5B2A86);display:flex;align-items:center;justify-content:center;">
-    <form onSubmit="{{ doLogin }}" style="background:#FFFFFF;border-radius:10px;padding:40px;width:340px;display:flex;flex-direction:column;gap:14px;">
+    <form onSubmit="{{ doLogin }}" style="background:#FFFFFF;border-radius:12px;padding:40px;width:340px;display:flex;flex-direction:column;gap:14px;">
       <div style="display:flex;align-items:center;gap:8px;justify-content:center;margin-bottom:8px;">
-        <img src="assets/mykabira-logo-full-blackbg.png" alt="MyKabira" style="height:80px;width:auto;display:block;border-radius:10px;"/>
+        <img src="assets/mykabira-logo-full-blackbg.png" alt="MyKabira" style="height:80px;width:auto;display:block;border-radius:12px;"/>
       </div>
       <div style="text-align:center;color:#6E6257;font-size:13px;margin-bottom:8px;">Admin Panel Login</div>
-      <input required type="email" placeholder="Email" value="{{ loginEmail }}" onChange="{{ onLoginEmailChange }}" style="padding:12px;background:#F1EADF;color:#2B2118;border:1px solid #E3D9C8;border-radius:6px;font-size:14px;"/>
-      <input required type="password" placeholder="Password" value="{{ loginPassword }}" onChange="{{ onLoginPasswordChange }}" style="padding:12px;background:#F1EADF;color:#2B2118;border:1px solid #E3D9C8;border-radius:6px;font-size:14px;"/>
+      <input placeholder="Email" value="{{ loginEmail }}" onChange="{{ onLoginEmailChange }}" style="padding:12px;background:#F1EADF;color:#2B2118;border:1px solid #E3D9C8;border-radius:6px;font-size:14px;"/>
+            <sc-if value="{{ errLoginEmail }}" hint-placeholder-val="{{false}}"><div style="color:#c0392b;font-size:11.5px;margin-top:-8px;">⚠ {{ errLoginEmail }}</div></sc-if>
+      <input type="password" placeholder="Password" value="{{ loginPassword }}" onChange="{{ onLoginPasswordChange }}" style="padding:12px;background:#F1EADF;color:#2B2118;border:1px solid #E3D9C8;border-radius:6px;font-size:14px;"/>
+            <sc-if value="{{ errLoginPassword }}" hint-placeholder-val="{{false}}"><div style="color:#c0392b;font-size:11.5px;margin-top:-8px;">⚠ {{ errLoginPassword }}</div></sc-if>
       <button type="submit" style="background:#5B2A86;color:#fff;border:none;padding:13px;border-radius:6px;font-weight:600;font-size:14px;cursor:pointer;margin-top:6px;">Log In</button>
       <span onClick="{{ goHome }}" style="text-align:center;color:#6E6257;font-size:12px;cursor:pointer;margin-top:4px;">← Back to site</span>
     </form>
@@ -1285,7 +1326,7 @@
               <span onClick="{{ closeEditor }}" style="cursor:pointer;color:#5B2A86;font-size:13.5px;font-weight:600;">← Back to list</span>
               <button onClick="{{ editorDelete }}" style="background:transparent;color:#b04b4b;border:1px solid #7a3b45;padding:9px 16px;border-radius:6px;font-size:12.5px;font-weight:600;cursor:pointer;">Delete this item</button>
             </div>
-            <div style="background:#FFFFFF;border:1px solid #E3D9C8;border-radius:10px;padding:22px;display:flex;flex-direction:column;gap:14px;">
+            <div style="background:#FFFFFF;border:1px solid #E3D9C8;border-radius:12px;padding:22px;display:flex;flex-direction:column;gap:14px;">
               <div style="font-family:'DM Serif Display',serif;font-size:20px;color:#2B2118;">{{ editorTitle }}</div>
               <sc-for list="{{ editorFields }}" as="ef" hint-placeholder-count="6">
                 <label style="font-size:12px;color:#6E6257;">{{ ef.label }}
@@ -1300,6 +1341,23 @@
                   </sc-if>
                 </label>
               </sc-for>
+              <sc-if value="{{editorChatOn}}" hint-placeholder-val="{{false}}">
+                <div style="border-top:1px solid #E3D9C8;padding-top:16px;">
+                  <div style="font-weight:600;font-size:14px;margin-bottom:10px;color:#2B2118;">Chat with {{ editorChatName }}</div>
+                  <div style="max-height:260px;overflow-y:auto;display:flex;flex-direction:column;gap:8px;background:#FAF7F2;border:1px solid #E3D9C8;border-radius:12px;padding:12px;margin-bottom:10px;">
+                    <sc-for list="{{ adminChatMessages }}" as="am" hint-placeholder-count="3">
+                      <div style="display:flex;justify-content:{{ am.row }};"><span style="{{ am.bubble }} padding:9px 13px;font-size:13px;max-width:82%;line-height:1.55;">{{ am.text }}</span></div>
+                    </sc-for>
+                    <sc-if value="{{adminChatEmpty}}" hint-placeholder-val="{{false}}">
+                      <div style="font-size:12px;color:#97897C;text-align:center;padding:10px;">No messages yet — start the conversation below.</div>
+                    </sc-if>
+                  </div>
+                  <form onSubmit="{{ sendAdminChat }}" style="display:flex;gap:8px;">
+                    <input value="{{ adminChatDraft }}" onChange="{{ onAdminChatDraft }}" placeholder="Reply to the traveller…" style="flex:1;min-width:0;padding:10px 12px;background:#F1EADF;color:#2B2118;border:1px solid #E3D9C8;border-radius:8px;font-size:13px;"/>
+                    <button type="submit" style="background:#5B2A86;color:#fff;border:none;padding:10px 18px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;" style-hover="background:#7B3FA6;">Send</button>
+                  </form>
+                </div>
+              </sc-if>
               <div style="font-size:11.5px;color:#97897C;line-height:1.6;">{{ editorHint }}</div>
               <button onClick="{{ closeEditor }}" style="background:#5B2A86;color:#fff;border:none;padding:12px;border-radius:6px;font-weight:600;font-size:13.5px;cursor:pointer;">Done — back to list</button>
             </div>
@@ -1609,10 +1667,22 @@ class Component extends DCLogic {
     contactForm: { name: '', phone: '', email: '', destination: '', message: '', travellers: '2', tripType: 'Couple' },
     contactSubmitted: false,
     enquiryOpen: false,
+    formErrors: {},
+    chatOpen: false,
+    chatDraft: '',
+    adminChatDraft: '',
+    myEnquiryId: null,
     loginEmail: '', loginPassword: '',
     enquiries: [
-      { id: 1, name: 'Ritika Shah', phone: '+91 98200 11234', destination: 'Bali', message: 'Looking for a 6N honeymoon package in Nov.', date: '12 Aug 2026', status: 'New' },
-      { id: 2, name: 'Aman Verma', phone: '+91 90040 55678', destination: 'Ladakh', message: 'Group of 6, need bike trip itinerary.', date: '11 Aug 2026', status: 'Contacted' },
+      { id: 1, name: 'Ritika Shah', phone: '+91 98200 11234', destination: 'Bali', message: 'Looking for a 6N honeymoon package in Nov.', date: '12 Aug 2026', status: 'New', thread: [
+        { from: 'user', text: 'Looking for a 6N honeymoon package in Nov. Private pool villa if possible.' },
+        { from: 'admin', text: 'Hi Ritika! November is perfect for Bali. Sharing two villa options within your budget shortly.' },
+        { from: 'user', text: 'Great — we would also like the Nusa Penida day trip included.' }
+      ] },
+      { id: 2, name: 'Aman Verma', phone: '+91 90040 55678', destination: 'Ladakh', message: 'Group of 6, need bike trip itinerary.', date: '11 Aug 2026', status: 'Contacted', thread: [
+        { from: 'user', text: 'Group of 6, need a bike trip itinerary for early September.' },
+        { from: 'admin', text: 'Hi Aman! Our 9-day expedition fits that window — I have emailed the day-wise plan and bike options.' }
+      ] },
       { id: 3, name: 'Sara Kapoor', phone: '+91 99870 33210', destination: 'Maldives', message: 'Budget for overwater villa, 5N.', date: '10 Aug 2026', status: 'New' },
       { id: 4, name: 'Vikram Nair', phone: '+91 88990 12456', destination: 'Rajasthan', message: 'Family of 4, interested in Golden Triangle.', date: '09 Aug 2026', status: 'Closed' },
       { id: 5, name: 'Priya Menon', phone: '+91 97123 88900', destination: 'Switzerland', message: 'Need visa assistance plus itinerary.', date: '08 Aug 2026', status: 'Contacted' },
@@ -2179,8 +2249,13 @@ class Component extends DCLogic {
   toggleDay = (i) => this.setState(s => ({ openDay: s.openDay === i ? null : i }));
   toggleWish = (name) => this.setState(s => ({ wishlist: s.wishlist.indexOf(name) >= 0 ? s.wishlist.filter(n => n !== name) : [...s.wishlist, name] }));
   setBlogCat = (c) => this.setState({ blogCat: c });
-  onNewsletterChange = (e) => this.setState({ newsletterEmail: e.target.value });
-  submitNewsletter = (e) => { e.preventDefault(); this.setState({ newsletterDone: true }); };
+  onNewsletterChange = (e) => this.setState(s => ({ newsletterEmail: e.target.value, formErrors: { ...s.formErrors, newsletter: '' } }));
+  submitNewsletter = (e) => {
+    e.preventDefault();
+    const msg = this.vEmail(this.state.newsletterEmail, true);
+    if (msg) { this.setState(s => ({ formErrors: { ...s.formErrors, newsletter: msg } })); return; }
+    this.setState({ newsletterDone: true });
+  };
 
   componentDidMount() {
     this.updateIsMobile();
@@ -2200,7 +2275,7 @@ class Component extends DCLogic {
     if (m !== this.state.isMobile || t !== this.state.isTablet) this.setState({ isMobile: m, isTablet: t });
   };
 
-  updateContactField(field, value) { this.setState(s => ({ contactForm: { ...s.contactForm, [field]: value } })); }
+  updateContactField(field, value) { this.setState(s => ({ contactForm: { ...s.contactForm, [field]: value }, formErrors: { ...s.formErrors, [field]: '' } })); }
   setContactName = (e) => this.updateContactField('name', e.target.value);
   setContactPhone = (e) => this.updateContactField('phone', e.target.value);
   setContactEmail = (e) => this.updateContactField('email', e.target.value);
@@ -2208,20 +2283,48 @@ class Component extends DCLogic {
   setContactMessage = (e) => this.updateContactField('message', e.target.value);
   setContactTravellers = (e) => this.updateContactField('travellers', e.target.value);
   setTripType = (t) => this.updateContactField('tripType', t);
+  vName = (v) => v && String(v).trim().length >= 2 ? '' : 'Please enter your full name';
+  vPhone = (v) => /^\+?\d{10,15}$/.test(String(v || '').replace(/[\s\-()]/g, '')) ? '' : 'Enter a valid phone number (10–15 digits)';
+  vEmail = (v, required) => { if (!v) return required ? 'Email is required' : ''; return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v) ? '' : 'Enter a valid email address'; };
+
   openEnquiry = () => this.setState(st => ({ enquiryOpen: true, contactForm: { ...st.contactForm, destination: st.contactForm.destination || (st.screen === 'destination-detail' ? st.selectedDestName || '' : '') } }));
   closeEnquiry = () => this.setState({ enquiryOpen: false });
   submitContact = (e) => {
     e.preventDefault();
-    if (this.state.enquiryOpen) { this.setState({ contactSubmitted: true }); return; }
-    this.setState({ contactSubmitted: true, screen: 'contact' });
+    const f = this.state.contactForm;
+    const requireEmail = !this.state.enquiryOpen && this.state.screen === 'contact';
+    const errors = { name: this.vName(f.name), phone: this.vPhone(f.phone), email: this.vEmail(f.email, requireEmail) };
+    if (errors.name || errors.phone || errors.email) { this.setState(st => ({ formErrors: { ...st.formErrors, ...errors } })); return; }
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const now = new Date();
+    const id = Math.max(0, ...this.state.enquiries.map(en => en.id)) + 1;
+    const record = {
+      id, name: f.name, phone: f.phone, destination: f.destination || 'Not decided', message: f.message || '',
+      date: now.getDate() + ' ' + months[now.getMonth()] + ' ' + now.getFullYear(), status: 'New',
+      thread: [
+        { from: 'user', text: f.message || ('Hi! I would like help planning a trip' + (f.destination ? ' to ' + f.destination : '') + '.') },
+        { from: 'admin', text: 'Thanks ' + f.name + '! Your enquiry is with a consultant — feel free to ask anything here while we prepare your plan.' }
+      ]
+    };
+    this.setState(st => ({ enquiries: [record, ...st.enquiries], myEnquiryId: id }));
+    if (this.state.enquiryOpen) { this.setState({ contactSubmitted: true, formErrors: {} }); return; }
+    this.setState({ contactSubmitted: true, formErrors: {}, screen: 'contact' });
     this.syncHash('#/contact');
     this.scrollTop();
   };
-  resetContact = () => this.setState({ contactSubmitted: false, contactForm: { name: '', phone: '', email: '', destination: '', message: '', travellers: '2', tripType: 'Couple' } });
+  resetContact = () => this.setState({ contactSubmitted: false, formErrors: {}, contactForm: { name: '', phone: '', email: '', destination: '', message: '', travellers: '2', tripType: 'Couple' } });
 
-  onLoginEmailChange = (e) => this.setState({ loginEmail: e.target.value });
-  onLoginPasswordChange = (e) => this.setState({ loginPassword: e.target.value });
-  doLogin = (e) => { e.preventDefault(); this.setScreen('admin-dashboard'); };
+  onLoginEmailChange = (e) => this.setState(s => ({ loginEmail: e.target.value, formErrors: { ...s.formErrors, loginEmail: '' } }));
+  onLoginPasswordChange = (e) => this.setState(s => ({ loginPassword: e.target.value, formErrors: { ...s.formErrors, loginPassword: '' } }));
+  doLogin = (e) => {
+    e.preventDefault();
+    const errors = {
+      loginEmail: this.vEmail(this.state.loginEmail, true),
+      loginPassword: this.state.loginPassword && this.state.loginPassword.length >= 6 ? '' : 'Password must be at least 6 characters'
+    };
+    if (errors.loginEmail || errors.loginPassword) { this.setState(s => ({ formErrors: { ...s.formErrors, ...errors } })); return; }
+    this.setScreen('admin-dashboard');
+  };
 
   updateEnquiryStatus(id, status) { this.setState(s => ({ enquiries: s.enquiries.map(en => en.id === id ? { ...en, status } : en) })); }
 
@@ -2281,6 +2384,28 @@ class Component extends DCLogic {
   setContentTab = (t) => this.setState({ contentTab: t });
   stop = (e) => { if (e && e.stopPropagation) e.stopPropagation(); };
   toggleAdminMenu = () => this.setState(st => ({ adminMenuOpen: !st.adminMenuOpen }));
+  toggleChat = () => this.setState(st => ({ chatOpen: !st.chatOpen }));
+  onChatDraft = (e) => this.setState({ chatDraft: e.target.value });
+  onAdminChatDraft = (e) => this.setState({ adminChatDraft: e.target.value });
+  pushChat(enquiryId, from, text) {
+    const t = String(text || '').trim();
+    if (!t) return;
+    this.setState(st => ({ enquiries: st.enquiries.map(en => en.id === enquiryId ? { ...en, thread: [...(en.thread || []), { from, text: t }] } : en) }));
+  }
+  sendUserChat = (e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    if (!this.state.myEnquiryId) return;
+    this.pushChat(this.state.myEnquiryId, 'user', this.state.chatDraft);
+    this.setState({ chatDraft: '' });
+  };
+  sendAdminChat = (e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    const t = this.state.editTarget;
+    const en = t && this.state.enquiries[t.idx];
+    if (!en) return;
+    this.pushChat(en.id, 'admin', this.state.adminChatDraft);
+    this.setState({ adminChatDraft: '' });
+  };
   openEditor(kind, ref, ret) { this.setState({ editTarget: { kind, ...ref }, editReturn: ret, screen: 'admin-edit', adminMenuOpen: false }); this.scrollTop(); }
   closeEditor = () => this.setScreen(this.state.editReturn || 'admin-dashboard');
   editorDelete = () => {
@@ -2612,6 +2737,21 @@ class Component extends DCLogic {
       }
     }
     editorFields = editorFields.map(f => f.label.indexOf('Image URL') === 0 ? { ...f, isImg: true, previewBg: f.value ? "url('" + f.value + "') center/cover no-repeat" : '#F1EADF' } : f);
+    const bubbleFor = (mine) => mine
+      ? 'background:#5B2A86;color:#fff;border-radius:12px 12px 2px 12px;'
+      : 'background:#F1EADF;color:#2B2118;border-radius:12px 12px 12px 2px;border:1px solid #E3D9C8;';
+    let editorChatOn = false, editorChatName = '', adminChatMessages = [];
+    if (s.screen === 'admin-edit' && et && et.kind === 'enquiry') {
+      const en = s.enquiries[et.idx];
+      if (en) {
+        editorChatOn = true;
+        editorChatName = en.name;
+        adminChatMessages = (en.thread || []).map(m => ({ text: m.text, row: m.from === 'admin' ? 'flex-end' : 'flex-start', bubble: bubbleFor(m.from === 'admin') }));
+      }
+    }
+    const myEnquiry = s.enquiries.find(en => en.id === s.myEnquiryId) || null;
+    const chatMessages = (myEnquiry ? myEnquiry.thread || [] : []).map(m => ({ text: m.text, row: m.from === 'user' ? 'flex-end' : 'flex-start', bubble: bubbleFor(m.from === 'user') }));
+
     if (s.screen === 'admin-edit' && !editorFields.length) { editorTitle = 'Nothing selected'; editorHint = 'Go back to a manager list and click an item to edit it.'; }
 
     // ---- faqs / testimonials -------------------------------------------
@@ -2794,6 +2934,14 @@ class Component extends DCLogic {
       setContactTravellers: this.setContactTravellers, tripTypeChips,
       submitContact: this.submitContact, resetContact: this.resetContact,
       enquiryOpen: s.enquiryOpen, openEnquiry: this.openEnquiry, closeEnquiry: this.closeEnquiry, stopProp: this.stop,
+      errName: s.formErrors.name || '', errPhone: s.formErrors.phone || '', errEmail: s.formErrors.email || '',
+      errNewsletter: s.formErrors.newsletter || '', errLoginEmail: s.formErrors.loginEmail || '', errLoginPassword: s.formErrors.loginPassword || '',
+      chatOpen: s.chatOpen, toggleChat: this.toggleChat,
+      chatHasEnquiry: !!myEnquiry, chatNoEnquiry: !myEnquiry,
+      chatStatus: myEnquiry ? 'Enquiry #' + myEnquiry.id + ' · ' + myEnquiry.status + ' · replies within 1 working day' : 'Online · replies within 1 working day',
+      chatMessages, chatDraft: s.chatDraft, onChatDraft: this.onChatDraft, sendUserChat: this.sendUserChat,
+      editorChatOn, editorChatName, adminChatMessages, adminChatEmpty: adminChatMessages.length === 0,
+      adminChatDraft: s.adminChatDraft, onAdminChatDraft: this.onAdminChatDraft, sendAdminChat: this.sendAdminChat,
 
       // admin
       loginEmail: s.loginEmail, loginPassword: s.loginPassword,
