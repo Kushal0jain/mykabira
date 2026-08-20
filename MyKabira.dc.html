@@ -29,6 +29,21 @@
   .ticker-wrap:hover .ticker-track{animation-play-state:paused;}
   .noscroll::-webkit-scrollbar{height:6px;}
   .noscroll::-webkit-scrollbar-thumb{background:#3a2650;border-radius:6px;}
+  html,body{background:#120a1c;overflow-x:hidden;}
+  @media (max-width:899px){
+    .g2,.g3,.g4,.gsplit,.gfoot{grid-template-columns:1fr !important;}
+    .nav-desktop{display:none !important;}
+    .nav-burger{display:block !important;}
+    .adm-shell{flex-direction:column !important;}
+    .adm-side{width:100% !important;flex-direction:row !important;border-right:none !important;border-bottom:1px solid #3a2650;}
+  }
+  @media (min-width:900px){
+    .nav-burger{display:none !important;}
+  }
+  @media (min-width:900px) and (max-width:1199px){
+    .g3,.g4{grid-template-columns:repeat(2,1fr) !important;}
+    .gfoot{grid-template-columns:repeat(3,1fr) !important;}
+  }
 </style>
 </helmet>
 
@@ -61,15 +76,15 @@
       <img src="assets/mykabira-icon-blackbg.png" alt="MyKabira" style="height:34px;width:auto;display:block;border-radius:6px;"/>
       <span style="font-family:'DM Serif Display',serif;font-size:24px;background:linear-gradient(90deg,#8B4FC9,#B0335A,#E8622A);-webkit-background-clip:text;background-clip:text;color:transparent;">MyKabira</span>
     </div>
-    <nav style="display:{{ navDisplay }};gap:6px;font-size:14px;font-weight:500;white-space:nowrap;flex-shrink:0;">
+    <nav class="nav-desktop" style="display:{{ navDisplay }};gap:6px;font-size:14px;font-weight:500;white-space:nowrap;flex-shrink:0;">
       <sc-for list="{{ navLinks }}" as="nl" hint-placeholder-count="6">
         <span onClick="{{ nl.go }}" style="{{ nl.style }}" style-hover="background:#2c1a40;color:#fff;">{{ nl.label }}</span>
       </sc-for>
     </nav>
     <div style="display:flex;align-items:center;gap:12px;flex-shrink:0;">
       <span onClick="{{ goDestinations }}" title="Saved trips" style="display:flex;align-items:center;gap:6px;background:#241533;border:1px solid #3a2650;color:#E8A34A;padding:9px 13px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;" style-hover="border-color:#E8622A;">♥ {{ wishCount }}</span>
-      <button onClick="{{ goContact }}" style="display:{{ navDisplay }};background:#E8622A;color:#fff;border:none;padding:11px 22px;border-radius:6px;font-weight:600;font-size:14px;cursor:pointer;box-shadow:0 6px 18px rgba(232,98,42,0.28);" style-hover="background:#ff7038;transform:translateY(-1px);">Enquire Now</button>
-      <svg onClick="{{ toggleMobileMenu }}" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#EDE6F2" stroke-width="2" style="display:{{ hamburgerDisplay }};cursor:pointer;"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <button onClick="{{ goContact }}" class="nav-desktop" style="display:{{ navDisplay }};background:#E8622A;color:#fff;border:none;padding:11px 22px;border-radius:6px;font-weight:600;font-size:14px;cursor:pointer;box-shadow:0 6px 18px rgba(232,98,42,0.28);" style-hover="background:#ff7038;transform:translateY(-1px);">Enquire Now</button>
+      <svg onClick="{{ toggleMobileMenu }}" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#EDE6F2" stroke-width="2" class="nav-burger" style="display:{{ hamburgerDisplay }};cursor:pointer;"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </div>
   </div>
 
@@ -154,7 +169,7 @@
           <button onClick="{{ tab.select }}" style="{{ tab.style }} padding:10px 22px;border-radius:22px;font-weight:600;font-size:14px;cursor:pointer;">{{ tab.label }}</button>
         </sc-for>
       </div>
-      <div style="display:grid;grid-template-columns:{{ gridFour }};gap:22px;">
+      <div class="g4" style="display:grid;grid-template-columns:{{ gridFour }};gap:22px;">
         <sc-for list="{{ homeDestinations }}" as="dest" hint-placeholder-count="8">
           <div class="rise" style="border-radius:12px;overflow:hidden;background:#241533;border:1px solid #3a2650;box-shadow:0 2px 10px rgba(0,0,0,0.25);cursor:pointer;position:relative;" style-hover="transform:translateY(-6px);box-shadow:0 18px 34px rgba(0,0,0,0.45);border-color:#8B4FC9;">
             <div onClick="{{ dest.select }}" style="height:160px;background:{{ dest.bg }};display:flex;align-items:center;justify-content:center;position:relative;">
@@ -183,7 +198,7 @@
         <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(24px,4.5vw,34px);color:#EDE6F2;margin:0 0 8px;">How It Works</h2>
         <p style="color:#b9a8cf;font-size:15px;margin:0;">Four simple steps from first call to coming home</p>
       </div>
-      <div style="display:grid;grid-template-columns:{{ gridFour }};gap:20px;">
+      <div class="g4" style="display:grid;grid-template-columns:{{ gridFour }};gap:20px;">
         <sc-for list="{{ processSteps }}" as="ps" hint-placeholder-count="4">
           <div style="background:#241533;border:1px solid #3a2650;border-radius:12px;padding:24px;position:relative;" style-hover="border-color:#E8622A;transform:translateY(-4px);">
             <div style="font-family:'DM Serif Display',serif;font-size:clamp(26px,5.5vw,40px);color:#3a2650;position:absolute;top:12px;right:16px;">{{ ps.num }}</div>
@@ -206,7 +221,7 @@
         </sc-for>
       </div>
       <p style="text-align:center;color:#E8A34A;font-size:14px;margin:0 0 28px;">{{ monthNote }}</p>
-      <div style="display:grid;grid-template-columns:{{ gridThree }};gap:20px;max-width:1020px;margin:0 auto;">
+      <div class="g3" style="display:grid;grid-template-columns:{{ gridThree }};gap:20px;max-width:1020px;margin:0 auto;">
         <sc-for list="{{ monthPicks }}" as="mp" hint-placeholder-count="3">
           <div onClick="{{ mp.select }}" style="background:#241533;border:1px solid #3a2650;border-radius:12px;overflow:hidden;cursor:pointer;" style-hover="transform:translateY(-5px);border-color:#8B4FC9;box-shadow:0 16px 30px rgba(0,0,0,0.4);">
             <div style="height:110px;background:{{ mp.bg }};display:flex;align-items:center;justify-content:center;">
@@ -232,7 +247,7 @@
         </div>
         <button onClick="{{ goPackages }}" style="background:transparent;color:#C9A6F0;border:1.5px solid #5B2A86;padding:11px 22px;border-radius:6px;font-weight:600;font-size:13.5px;cursor:pointer;" style-hover="background:#5B2A86;color:#fff;">See all packages →</button>
       </div>
-      <div style="display:grid;grid-template-columns:{{ gridFour }};gap:20px;">
+      <div class="g4" style="display:grid;grid-template-columns:{{ gridFour }};gap:20px;">
         <sc-for list="{{ homePackages }}" as="pkg" hint-placeholder-count="4">
           <div style="background:#241533;border:1px solid #3a2650;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.25);" style-hover="transform:translateY(-6px);border-color:#E8622A;">
             <div style="height:130px;background:{{ pkg.bg }};position:relative;display:flex;align-items:center;justify-content:center;">
@@ -269,7 +284,7 @@
         <p style="font-size:14.5px;color:#b9a8cf;line-height:1.75;margin:0 0 20px;">We are not a booking engine. Every itinerary is put together by a consultant who has walked the streets, eaten at the cafés and knows which viewpoint is worth the early start. You get one point of contact from the first enquiry until you are home.</p>
         <button onClick="{{ goAbout }}" style="background:#E8622A;color:#fff;border:none;padding:13px 26px;border-radius:6px;font-weight:600;font-size:14px;cursor:pointer;" style-hover="background:#ff7038;">More about us →</button>
       </div>
-      <div style="flex:1;min-width:320px;display:grid;grid-template-columns:{{ gridTwo }};gap:16px;">
+      <div class="g2" style="flex:1;min-width:320px;display:grid;grid-template-columns:{{ gridTwo }};gap:16px;">
         <sc-for list="{{ whyUs }}" as="w" hint-placeholder-count="6">
           <div style="background:#241533;border:1px solid #3a2650;border-radius:10px;padding:18px;" style-hover="border-color:#8B4FC9;transform:translateY(-3px);">
             <div style="font-size:22px;margin-bottom:8px;">{{ w.icon }}</div>
@@ -287,7 +302,7 @@
         <span style="background:#241533;border:1px solid #3a2650;padding:9px 18px;border-radius:6px;font-size:13px;font-weight:600;">f · 4.7★ Facebook Reviews</span>
         <span style="background:#241533;border:1px solid #3a2650;padding:9px 18px;border-radius:6px;font-size:13px;font-weight:600;">✈ 4.9★ TripAdvisor</span>
       </div>
-      <div style="display:grid;grid-template-columns:{{ gridThree }};gap:20px;">
+      <div class="g3" style="display:grid;grid-template-columns:{{ gridThree }};gap:20px;">
         <sc-for list="{{ testimonials }}" as="t" hint-placeholder-count="6">
           <div style="background:#241533;border:1px solid #3a2650;border-radius:12px;padding:22px;" style-hover="border-color:#E8622A;transform:translateY(-4px);">
             <div style="color:#E8A34A;font-size:14px;margin-bottom:10px;">{{ t.stars }}</div>
@@ -309,7 +324,7 @@
         <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(24px,4.5vw,34px);color:#EDE6F2;margin:0;">From the Travel Journal</h2>
         <button onClick="{{ goBlog }}" style="background:transparent;color:#C9A6F0;border:1.5px solid #5B2A86;padding:11px 22px;border-radius:6px;font-weight:600;font-size:13.5px;cursor:pointer;" style-hover="background:#5B2A86;color:#fff;">Read the blog →</button>
       </div>
-      <div style="display:grid;grid-template-columns:{{ gridThree }};gap:20px;">
+      <div class="g3" style="display:grid;grid-template-columns:{{ gridThree }};gap:20px;">
         <sc-for list="{{ homePosts }}" as="bp" hint-placeholder-count="3">
           <div onClick="{{ bp.open }}" style="background:#241533;border:1px solid #3a2650;border-radius:12px;overflow:hidden;cursor:pointer;" style-hover="transform:translateY(-5px);border-color:#8B4FC9;">
             <div style="height:130px;background:{{ bp.bg }};"></div>
@@ -342,7 +357,7 @@
     <div style="padding:64px 6vw;background:#120a1c;">
       <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(24px,4.5vw,34px);color:#EDE6F2;text-align:center;margin:0 0 8px;">Moments From Our Travellers</h2>
       <p style="color:#b9a8cf;font-size:14.5px;text-align:center;margin:0 0 30px;">Shot on trips we planned — tag <strong style="color:#E8622A;">#mykabira</strong> to get featured</p>
-      <div style="display:grid;grid-template-columns:{{ gridFour }};gap:14px;">
+      <div class="g4" style="display:grid;grid-template-columns:{{ gridFour }};gap:14px;">
         <sc-for list="{{ galleryItems }}" as="g" hint-placeholder-count="8">
           <div style="height:170px;border-radius:12px;background:{{ g.bg }};position:relative;overflow:hidden;cursor:pointer;" style-hover="transform:scale(1.03);box-shadow:0 14px 28px rgba(0,0,0,0.4);">
             <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(13,7,21,0.85), transparent 55%);"></div>
@@ -409,7 +424,7 @@
         <span style="font-size:13px;color:#E8A34A;">♥ {{ wishCount }} saved</span>
       </div>
 
-      <div style="display:grid;grid-template-columns:{{ gridFour }};gap:22px;">
+      <div class="g4" style="display:grid;grid-template-columns:{{ gridFour }};gap:22px;">
         <sc-for list="{{ filteredDestinations }}" as="dest" hint-placeholder-count="8">
           <div class="rise" style="border-radius:12px;overflow:hidden;background:#241533;border:1px solid #3a2650;position:relative;" style-hover="transform:translateY(-6px);box-shadow:0 18px 34px rgba(0,0,0,0.45);border-color:#8B4FC9;">
             <div onClick="{{ dest.select }}" style="height:170px;background:{{ dest.bg }};display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;">
@@ -459,7 +474,7 @@
     <div style="padding:60px 6vw;background:#1c0f2b;">
       <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(23px,4vw,32px);color:#EDE6F2;text-align:center;margin:0 0 8px;">Browse by Travel Style</h2>
       <p style="color:#b9a8cf;font-size:14.5px;text-align:center;margin:0 0 32px;">Not sure where to start? Pick the kind of trip you want.</p>
-      <div style="display:grid;grid-template-columns:{{ gridThree }};gap:18px;">
+      <div class="g3" style="display:grid;grid-template-columns:{{ gridThree }};gap:18px;">
         <sc-for list="{{ styleCards }}" as="sc" hint-placeholder-count="6">
           <div onClick="{{ sc.go }}" style="background:{{ sc.bg }};border-radius:12px;padding:26px;cursor:pointer;min-height:120px;display:flex;flex-direction:column;justify-content:flex-end;" style-hover="transform:translateY(-5px);box-shadow:0 16px 30px rgba(0,0,0,0.4);">
             <div style="font-size:26px;margin-bottom:8px;">{{ sc.icon }}</div>
@@ -502,7 +517,7 @@
       <span style="font-size:13.5px;color:#b9a8cf;">Showing <strong style="color:#EDE6F2;">{{ pkgCount }}</strong> packages</span>
       <sc-for list="{{ filteredPackages }}" as="pkg" hint-placeholder-count="6">
         <div style="background:#241533;border:1px solid #3a2650;border-radius:14px;overflow:hidden;" style-hover="border-color:#8B4FC9;">
-          <div style="display:grid;grid-template-columns:{{ pkgRowCols }};">
+          <div class="gsplit" style="display:grid;grid-template-columns:{{ pkgRowCols }};">
             <div style="min-height:190px;background:{{ pkg.bg }};position:relative;display:flex;align-items:center;justify-content:center;padding:20px;">
               <span style="color:#fff;font-family:'DM Serif Display',serif;font-size:20px;text-align:center;">{{ pkg.name }}</span>
               <span style="position:absolute;top:12px;left:12px;background:rgba(0,0,0,0.5);color:#fff;font-size:11px;padding:5px 10px;border-radius:4px;">{{ pkg.duration }}</span>
@@ -547,7 +562,7 @@
                     </div>
                   </sc-for>
                 </div>
-                <div style="display:grid;grid-template-columns:{{ gridTwo }};gap:16px;margin-top:18px;">
+                <div class="g2" style="display:grid;grid-template-columns:{{ gridTwo }};gap:16px;margin-top:18px;">
                   <div style="background:#1c0f2b;border:1px solid #3a2650;border-radius:8px;padding:14px;">
                     <div style="font-size:12.5px;font-weight:600;color:#25D366;margin-bottom:8px;">What is included</div>
                     <sc-for list="{{ pkg.inclusions }}" as="inc" hint-placeholder-count="5">
@@ -579,7 +594,7 @@
 
     <div style="padding:56px 6vw;background:#150c20;">
       <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(22px,3.8vw,30px);color:#EDE6F2;text-align:center;margin:0 0 28px;">Travellers on These Packages</h2>
-      <div style="display:grid;grid-template-columns:{{ gridThree }};gap:20px;">
+      <div class="g3" style="display:grid;grid-template-columns:{{ gridThree }};gap:20px;">
         <sc-for list="{{ packagesTestimonials }}" as="pt" hint-placeholder-count="3">
           <div style="background:#241533;border:1px solid #3a2650;border-radius:12px;padding:22px;" style-hover="border-color:#E8622A;transform:translateY(-4px);">
             <div style="color:#E8A34A;font-size:14px;margin-bottom:10px;">{{ pt.stars }}</div>
@@ -607,7 +622,7 @@
 
     <div style="padding:56px 6vw;background:#1c0f2b;">
       <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(22px,3.8vw,30px);color:#EDE6F2;text-align:center;margin:0 0 28px;">Every Package Includes</h2>
-      <div style="display:grid;grid-template-columns:{{ gridFour }};gap:18px;">
+      <div class="g4" style="display:grid;grid-template-columns:{{ gridFour }};gap:18px;">
         <sc-for list="{{ packagePerks }}" as="pp" hint-placeholder-count="4">
           <div style="background:#241533;border:1px solid #3a2650;border-radius:10px;padding:20px;text-align:center;" style-hover="border-color:#E8622A;transform:translateY(-4px);">
             <div style="font-size:26px;margin-bottom:10px;">{{ pp.icon }}</div>
@@ -643,7 +658,7 @@
           <button onClick="{{ goDestinations }}" style="background:transparent;color:#C9A6F0;border:1.5px solid #5B2A86;padding:12px 24px;border-radius:6px;font-weight:600;font-size:14px;cursor:pointer;" style-hover="background:#5B2A86;color:#fff;">See where we go</button>
         </div>
       </div>
-      <div style="flex:1;min-width:280px;display:grid;grid-template-columns:{{ gridTwo }};gap:14px;">
+      <div class="g2" style="flex:1;min-width:280px;display:grid;grid-template-columns:{{ gridTwo }};gap:14px;">
         <div style="height:150px;border-radius:12px;background:url(uploads/collage-1.jpg) center/cover no-repeat;"></div>
         <div style="height:150px;border-radius:12px;background:url(uploads/collage-2.jpg) center/cover no-repeat;margin-top:26px;"></div>
         <div style="height:150px;border-radius:12px;background:url(uploads/collage-3.jpg) center/cover no-repeat;"></div>
@@ -652,7 +667,7 @@
     </div>
 
     <div style="padding:20px 6vw 64px;background:#120a1c;">
-      <div style="display:grid;grid-template-columns:{{ gridThree }};gap:20px;">
+      <div class="g3" style="display:grid;grid-template-columns:{{ gridThree }};gap:20px;">
         <div style="background:#241533;border:1px solid #3a2650;border-radius:12px;padding:26px;" style-hover="border-color:#8B4FC9;">
           <div style="font-size:26px;margin-bottom:10px;">🎯</div>
           <h3 style="font-family:'DM Serif Display',serif;font-size:20px;margin:0 0 8px;color:#EDE6F2;">Our Mission</h3>
@@ -693,7 +708,7 @@
     <div style="padding:64px 6vw;background:#120a1c;">
       <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(24px,4.5vw,34px);color:#EDE6F2;text-align:center;margin:0 0 10px;">Meet the Team</h2>
       <p style="color:#b9a8cf;font-size:14.5px;text-align:center;margin:0 0 36px;">The people who will actually be planning your trip</p>
-      <div style="display:grid;grid-template-columns:{{ gridThree }};gap:20px;">
+      <div class="g3" style="display:grid;grid-template-columns:{{ gridThree }};gap:20px;">
         <sc-for list="{{ team }}" as="tm" hint-placeholder-count="6">
           <div style="background:#241533;border:1px solid #3a2650;border-radius:12px;padding:24px;text-align:center;" style-hover="border-color:#E8622A;transform:translateY(-5px);">
             <div style="width:76px;height:76px;border-radius:50%;background:{{ tm.bg }};display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:22px;font-weight:700;color:#fff;font-family:'DM Serif Display',serif;">{{ tm.initials }}</div>
@@ -707,7 +722,7 @@
     </div>
 
     <div style="padding:56px 6vw;background:linear-gradient(90deg,#5B2A86,#7B3FA6);color:#F5EFE6;">
-      <div style="display:grid;grid-template-columns:{{ gridFour }};gap:24px;text-align:center;">
+      <div class="g4" style="display:grid;grid-template-columns:{{ gridFour }};gap:24px;text-align:center;">
         <sc-for list="{{ aboutStats }}" as="ast" hint-placeholder-count="4">
           <div>
             <div style="font-family:'DM Serif Display',serif;font-size:clamp(24px,4.5vw,34px);">{{ ast.value }}</div>
@@ -720,7 +735,7 @@
     <div style="padding:64px 6vw;background:#1c0f2b;">
       <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(23px,4vw,32px);color:#EDE6F2;text-align:center;margin:0 0 10px;">What We Stand For</h2>
       <p style="color:#b9a8cf;font-size:14.5px;text-align:center;margin:0 0 34px;">Four values we check every itinerary against</p>
-      <div style="display:grid;grid-template-columns:{{ gridFour }};gap:18px;">
+      <div class="g4" style="display:grid;grid-template-columns:{{ gridFour }};gap:18px;">
         <sc-for list="{{ values }}" as="v" hint-placeholder-count="4">
           <div style="background:#241533;border:1px solid #3a2650;border-radius:12px;padding:22px;" style-hover="border-color:#8B4FC9;transform:translateY(-4px);">
             <div style="font-size:24px;margin-bottom:10px;">{{ v.icon }}</div>
@@ -782,7 +797,7 @@
         <span style="margin-left:auto;font-size:13px;color:#b9a8cf;">{{ postCount }} articles</span>
       </div>
 
-      <div onClick="{{ featuredPost.open }}" style="display:grid;grid-template-columns:{{ featureCols }};gap:0;background:#241533;border:1px solid #3a2650;border-radius:14px;overflow:hidden;cursor:pointer;margin-bottom:34px;" style-hover="border-color:#E8622A;">
+      <div onClick="{{ featuredPost.open }}" class="gsplit" style="display:grid;grid-template-columns:{{ featureCols }};gap:0;background:#241533;border:1px solid #3a2650;border-radius:14px;overflow:hidden;cursor:pointer;margin-bottom:34px;" style-hover="border-color:#E8622A;">
         <div style="min-height:260px;background:{{ featuredPost.bg }};display:flex;align-items:flex-end;padding:20px;">
           <span style="background:#E8622A;color:#fff;font-size:11px;font-weight:700;padding:5px 12px;border-radius:14px;letter-spacing:0.6px;">FEATURED</span>
         </div>
@@ -797,7 +812,7 @@
         </div>
       </div>
 
-      <div style="display:grid;grid-template-columns:{{ gridThree }};gap:22px;">
+      <div class="g3" style="display:grid;grid-template-columns:{{ gridThree }};gap:22px;">
         <sc-for list="{{ blogPosts }}" as="bp" hint-placeholder-count="6">
           <div onClick="{{ bp.open }}" class="rise" style="background:#241533;border:1px solid #3a2650;border-radius:12px;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;" style-hover="transform:translateY(-6px);border-color:#8B4FC9;box-shadow:0 18px 32px rgba(0,0,0,0.4);">
             <div style="height:150px;background:{{ bp.bg }};position:relative;">
@@ -841,7 +856,7 @@
       </div>
     </div>
 
-    <div style="padding:34px 6vw 70px;background:#120a1c;display:grid;grid-template-columns:{{ articleCols }};gap:44px;">
+    <div class="gsplit" style="padding:34px 6vw 70px;background:#120a1c;display:grid;grid-template-columns:{{ articleCols }};gap:44px;">
       <div>
         <span onClick="{{ goBlog }}" style="color:#C9A6F0;font-size:13px;cursor:pointer;" style-hover="color:#E8622A;">← Back to all articles</span>
         <div style="display:flex;align-items:center;gap:12px;margin:20px 0 26px;padding-bottom:20px;border-bottom:1px solid #3a2650;">
@@ -922,14 +937,14 @@
       <span onClick="{{ selectedDest.toggleWish }}" style="font-size:13px;color:{{ selectedDest.wishColor }};cursor:pointer;margin-left:auto;font-weight:600;">{{ selectedDest.wishIcon }} {{ selectedDest.wishLabel }}</span>
     </div>
 
-    <div style="padding:40px 6vw 60px;display:grid;grid-template-columns:{{ articleCols }};gap:44px;background:#120a1c;">
+    <div class="gsplit" style="padding:40px 6vw 60px;display:grid;grid-template-columns:{{ articleCols }};gap:44px;background:#120a1c;">
       <div>
         <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(21px,3.6vw,28px);color:#EDE6F2;margin:0 0 14px;">About {{ selectedDest.name }}</h2>
         <p style="font-size:14.5px;color:#b9a8cf;line-height:1.85;margin:0 0 16px;">A trip to {{ selectedDest.name }} is built around what you want to see and how you want to move — from quiet mornings to full days out. Our team handles the logistics: stays, transfers, local guides, and the small details that make a trip feel easy.</p>
         <p style="font-size:14.5px;color:#b9a8cf;line-height:1.85;margin:0 0 28px;">We have run this route more than a hundred times, so we know which hotels are worth the upgrade, which day trips are better done privately, and where an extra night makes the whole trip land differently. Everything below is a starting point — the final plan is yours.</p>
 
         <h3 style="font-family:'DM Serif Display',serif;font-size:21px;color:#EDE6F2;margin:0 0 14px;">Trip highlights</h3>
-        <div style="display:grid;grid-template-columns:{{ gridTwo }};gap:12px;margin-bottom:32px;">
+        <div class="g2" style="display:grid;grid-template-columns:{{ gridTwo }};gap:12px;margin-bottom:32px;">
           <sc-for list="{{ selectedDest.highlights }}" as="hl" hint-placeholder-count="6">
             <div style="display:flex;gap:10px;align-items:flex-start;background:#241533;border:1px solid #3a2650;border-radius:10px;padding:14px;" style-hover="border-color:#8B4FC9;">
               <span style="color:#E8622A;font-size:15px;">◆</span>
@@ -953,7 +968,7 @@
         </div>
 
         <h3 style="font-family:'DM Serif Display',serif;font-size:21px;color:#EDE6F2;margin:0 0 14px;">Gallery</h3>
-        <div style="display:grid;grid-template-columns:{{ gridFour }};gap:12px;margin-bottom:32px;">
+        <div class="g4" style="display:grid;grid-template-columns:{{ gridFour }};gap:12px;margin-bottom:32px;">
           <div style="height:110px;border-radius:10px;background:url(uploads/collage-1.jpg) center/cover no-repeat;cursor:pointer;" style-hover="transform:scale(1.04);"></div>
           <div style="height:110px;border-radius:10px;background:url(uploads/collage-2.jpg) center/cover no-repeat;cursor:pointer;" style-hover="transform:scale(1.04);"></div>
           <div style="height:110px;border-radius:10px;background:url(uploads/collage-3.jpg) center/cover no-repeat;cursor:pointer;" style-hover="transform:scale(1.04);"></div>
@@ -961,7 +976,7 @@
         </div>
 
         <h3 style="font-family:'DM Serif Display',serif;font-size:21px;color:#EDE6F2;margin:0 0 14px;">You might also like</h3>
-        <div style="display:grid;grid-template-columns:{{ gridThree }};gap:16px;">
+        <div class="g3" style="display:grid;grid-template-columns:{{ gridThree }};gap:16px;">
           <sc-for list="{{ relatedDestinations }}" as="rd" hint-placeholder-count="3">
             <div onClick="{{ rd.select }}" style="background:#241533;border:1px solid #3a2650;border-radius:10px;overflow:hidden;cursor:pointer;" style-hover="transform:translateY(-4px);border-color:#8B4FC9;">
               <div style="height:90px;background:{{ rd.bg }};"></div>
@@ -1018,7 +1033,7 @@
       </div>
     </div>
 
-    <div style="padding:44px 6vw 60px;background:#120a1c;display:grid;grid-template-columns:{{ contactCols }};gap:40px;">
+    <div class="gsplit" style="padding:44px 6vw 60px;background:#120a1c;display:grid;grid-template-columns:{{ contactCols }};gap:40px;">
       <div>
         <sc-if value="{{contactSubmitted}}" hint-placeholder-val="{{false}}">
           <div style="background:#241533;border:1px solid #25D366;border-radius:12px;padding:40px;text-align:center;">
@@ -1031,12 +1046,12 @@
         <sc-if value="{{contactOpen}}" hint-placeholder-val="{{true}}">
           <form onSubmit="{{ submitContact }}" style="background:#241533;border:1px solid #3a2650;border-radius:12px;padding:30px;display:flex;flex-direction:column;gap:16px;">
             <div style="font-family:'DM Serif Display',serif;font-size:22px;color:#EDE6F2;">Tell us about your trip</div>
-            <div style="display:grid;grid-template-columns:{{ gridTwo }};gap:14px;">
+            <div class="g2" style="display:grid;grid-template-columns:{{ gridTwo }};gap:14px;">
               <label style="font-size:12px;color:#8a7a9e;">Full name *<input required placeholder="Your name" value="{{ contactForm.name }}" onChange="{{ setContactName }}" style="display:block;width:100%;box-sizing:border-box;margin-top:6px;padding:12px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:14px;"/></label>
               <label style="font-size:12px;color:#8a7a9e;">Phone *<input required placeholder="+91" value="{{ contactForm.phone }}" onChange="{{ setContactPhone }}" style="display:block;width:100%;box-sizing:border-box;margin-top:6px;padding:12px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:14px;"/></label>
             </div>
             <label style="font-size:12px;color:#8a7a9e;">Email *<input required type="email" placeholder="you@email.com" value="{{ contactForm.email }}" onChange="{{ setContactEmail }}" style="display:block;width:100%;box-sizing:border-box;margin-top:6px;padding:12px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:14px;"/></label>
-            <div style="display:grid;grid-template-columns:{{ gridTwo }};gap:14px;">
+            <div class="g2" style="display:grid;grid-template-columns:{{ gridTwo }};gap:14px;">
               <label style="font-size:12px;color:#8a7a9e;">Destination<input placeholder="e.g. Bali" value="{{ contactForm.destination }}" onChange="{{ setContactDestination }}" style="display:block;width:100%;box-sizing:border-box;margin-top:6px;padding:12px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:14px;"/></label>
               <label style="font-size:12px;color:#8a7a9e;">Travellers<select value="{{ contactForm.travellers }}" onChange="{{ setContactTravellers }}" style="display:block;width:100%;box-sizing:border-box;margin-top:6px;padding:12px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:14px;"><option value="1">Solo</option><option value="2">2 travellers</option><option value="3-4">3 – 4</option><option value="5+">5 or more</option></select></label>
             </div>
@@ -1071,7 +1086,7 @@
 
     <div style="padding:56px 6vw;background:#1c0f2b;">
       <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(22px,3.8vw,30px);color:#EDE6F2;text-align:center;margin:0 0 28px;">Our Offices</h2>
-      <div style="display:grid;grid-template-columns:{{ gridThree }};gap:18px;">
+      <div class="g3" style="display:grid;grid-template-columns:{{ gridThree }};gap:18px;">
         <sc-for list="{{ offices }}" as="of" hint-placeholder-count="3">
           <div style="background:#241533;border:1px solid #3a2650;border-radius:12px;padding:22px;" style-hover="border-color:#E8622A;transform:translateY(-4px);">
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
@@ -1107,7 +1122,7 @@
   </div>
 
   <div style="background:#0d0715;color:#c9bdd9;padding:56px 6vw 24px;border-top:1px solid #3a2650;">
-    <div style="display:grid;grid-template-columns:{{ footerCols }};gap:32px;margin-bottom:34px;">
+    <div class="gfoot" style="display:grid;grid-template-columns:{{ footerCols }};gap:32px;margin-bottom:34px;">
       <div>
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
           <img src="assets/mykabira-icon-blackbg.png" alt="MyKabira" style="height:28px;width:auto;display:block;border-radius:5px;"/>
@@ -1179,8 +1194,8 @@
 </sc-if>
 
 <sc-if value="{{isAdminShell}}" hint-placeholder-val="{{false}}">
-  <div style="display:flex;flex-direction:{{ adminShellDir }};min-height:100vh;background:#120a1c;">
-    <div style="width:{{ adminSideWidth }};box-sizing:border-box;background:#241533;border-right:1px solid #3a2650;display:flex;flex-direction:{{ adminSideDir }};flex-wrap:wrap;gap:2px;padding:20px 14px;">
+  <div class="adm-shell" style="display:flex;flex-direction:{{ adminShellDir }};min-height:100vh;background:#120a1c;">
+    <div class="adm-side" style="width:{{ adminSideWidth }};box-sizing:border-box;background:#241533;border-right:1px solid #3a2650;display:flex;flex-direction:{{ adminSideDir }};flex-wrap:wrap;gap:2px;padding:20px 14px;">
       <div style="display:flex;align-items:center;gap:8px;padding:0 6px 20px;border-bottom:1px solid #3a2650;margin-bottom:16px;">
         <img src="assets/mykabira-icon-blackbg.png" alt="MyKabira" style="height:24px;width:auto;display:block;border-radius:5px;"/>
         <span style="font-family:'DM Serif Display',serif;font-size:14px;color:#C9A6F0;">Admin</span>
@@ -2081,7 +2096,8 @@ class Component extends DCLogic {
     window.removeEventListener('hashchange', this.parseHash);
   }
   updateIsMobile = () => {
-    const w = window.innerWidth;
+    const de = document.documentElement;
+    const w = Math.min(window.innerWidth || 1e9, (de && de.clientWidth) || 1e9);
     const m = w < 900;
     const t = w >= 900 && w < 1200;
     if (m !== this.state.isMobile || t !== this.state.isTablet) this.setState({ isMobile: m, isTablet: t });
