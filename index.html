@@ -83,11 +83,11 @@
   <sc-if value="{{isHome}}" hint-placeholder-val="{{true}}">
   <div>
 
-    <div style="position:relative;min-height:600px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:80px 6vw;background:linear-gradient(100deg,rgba(24,10,40,0.92) 0%,rgba(42,14,74,0.72) 38%,rgba(91,42,134,0.38) 70%,rgba(139,79,201,0.22) 100%), url(uploads/hero-main.jpg) center/cover no-repeat;overflow:hidden;">
+    <div style="position:relative;min-height:600px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:clamp(40px,8vw,80px) 6vw;background:{{ heroBg }};overflow:hidden;">
       <div class="orb" style="position:absolute;inset:0;background:radial-gradient(circle at 80% 30%, rgba(232,98,42,0.20), transparent 60%), radial-gradient(circle at 15% 80%, rgba(176,51,90,0.18), transparent 55%);"></div>
       <div class="rise" style="position:relative;max-width:680px;">
         <span style="color:#F5EFE6;letter-spacing:2px;font-size:13px;text-transform:uppercase;opacity:0.85;">MyKabira Travel · Since 2013</span>
-        <h1 style="font-family:'DM Serif Display',serif;color:#fff;font-size:58px;line-height:1.08;margin:14px 0 10px;">{{ heroForm.headline }}</h1>
+        <h1 style="font-family:'DM Serif Display',serif;color:#fff;font-size:clamp(34px,7vw,58px);line-height:1.08;margin:14px 0 10px;">{{ heroForm.headline }}</h1>
         <p style="color:#f0ebe0;font-size:18px;max-width:520px;margin:0 0 6px;">{{ heroForm.tagline }}</p>
         <p style="color:#d8ecec;font-size:15px;max-width:480px;margin:0 0 28px;">{{ heroForm.subtext }}</p>
         <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:30px;">
@@ -128,11 +128,11 @@
     </div>
 
     <div style="background:linear-gradient(90deg,#5B2A86,#7B3FA6);padding:34px 6vw;display:flex;justify-content:space-around;flex-wrap:wrap;gap:24px;color:#F5EFE6;text-align:center;">
-      <div><div style="font-family:'DM Serif Display',serif;font-size:32px;">{{ statsForm.travellers }}</div><div style="font-size:13px;opacity:0.85;">Happy Travellers</div></div>
-      <div><div style="font-family:'DM Serif Display',serif;font-size:32px;">{{ statsForm.destinationsCount }}</div><div style="font-size:13px;opacity:0.85;">Destinations Covered</div></div>
-      <div><div style="font-family:'DM Serif Display',serif;font-size:32px;">{{ statsForm.years }}</div><div style="font-size:13px;opacity:0.85;">Years in Industry</div></div>
-      <div><div style="font-family:'DM Serif Display',serif;font-size:32px;">24/7</div><div style="font-size:13px;opacity:0.85;">On-Trip Support</div></div>
-      <div><div style="font-family:'DM Serif Display',serif;font-size:32px;">{{ statsForm.rating }}★</div><div style="font-size:13px;opacity:0.85;">1,500+ Reviews</div></div>
+      <div><div style="font-family:'DM Serif Display',serif;font-size:clamp(23px,4vw,32px);">{{ statsForm.travellers }}</div><div style="font-size:13px;opacity:0.85;">Happy Travellers</div></div>
+      <div><div style="font-family:'DM Serif Display',serif;font-size:clamp(23px,4vw,32px);">{{ statsForm.destinationsCount }}</div><div style="font-size:13px;opacity:0.85;">Destinations Covered</div></div>
+      <div><div style="font-family:'DM Serif Display',serif;font-size:clamp(23px,4vw,32px);">{{ statsForm.years }}</div><div style="font-size:13px;opacity:0.85;">Years in Industry</div></div>
+      <div><div style="font-family:'DM Serif Display',serif;font-size:clamp(23px,4vw,32px);">24/7</div><div style="font-size:13px;opacity:0.85;">On-Trip Support</div></div>
+      <div><div style="font-family:'DM Serif Display',serif;font-size:clamp(23px,4vw,32px);">{{ statsForm.rating }}★</div><div style="font-size:13px;opacity:0.85;">1,500+ Reviews</div></div>
     </div>
 
     <div style="padding:44px 6vw;display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;background:#150c20;">
@@ -146,7 +146,7 @@
 
     <div style="padding:64px 6vw;background:#150c20;">
       <div style="text-align:center;margin-bottom:32px;">
-        <h2 style="font-family:'DM Serif Display',serif;font-size:38px;color:#EDE6F2;margin:0 0 8px;">Best Visited Destinations</h2>
+        <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(26px,5vw,38px);color:#EDE6F2;margin:0 0 8px;">Best Visited Destinations</h2>
         <p style="color:#b9a8cf;font-size:15px;margin:0;">Handpicked destinations for every kind of traveller</p>
       </div>
       <div style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:36px;">
@@ -180,13 +180,13 @@
 
     <div style="padding:64px 6vw;background:#1c0f2b;">
       <div style="text-align:center;margin-bottom:34px;">
-        <h2 style="font-family:'DM Serif Display',serif;font-size:34px;color:#EDE6F2;margin:0 0 8px;">How It Works</h2>
+        <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(24px,4.5vw,34px);color:#EDE6F2;margin:0 0 8px;">How It Works</h2>
         <p style="color:#b9a8cf;font-size:15px;margin:0;">Four simple steps from first call to coming home</p>
       </div>
       <div style="display:grid;grid-template-columns:{{ gridFour }};gap:20px;">
         <sc-for list="{{ processSteps }}" as="ps" hint-placeholder-count="4">
           <div style="background:#241533;border:1px solid #3a2650;border-radius:12px;padding:24px;position:relative;" style-hover="border-color:#E8622A;transform:translateY(-4px);">
-            <div style="font-family:'DM Serif Display',serif;font-size:40px;color:#3a2650;position:absolute;top:12px;right:16px;">{{ ps.num }}</div>
+            <div style="font-family:'DM Serif Display',serif;font-size:clamp(26px,5.5vw,40px);color:#3a2650;position:absolute;top:12px;right:16px;">{{ ps.num }}</div>
             <div style="font-size:24px;margin-bottom:10px;">{{ ps.icon }}</div>
             <h3 style="font-family:'DM Serif Display',serif;font-size:18px;margin:0 0 8px;color:#EDE6F2;">{{ ps.title }}</h3>
             <p style="font-size:13.5px;color:#b9a8cf;margin:0;line-height:1.6;">{{ ps.detail }}</p>
@@ -197,7 +197,7 @@
 
     <div style="padding:64px 6vw;background:#120a1c;">
       <div style="text-align:center;margin-bottom:28px;">
-        <h2 style="font-family:'DM Serif Display',serif;font-size:34px;color:#EDE6F2;margin:0 0 8px;">Where to Go, Month by Month</h2>
+        <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(24px,4.5vw,34px);color:#EDE6F2;margin:0 0 8px;">Where to Go, Month by Month</h2>
         <p style="color:#b9a8cf;font-size:15px;margin:0;">Pick your travel month — we will tell you where it is the season</p>
       </div>
       <div style="display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:24px;">
@@ -227,7 +227,7 @@
     <div style="padding:64px 6vw;background:#150c20;">
       <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin-bottom:30px;">
         <div>
-          <h2 style="font-family:'DM Serif Display',serif;font-size:34px;color:#EDE6F2;margin:0 0 6px;">Featured Packages</h2>
+          <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(24px,4.5vw,34px);color:#EDE6F2;margin:0 0 6px;">Featured Packages</h2>
           <p style="color:#b9a8cf;font-size:14.5px;margin:0;">Fixed-departure favourites, fully customisable</p>
         </div>
         <button onClick="{{ goPackages }}" style="background:transparent;color:#C9A6F0;border:1.5px solid #5B2A86;padding:11px 22px;border-radius:6px;font-weight:600;font-size:13.5px;cursor:pointer;" style-hover="background:#5B2A86;color:#fff;">See all packages →</button>
@@ -265,7 +265,7 @@
     <div style="padding:64px 6vw;background:#1c0f2b;display:flex;flex-wrap:wrap;gap:40px;align-items:center;justify-content:center;">
       <div style="flex:1;min-width:300px;max-width:480px;">
         <span style="color:#E8622A;letter-spacing:1.6px;font-size:12px;text-transform:uppercase;font-weight:600;">Why MyKabira</span>
-        <h2 style="font-family:'DM Serif Display',serif;font-size:34px;color:#EDE6F2;margin:12px 0 14px;">Trips planned by people who have been there</h2>
+        <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(24px,4.5vw,34px);color:#EDE6F2;margin:12px 0 14px;">Trips planned by people who have been there</h2>
         <p style="font-size:14.5px;color:#b9a8cf;line-height:1.75;margin:0 0 20px;">We are not a booking engine. Every itinerary is put together by a consultant who has walked the streets, eaten at the cafés and knows which viewpoint is worth the early start. You get one point of contact from the first enquiry until you are home.</p>
         <button onClick="{{ goAbout }}" style="background:#E8622A;color:#fff;border:none;padding:13px 26px;border-radius:6px;font-weight:600;font-size:14px;cursor:pointer;" style-hover="background:#ff7038;">More about us →</button>
       </div>
@@ -281,7 +281,7 @@
     </div>
 
     <div style="padding:64px 6vw;background:#150c20;">
-      <h2 style="font-family:'DM Serif Display',serif;font-size:34px;color:#EDE6F2;text-align:center;margin:0 0 12px;">What Our Travellers Say</h2>
+      <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(24px,4.5vw,34px);color:#EDE6F2;text-align:center;margin:0 0 12px;">What Our Travellers Say</h2>
       <div style="display:flex;justify-content:center;gap:16px;margin-bottom:32px;flex-wrap:wrap;">
         <span style="background:#241533;border:1px solid #3a2650;padding:9px 18px;border-radius:6px;font-size:13px;font-weight:600;">G · 4.8★ Google Reviews</span>
         <span style="background:#241533;border:1px solid #3a2650;padding:9px 18px;border-radius:6px;font-size:13px;font-weight:600;">f · 4.7★ Facebook Reviews</span>
@@ -306,7 +306,7 @@
 
     <div style="padding:64px 6vw;background:#1c0f2b;">
       <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin-bottom:28px;">
-        <h2 style="font-family:'DM Serif Display',serif;font-size:34px;color:#EDE6F2;margin:0;">From the Travel Journal</h2>
+        <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(24px,4.5vw,34px);color:#EDE6F2;margin:0;">From the Travel Journal</h2>
         <button onClick="{{ goBlog }}" style="background:transparent;color:#C9A6F0;border:1.5px solid #5B2A86;padding:11px 22px;border-radius:6px;font-weight:600;font-size:13.5px;cursor:pointer;" style-hover="background:#5B2A86;color:#fff;">Read the blog →</button>
       </div>
       <div style="display:grid;grid-template-columns:{{ gridThree }};gap:20px;">
@@ -325,7 +325,7 @@
     </div>
 
     <div style="padding:64px 6vw;background:#150c20;">
-      <h2 style="font-family:'DM Serif Display',serif;font-size:34px;color:#EDE6F2;text-align:center;margin:0 0 10px;">Frequently Asked Questions</h2>
+      <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(24px,4.5vw,34px);color:#EDE6F2;text-align:center;margin:0 0 10px;">Frequently Asked Questions</h2>
       <p style="color:#b9a8cf;font-size:14.5px;text-align:center;margin:0 0 32px;">Everything travellers ask us before they book</p>
       <div style="max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:12px;">
         <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="8">
@@ -340,7 +340,7 @@
     </div>
 
     <div style="padding:64px 6vw;background:#120a1c;">
-      <h2 style="font-family:'DM Serif Display',serif;font-size:34px;color:#EDE6F2;text-align:center;margin:0 0 8px;">Moments From Our Travellers</h2>
+      <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(24px,4.5vw,34px);color:#EDE6F2;text-align:center;margin:0 0 8px;">Moments From Our Travellers</h2>
       <p style="color:#b9a8cf;font-size:14.5px;text-align:center;margin:0 0 30px;">Shot on trips we planned — tag <strong style="color:#E8622A;">#mykabira</strong> to get featured</p>
       <div style="display:grid;grid-template-columns:{{ gridFour }};gap:14px;">
         <sc-for list="{{ galleryItems }}" as="g" hint-placeholder-count="8">
@@ -362,7 +362,7 @@
     </div>
 
     <div style="background:linear-gradient(120deg,#5B2A86,#2A0E4A);padding:56px 6vw;text-align:center;">
-      <h2 style="font-family:'DM Serif Display',serif;color:#fff;font-size:34px;margin:0 0 10px;">Ready to Plan Your Dream Trip?</h2>
+      <h2 style="font-family:'DM Serif Display',serif;color:#fff;font-size:clamp(24px,4.5vw,34px);margin:0 0 10px;">Ready to Plan Your Dream Trip?</h2>
       <p style="color:#e2d6f0;font-size:15px;margin:0 0 24px;">Talk to a real travel consultant — no bots, no call centres.</p>
       <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;">
         <button onClick="{{ goContact }}" style="background:#25D366;color:#08210f;border:none;padding:14px 28px;border-radius:6px;font-weight:700;font-size:15px;cursor:pointer;" style-hover="transform:translateY(-2px);">WhatsApp Us</button>
@@ -379,7 +379,7 @@
       <div class="orb" style="position:absolute;inset:0;background:radial-gradient(circle at 75% 20%, rgba(232,98,42,0.3), transparent 55%);"></div>
       <div style="position:relative;">
         <div style="font-size:12.5px;color:#cbb8e3;margin-bottom:10px;"><span onClick="{{ goHome }}" style="cursor:pointer;">Home</span> / Destinations</div>
-        <h1 style="font-family:'DM Serif Display',serif;color:#fff;font-size:46px;margin:0 0 10px;">Destinations</h1>
+        <h1 style="font-family:'DM Serif Display',serif;color:#fff;font-size:clamp(30px,6vw,46px);margin:0 0 10px;">Destinations</h1>
         <p style="color:#e2d6f0;font-size:16px;max-width:620px;margin:0;">{{ totalDestinations }} destinations across {{ regionCount }} regions — filter by trip type, search by name, and save the ones you love.</p>
       </div>
     </div>
@@ -438,7 +438,7 @@
 
       <sc-if value="{{noResults}}" hint-placeholder-val="{{false}}">
         <div style="text-align:center;padding:70px 20px;background:#1c0f2b;border:1px dashed #3a2650;border-radius:12px;">
-          <div style="font-size:40px;margin-bottom:14px;">🧭</div>
+          <div style="font-size:clamp(26px,5.5vw,40px);margin-bottom:14px;">🧭</div>
           <h3 style="font-family:'DM Serif Display',serif;font-size:22px;margin:0 0 8px;color:#EDE6F2;">No destinations match “{{ destQuery }}”</h3>
           <p style="color:#b9a8cf;font-size:14px;margin:0 0 20px;">Try a different search, or tell us where you want to go and we will build it from scratch.</p>
           <button onClick="{{ clearDestFilters }}" style="background:#5B2A86;color:#fff;border:none;padding:12px 24px;border-radius:6px;font-weight:600;font-size:13.5px;cursor:pointer;margin-right:10px;">Clear filters</button>
@@ -448,7 +448,7 @@
     </div>
 
     <div style="padding:56px 6vw;background:#120a1c;text-align:center;">
-      <h2 style="font-family:'DM Serif Display',serif;font-size:30px;color:#EDE6F2;margin:0 0 10px;">Save It, Then Let Us Plan It</h2>
+      <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(22px,3.8vw,30px);color:#EDE6F2;margin:0 0 10px;">Save It, Then Let Us Plan It</h2>
       <p style="color:#b9a8cf;font-size:14.5px;max-width:560px;margin:0 auto 24px;">Heart the destinations you like as you browse — you have <strong style="color:#E8A34A;">{{ wishCount }}</strong> saved. Mention them in your enquiry and we will build the trip around them.</p>
       <div style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap;">
         <button onClick="{{ goContact }}" style="background:#E8622A;color:#fff;border:none;padding:13px 26px;border-radius:6px;font-weight:600;font-size:14px;cursor:pointer;" style-hover="background:#ff7038;">Enquire with my list</button>
@@ -457,7 +457,7 @@
     </div>
 
     <div style="padding:60px 6vw;background:#1c0f2b;">
-      <h2 style="font-family:'DM Serif Display',serif;font-size:32px;color:#EDE6F2;text-align:center;margin:0 0 8px;">Browse by Travel Style</h2>
+      <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(23px,4vw,32px);color:#EDE6F2;text-align:center;margin:0 0 8px;">Browse by Travel Style</h2>
       <p style="color:#b9a8cf;font-size:14.5px;text-align:center;margin:0 0 32px;">Not sure where to start? Pick the kind of trip you want.</p>
       <div style="display:grid;grid-template-columns:{{ gridThree }};gap:18px;">
         <sc-for list="{{ styleCards }}" as="sc" hint-placeholder-count="6">
@@ -478,7 +478,7 @@
       <div class="orb" style="position:absolute;inset:0;background:radial-gradient(circle at 20% 30%, rgba(232,98,42,0.35), transparent 55%);"></div>
       <div style="position:relative;">
         <div style="font-size:12.5px;color:#f0d7e2;margin-bottom:10px;"><span onClick="{{ goHome }}" style="cursor:pointer;">Home</span> / Packages</div>
-        <h1 style="font-family:'DM Serif Display',serif;color:#fff;font-size:46px;margin:0 0 10px;">Tour Packages</h1>
+        <h1 style="font-family:'DM Serif Display',serif;color:#fff;font-size:clamp(30px,6vw,46px);margin:0 0 10px;">Tour Packages</h1>
         <p style="color:#f7e9ef;font-size:16px;max-width:620px;margin:0;">Ready-made itineraries with flights, stays, transfers and guides — every one of them adjustable to your dates, pace and budget.</p>
       </div>
     </div>
@@ -569,7 +569,7 @@
 
       <sc-if value="{{noPackages}}" hint-placeholder-val="{{false}}">
         <div style="text-align:center;padding:60px 20px;background:#1c0f2b;border:1px dashed #3a2650;border-radius:12px;">
-          <div style="font-size:38px;margin-bottom:12px;">🎒</div>
+          <div style="font-size:clamp(26px,5vw,38px);margin-bottom:12px;">🎒</div>
           <h3 style="font-family:'DM Serif Display',serif;font-size:21px;margin:0 0 8px;color:#EDE6F2;">No packages in this budget yet</h3>
           <p style="color:#b9a8cf;font-size:14px;margin:0 0 18px;">We build custom itineraries at any budget — tell us your number and we will work to it.</p>
           <button onClick="{{ goContact }}" style="background:#E8622A;color:#fff;border:none;padding:12px 24px;border-radius:6px;font-weight:600;font-size:13.5px;cursor:pointer;">Get a custom quote</button>
@@ -578,7 +578,7 @@
     </div>
 
     <div style="padding:56px 6vw;background:#150c20;">
-      <h2 style="font-family:'DM Serif Display',serif;font-size:30px;color:#EDE6F2;text-align:center;margin:0 0 28px;">Travellers on These Packages</h2>
+      <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(22px,3.8vw,30px);color:#EDE6F2;text-align:center;margin:0 0 28px;">Travellers on These Packages</h2>
       <div style="display:grid;grid-template-columns:{{ gridThree }};gap:20px;">
         <sc-for list="{{ packagesTestimonials }}" as="pt" hint-placeholder-count="3">
           <div style="background:#241533;border:1px solid #3a2650;border-radius:12px;padding:22px;" style-hover="border-color:#E8622A;transform:translateY(-4px);">
@@ -592,7 +592,7 @@
     </div>
 
     <div style="padding:56px 6vw;background:#120a1c;">
-      <h2 style="font-family:'DM Serif Display',serif;font-size:30px;color:#EDE6F2;text-align:center;margin:0 0 28px;">Package Questions, Answered</h2>
+      <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(22px,3.8vw,30px);color:#EDE6F2;text-align:center;margin:0 0 28px;">Package Questions, Answered</h2>
       <div style="max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:12px;">
         <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="8">
           <div style="background:#241533;border:1px solid {{ f.borderColor }};border-radius:10px;overflow:hidden;">
@@ -606,7 +606,7 @@
     </div>
 
     <div style="padding:56px 6vw;background:#1c0f2b;">
-      <h2 style="font-family:'DM Serif Display',serif;font-size:30px;color:#EDE6F2;text-align:center;margin:0 0 28px;">Every Package Includes</h2>
+      <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(22px,3.8vw,30px);color:#EDE6F2;text-align:center;margin:0 0 28px;">Every Package Includes</h2>
       <div style="display:grid;grid-template-columns:{{ gridFour }};gap:18px;">
         <sc-for list="{{ packagePerks }}" as="pp" hint-placeholder-count="4">
           <div style="background:#241533;border:1px solid #3a2650;border-radius:10px;padding:20px;text-align:center;" style-hover="border-color:#E8622A;transform:translateY(-4px);">
@@ -626,7 +626,7 @@
       <div class="orb" style="position:absolute;inset:0;background:radial-gradient(circle at 85% 40%, rgba(176,51,90,0.35), transparent 55%);"></div>
       <div style="position:relative;">
         <div style="font-size:12.5px;color:#cbb8e3;margin-bottom:10px;"><span onClick="{{ goHome }}" style="cursor:pointer;">Home</span> / About Us</div>
-        <h1 style="font-family:'DM Serif Display',serif;color:#fff;font-size:46px;margin:0 0 10px;">About MyKabira</h1>
+        <h1 style="font-family:'DM Serif Display',serif;color:#fff;font-size:clamp(30px,6vw,46px);margin:0 0 10px;">About MyKabira</h1>
         <p style="color:#e2d6f0;font-size:16px;max-width:640px;margin:0;">Thirteen years, twenty-five thousand travellers, and one belief: a good trip is designed, not sold.</p>
       </div>
     </div>
@@ -634,7 +634,7 @@
     <div style="padding:64px 6vw;background:#120a1c;display:flex;gap:48px;flex-wrap:wrap;align-items:flex-start;">
       <div style="flex:1.4;min-width:320px;">
         <span style="color:#E8622A;letter-spacing:1.6px;font-size:12px;text-transform:uppercase;font-weight:600;">Our Story</span>
-        <h2 style="font-family:'DM Serif Display',serif;font-size:34px;color:#EDE6F2;margin:12px 0 18px;">It started with one badly planned holiday</h2>
+        <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(24px,4.5vw,34px);color:#EDE6F2;margin:12px 0 18px;">It started with one badly planned holiday</h2>
         <p style="font-size:14.5px;color:#b9a8cf;line-height:1.85;margin:0 0 16px;">In 2013 our founder came back from a trip to Ladakh that had looked perfect on paper and fallen apart in practice — wrong season, wrong altitude schedule, a hotel two hours from everything worth seeing. The problem was not the destination. It was that nobody planning the trip had ever been there.</p>
         <p style="font-size:14.5px;color:#b9a8cf;line-height:1.85;margin:0 0 16px;">MyKabira was built to fix exactly that. We started as a two-person desk in Andheri, planning trips for friends of friends. The rule then is the rule now: nobody sells an itinerary they have not walked themselves, or checked with someone on the ground who has.</p>
         <p style="font-size:14.5px;color:#b9a8cf;line-height:1.85;margin:0 0 24px;">Today we are a team of 24 consultants, ground coordinators and visa specialists across three cities, with partner networks in 40 countries. We still plan trips one conversation at a time.</p>
@@ -672,7 +672,7 @@
     </div>
 
     <div style="padding:64px 6vw;background:#1c0f2b;">
-      <h2 style="font-family:'DM Serif Display',serif;font-size:34px;color:#EDE6F2;text-align:center;margin:0 0 10px;">The Journey So Far</h2>
+      <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(24px,4.5vw,34px);color:#EDE6F2;text-align:center;margin:0 0 10px;">The Journey So Far</h2>
       <p style="color:#b9a8cf;font-size:14.5px;text-align:center;margin:0 0 40px;">Milestones that shaped how we plan travel today</p>
       <div style="max-width:820px;margin:0 auto;display:flex;flex-direction:column;">
         <sc-for list="{{ milestones }}" as="m" hint-placeholder-count="6">
@@ -691,7 +691,7 @@
     </div>
 
     <div style="padding:64px 6vw;background:#120a1c;">
-      <h2 style="font-family:'DM Serif Display',serif;font-size:34px;color:#EDE6F2;text-align:center;margin:0 0 10px;">Meet the Team</h2>
+      <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(24px,4.5vw,34px);color:#EDE6F2;text-align:center;margin:0 0 10px;">Meet the Team</h2>
       <p style="color:#b9a8cf;font-size:14.5px;text-align:center;margin:0 0 36px;">The people who will actually be planning your trip</p>
       <div style="display:grid;grid-template-columns:{{ gridThree }};gap:20px;">
         <sc-for list="{{ team }}" as="tm" hint-placeholder-count="6">
@@ -710,7 +710,7 @@
       <div style="display:grid;grid-template-columns:{{ gridFour }};gap:24px;text-align:center;">
         <sc-for list="{{ aboutStats }}" as="ast" hint-placeholder-count="4">
           <div>
-            <div style="font-family:'DM Serif Display',serif;font-size:34px;">{{ ast.value }}</div>
+            <div style="font-family:'DM Serif Display',serif;font-size:clamp(24px,4.5vw,34px);">{{ ast.value }}</div>
             <div style="font-size:13px;opacity:0.88;">{{ ast.label }}</div>
           </div>
         </sc-for>
@@ -718,7 +718,7 @@
     </div>
 
     <div style="padding:64px 6vw;background:#1c0f2b;">
-      <h2 style="font-family:'DM Serif Display',serif;font-size:32px;color:#EDE6F2;text-align:center;margin:0 0 10px;">What We Stand For</h2>
+      <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(23px,4vw,32px);color:#EDE6F2;text-align:center;margin:0 0 10px;">What We Stand For</h2>
       <p style="color:#b9a8cf;font-size:14.5px;text-align:center;margin:0 0 34px;">Four values we check every itinerary against</p>
       <div style="display:grid;grid-template-columns:{{ gridFour }};gap:18px;">
         <sc-for list="{{ values }}" as="v" hint-placeholder-count="4">
@@ -742,7 +742,7 @@
     </div>
 
     <div style="padding:60px 6vw;background:#1c0f2b;">
-      <h2 style="font-family:'DM Serif Display',serif;font-size:32px;color:#EDE6F2;text-align:center;margin:0 0 30px;">Questions About Working With Us</h2>
+      <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(23px,4vw,32px);color:#EDE6F2;text-align:center;margin:0 0 30px;">Questions About Working With Us</h2>
       <div style="max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:12px;">
         <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="8">
           <div style="background:#241533;border:1px solid {{ f.borderColor }};border-radius:10px;overflow:hidden;">
@@ -756,7 +756,7 @@
     </div>
 
     <div style="background:linear-gradient(120deg,#5B2A86,#2A0E4A);padding:56px 6vw;text-align:center;">
-      <h2 style="font-family:'DM Serif Display',serif;color:#fff;font-size:32px;margin:0 0 10px;">Let us plan something good</h2>
+      <h2 style="font-family:'DM Serif Display',serif;color:#fff;font-size:clamp(23px,4vw,32px);margin:0 0 10px;">Let us plan something good</h2>
       <p style="color:#e2d6f0;font-size:15px;margin:0 0 24px;">One conversation is usually enough to know if we are the right fit.</p>
       <button onClick="{{ goContact }}" style="background:#E8622A;color:#fff;border:none;padding:14px 30px;border-radius:6px;font-weight:600;font-size:15px;cursor:pointer;" style-hover="transform:translateY(-2px);">Start planning →</button>
     </div>
@@ -769,7 +769,7 @@
       <div class="orb" style="position:absolute;inset:0;background:radial-gradient(circle at 70% 30%, rgba(232,163,74,0.28), transparent 55%);"></div>
       <div style="position:relative;">
         <div style="font-size:12.5px;color:#f0d7e2;margin-bottom:10px;"><span onClick="{{ goHome }}" style="cursor:pointer;">Home</span> / Blog</div>
-        <h1 style="font-family:'DM Serif Display',serif;color:#fff;font-size:46px;margin:0 0 10px;">The Travel Journal</h1>
+        <h1 style="font-family:'DM Serif Display',serif;color:#fff;font-size:clamp(30px,6vw,46px);margin:0 0 10px;">The Travel Journal</h1>
         <p style="color:#f7e9ef;font-size:16px;max-width:620px;margin:0;">Route notes, visa updates, cost breakdowns and honest opinions from our consultants — written after the trip, not before it.</p>
       </div>
     </div>
@@ -788,7 +788,7 @@
         </div>
         <div style="padding:32px;display:flex;flex-direction:column;justify-content:center;">
           <span style="font-size:11.5px;color:#E8622A;font-weight:600;letter-spacing:0.6px;text-transform:uppercase;">{{ featuredPost.category }}</span>
-          <h2 style="font-family:'DM Serif Display',serif;font-size:30px;margin:10px 0 12px;color:#EDE6F2;line-height:1.25;">{{ featuredPost.title }}</h2>
+          <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(22px,3.8vw,30px);margin:10px 0 12px;color:#EDE6F2;line-height:1.25;">{{ featuredPost.title }}</h2>
           <p style="font-size:14px;color:#b9a8cf;line-height:1.7;margin:0 0 18px;">{{ featuredPost.excerpt }}</p>
           <div style="display:flex;align-items:center;gap:10px;">
             <span style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#5B2A86,#E8622A);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;">{{ featuredPost.authorInitials }}</span>
@@ -817,7 +817,7 @@
     </div>
 
     <div style="margin:20px 6vw 64px;background:linear-gradient(120deg,#3D1766,#5B2A86);border-radius:14px;padding:44px 34px;text-align:center;">
-      <h2 style="font-family:'DM Serif Display',serif;color:#fff;font-size:28px;margin:0 0 8px;">Get the good stuff monthly</h2>
+      <h2 style="font-family:'DM Serif Display',serif;color:#fff;font-size:clamp(21px,3.6vw,28px);margin:0 0 8px;">Get the good stuff monthly</h2>
       <p style="color:#e2d6f0;font-size:14px;margin:0 0 22px;">Route ideas, fare drops and visa changes. One email a month, no spam.</p>
       <sc-if value="{{newsletterDone}}" hint-placeholder-val="{{false}}">
         <div style="background:rgba(37,211,102,0.15);border:1px solid #25D366;color:#9ff0bd;display:inline-block;padding:14px 26px;border-radius:8px;font-size:14px;">✓ You are on the list. See you next month.</div>
@@ -837,7 +837,7 @@
     <div style="height:300px;background:{{ selectedPost.bg }};display:flex;align-items:flex-end;padding:36px 6vw;">
       <div>
         <span style="background:rgba(0,0,0,0.45);color:#fff;font-size:11.5px;padding:5px 12px;border-radius:12px;letter-spacing:0.6px;text-transform:uppercase;">{{ selectedPost.category }}</span>
-        <h1 style="font-family:'DM Serif Display',serif;color:#fff;font-size:40px;margin:14px 0 0;max-width:800px;line-height:1.2;">{{ selectedPost.title }}</h1>
+        <h1 style="font-family:'DM Serif Display',serif;color:#fff;font-size:clamp(26px,5.5vw,40px);margin:14px 0 0;max-width:800px;line-height:1.2;">{{ selectedPost.title }}</h1>
       </div>
     </div>
 
@@ -909,7 +909,7 @@
       <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(18,10,28,0.85), transparent 60%);"></div>
       <div style="position:relative;">
         <div style="font-size:12.5px;color:#e2d6f0;margin-bottom:10px;"><span onClick="{{ goHome }}" style="cursor:pointer;">Home</span> / <span onClick="{{ goDestinations }}" style="cursor:pointer;">Destinations</span> / {{ selectedDest.name }}</div>
-        <h1 style="font-family:'DM Serif Display',serif;color:#fff;font-size:46px;margin:0 0 8px;">{{ selectedDest.name }}</h1>
+        <h1 style="font-family:'DM Serif Display',serif;color:#fff;font-size:clamp(30px,6vw,46px);margin:0 0 8px;">{{ selectedDest.name }}</h1>
         <p style="color:#e9dff5;font-size:16px;margin:0;">{{ selectedDest.tagline }}</p>
       </div>
     </div>
@@ -924,7 +924,7 @@
 
     <div style="padding:40px 6vw 60px;display:grid;grid-template-columns:{{ articleCols }};gap:44px;background:#120a1c;">
       <div>
-        <h2 style="font-family:'DM Serif Display',serif;font-size:28px;color:#EDE6F2;margin:0 0 14px;">About {{ selectedDest.name }}</h2>
+        <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(21px,3.6vw,28px);color:#EDE6F2;margin:0 0 14px;">About {{ selectedDest.name }}</h2>
         <p style="font-size:14.5px;color:#b9a8cf;line-height:1.85;margin:0 0 16px;">A trip to {{ selectedDest.name }} is built around what you want to see and how you want to move — from quiet mornings to full days out. Our team handles the logistics: stays, transfers, local guides, and the small details that make a trip feel easy.</p>
         <p style="font-size:14.5px;color:#b9a8cf;line-height:1.85;margin:0 0 28px;">We have run this route more than a hundred times, so we know which hotels are worth the upgrade, which day trips are better done privately, and where an extra night makes the whole trip land differently. Everything below is a starting point — the final plan is yours.</p>
 
@@ -1013,7 +1013,7 @@
       <div class="orb" style="position:absolute;inset:0;background:radial-gradient(circle at 80% 40%, rgba(232,98,42,0.3), transparent 55%);"></div>
       <div style="position:relative;">
         <div style="font-size:12.5px;color:#cbb8e3;margin-bottom:10px;"><span onClick="{{ goHome }}" style="cursor:pointer;">Home</span> / Contact</div>
-        <h1 style="font-family:'DM Serif Display',serif;color:#fff;font-size:44px;margin:0 0 10px;">Get In Touch</h1>
+        <h1 style="font-family:'DM Serif Display',serif;color:#fff;font-size:clamp(28px,6vw,44px);margin:0 0 10px;">Get In Touch</h1>
         <p style="color:#e2d6f0;font-size:16px;max-width:560px;margin:0;">Tell us where you want to go — we will come back with a plan, a price and honest advice within one working day.</p>
       </div>
     </div>
@@ -1022,7 +1022,7 @@
       <div>
         <sc-if value="{{contactSubmitted}}" hint-placeholder-val="{{false}}">
           <div style="background:#241533;border:1px solid #25D366;border-radius:12px;padding:40px;text-align:center;">
-            <div style="font-size:44px;margin-bottom:14px;">✓</div>
+            <div style="font-size:clamp(28px,6vw,44px);margin-bottom:14px;">✓</div>
             <h3 style="font-family:'DM Serif Display',serif;color:#EDE6F2;font-size:24px;margin:0 0 10px;">Thanks, {{ contactForm.name }}!</h3>
             <p style="color:#b9a8cf;font-size:14px;margin:0 0 20px;line-height:1.7;">Your enquiry is in. A consultant will call you on {{ contactForm.phone }} within one working day — usually a lot sooner.</p>
             <button onClick="{{ resetContact }}" style="background:#5B2A86;color:#fff;border:none;padding:12px 24px;border-radius:6px;font-weight:600;font-size:13.5px;cursor:pointer;">Send another enquiry</button>
@@ -1065,12 +1065,12 @@
           <div style="display:flex;justify-content:space-between;font-size:13px;color:#b9a8cf;padding:6px 0;"><span>Sunday</span><span>By appointment</span></div>
           <div style="margin-top:12px;font-size:12px;color:#25D366;">● On-trip support runs 24/7</div>
         </div>
-        <div style="height:190px;border-radius:12px;background:linear-gradient(rgba(18,10,28,0.55),rgba(18,10,28,0.8)), url(uploads/contact-map.jpg) center/cover no-repeat;border:1px solid #3a2650;display:flex;align-items:center;justify-content:center;color:#EDE6F2;font-size:13px;text-align:center;padding:16px;text-shadow:0 2px 8px rgba(0,0,0,0.7);">📍 {{ settingsForm.address }}</div>
+        <div style="height:190px;border-radius:12px;background:{{ mapBg }};border:1px solid #3a2650;display:flex;align-items:center;justify-content:center;color:#EDE6F2;font-size:13px;text-align:center;padding:16px;text-shadow:0 2px 8px rgba(0,0,0,0.7);">📍 {{ settingsForm.address }}</div>
       </div>
     </div>
 
     <div style="padding:56px 6vw;background:#1c0f2b;">
-      <h2 style="font-family:'DM Serif Display',serif;font-size:30px;color:#EDE6F2;text-align:center;margin:0 0 28px;">Our Offices</h2>
+      <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(22px,3.8vw,30px);color:#EDE6F2;text-align:center;margin:0 0 28px;">Our Offices</h2>
       <div style="display:grid;grid-template-columns:{{ gridThree }};gap:18px;">
         <sc-for list="{{ offices }}" as="of" hint-placeholder-count="3">
           <div style="background:#241533;border:1px solid #3a2650;border-radius:12px;padding:22px;" style-hover="border-color:#E8622A;transform:translateY(-4px);">
@@ -1086,7 +1086,7 @@
     </div>
 
     <div style="padding:56px 6vw;background:#120a1c;">
-      <h2 style="font-family:'DM Serif Display',serif;font-size:30px;color:#EDE6F2;text-align:center;margin:0 0 28px;">Before You Ask</h2>
+      <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(22px,3.8vw,30px);color:#EDE6F2;text-align:center;margin:0 0 28px;">Before You Ask</h2>
       <div style="max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:12px;">
         <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="8">
           <div style="background:#241533;border:1px solid {{ f.borderColor }};border-radius:10px;overflow:hidden;">
@@ -1179,8 +1179,8 @@
 </sc-if>
 
 <sc-if value="{{isAdminShell}}" hint-placeholder-val="{{false}}">
-  <div style="display:flex;min-height:100vh;background:#120a1c;">
-    <div style="width:230px;background:#241533;border-right:1px solid #3a2650;display:flex;flex-direction:column;padding:20px 14px;">
+  <div style="display:flex;flex-direction:{{ adminShellDir }};min-height:100vh;background:#120a1c;">
+    <div style="width:{{ adminSideWidth }};box-sizing:border-box;background:#241533;border-right:1px solid #3a2650;display:flex;flex-direction:{{ adminSideDir }};flex-wrap:wrap;gap:2px;padding:20px 14px;">
       <div style="display:flex;align-items:center;gap:8px;padding:0 6px 20px;border-bottom:1px solid #3a2650;margin-bottom:16px;">
         <img src="assets/mykabira-icon-blackbg.png" alt="MyKabira" style="height:24px;width:auto;display:block;border-radius:5px;"/>
         <span style="font-family:'DM Serif Display',serif;font-size:14px;color:#C9A6F0;">Admin</span>
@@ -1205,7 +1205,7 @@
         <span style="font-weight:600;font-size:16px;">{{ adminScreenTitle }}</span>
         <div style="display:flex;align-items:center;gap:12px;">
           <div style="width:34px;height:34px;border-radius:50%;background:#5B2A86;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;">AR</div>
-          <span style="font-size:14px;font-weight:500;">Aisha Rahman</span>
+          <span style="font-size:14px;font-weight:500;">mykabira</span>
           <button onClick="{{ goAdminLogin }}" style="background:#120a1c;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;padding:8px 14px;border-radius:6px;font-size:13px;cursor:pointer;">Logout</button>
         </div>
       </div>
@@ -1214,7 +1214,7 @@
 
         <sc-if value="{{isAdminDashboard}}" hint-placeholder-val="{{false}}">
           <div>
-            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:28px;">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px;margin-bottom:28px;">
               <div style="background:#241533;border-radius:8px;padding:20px;border:1px solid #3a2650;"><div style="font-size:12px;color:#b9a8cf;margin-bottom:6px;">New Enquiries This Week</div><div style="font-size:26px;font-weight:700;color:#C9A6F0;">{{ newEnquiriesCount }}</div></div>
               <div style="background:#241533;border-radius:8px;padding:20px;border:1px solid #3a2650;"><div style="font-size:12px;color:#b9a8cf;margin-bottom:6px;">Most-Clicked Destination</div><div style="font-size:22px;font-weight:700;color:#E8622A;">Bali</div></div>
               <div style="background:#241533;border-radius:8px;padding:20px;border:1px solid #3a2650;"><div style="font-size:12px;color:#b9a8cf;margin-bottom:6px;">Total Destinations Live</div><div style="font-size:26px;font-weight:700;color:#C9A6F0;">{{ totalDestinations }}</div></div>
@@ -1242,15 +1242,16 @@
               </div>
               <button onClick="{{ addDestination }}" style="background:#5B2A86;color:#fff;border:none;padding:9px 18px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;">+ Add Destination</button>
             </div>
-            <div style="background:#241533;border-radius:8px;border:1px solid #3a2650;overflow:hidden;">
-              <div style="display:grid;grid-template-columns:60px 2fr 3fr 1fr 1fr 1fr;padding:12px 16px;background:#1c0f2b;font-size:12px;color:#b9a8cf;font-weight:600;">
-                <span>Photo</span><span>Name</span><span>Tagline</span><span>Price</span><span>Order</span><span>Actions</span>
+            <div style="background:#241533;border-radius:8px;border:1px solid #3a2650;overflow-x:auto;">
+              <div style="display:grid;min-width:680px;grid-template-columns:54px 1.5fr 1.9fr 1.9fr 0.8fr 0.7fr 0.6fr;padding:12px 16px;background:#1c0f2b;font-size:12px;color:#b9a8cf;font-weight:600;">
+                <span>Photo</span><span>Name</span><span>Tagline</span><span>Image URL</span><span>Price</span><span>Order</span><span>Actions</span>
               </div>
               <sc-for list="{{ adminDestinations }}" as="ad" hint-placeholder-count="8">
-                <div style="display:grid;grid-template-columns:60px 2fr 3fr 1fr 1fr 1fr;padding:10px 16px;align-items:center;border-top:1px solid #2c1a40;font-size:13px;">
+                <div style="display:grid;min-width:680px;grid-template-columns:54px 1.5fr 1.9fr 1.9fr 0.8fr 0.7fr 0.6fr;padding:10px 16px;align-items:center;border-top:1px solid #2c1a40;font-size:13px;">
                   <span style="width:36px;height:36px;border-radius:6px;background:{{ ad.bg }};"></span>
                   <input value="{{ ad.name }}" onChange="{{ ad.onName }}" style="width:94%;box-sizing:border-box;padding:8px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:12.5px;"/>
                   <input value="{{ ad.tagline }}" onChange="{{ ad.onTagline }}" style="width:94%;box-sizing:border-box;padding:8px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:12.5px;"/>
+                  <input value="{{ ad.img }}" onChange="{{ ad.onImg }}" placeholder="uploads/…" style="width:94%;box-sizing:border-box;padding:8px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:12.5px;"/>
                   <input value="{{ ad.price }}" onChange="{{ ad.onPrice }}" style="width:94%;box-sizing:border-box;padding:8px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:12.5px;"/>
                   <span style="display:flex;gap:6px;">
                     <svg onClick="{{ ad.moveUp }}" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" style="cursor:pointer;"><polyline points="18 15 12 9 6 15"/></svg>
@@ -1270,14 +1271,15 @@
             <div style="display:flex;justify-content:flex-end;margin-bottom:18px;">
               <button onClick="{{ addPackage }}" style="background:#5B2A86;color:#fff;border:none;padding:9px 18px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;">+ Add Package</button>
             </div>
-            <div style="background:#241533;border-radius:8px;border:1px solid #3a2650;overflow:hidden;">
-              <div style="display:grid;grid-template-columns:2fr 1.4fr 1fr 1fr 1fr 0.6fr;padding:12px 16px;background:#1c0f2b;font-size:12px;color:#b9a8cf;font-weight:600;">
-                <span>Package</span><span>Duration</span><span>Rating</span><span>Original</span><span>Discounted</span><span>Actions</span>
+            <div style="background:#241533;border-radius:8px;border:1px solid #3a2650;overflow-x:auto;">
+              <div style="display:grid;min-width:680px;grid-template-columns:1.6fr 1.1fr 1.7fr 0.7fr 0.8fr 0.8fr 0.5fr;padding:12px 16px;background:#1c0f2b;font-size:12px;color:#b9a8cf;font-weight:600;">
+                <span>Package</span><span>Duration</span><span>Image URL</span><span>Rating</span><span>Original</span><span>Discounted</span><span>Actions</span>
               </div>
               <sc-for list="{{ adminPackages }}" as="pk" hint-placeholder-count="4">
-                <div style="display:grid;grid-template-columns:2fr 1.4fr 1fr 1fr 1fr 0.6fr;padding:12px 16px;align-items:center;border-top:1px solid #2c1a40;font-size:13px;">
+                <div style="display:grid;min-width:680px;grid-template-columns:1.6fr 1.1fr 1.7fr 0.7fr 0.8fr 0.8fr 0.5fr;padding:12px 16px;align-items:center;border-top:1px solid #2c1a40;font-size:13px;">
                   <input value="{{ pk.name }}" onChange="{{ pk.onName }}" style="width:94%;box-sizing:border-box;padding:8px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:12.5px;"/>
                   <input value="{{ pk.duration }}" onChange="{{ pk.onDuration }}" style="width:94%;box-sizing:border-box;padding:8px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:12.5px;"/>
+                  <input value="{{ pk.img }}" onChange="{{ pk.onImg }}" placeholder="uploads/…" style="width:94%;box-sizing:border-box;padding:8px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:12.5px;"/>
                   <input value="{{ pk.rating }}" onChange="{{ pk.onRating }}" style="width:94%;box-sizing:border-box;padding:8px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:12.5px;"/>
                   <input value="{{ pk.original }}" onChange="{{ pk.onOriginal }}" style="width:94%;box-sizing:border-box;padding:8px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:12.5px;"/>
                   <input value="{{ pk.discounted }}" onChange="{{ pk.onDiscounted }}" style="width:94%;box-sizing:border-box;padding:8px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:12.5px;"/>
@@ -1293,12 +1295,12 @@
             <div style="display:flex;justify-content:flex-end;margin-bottom:18px;">
               <button onClick="{{ addTestimonial }}" style="background:#5B2A86;color:#fff;border:none;padding:9px 18px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;">+ Add Testimonial</button>
             </div>
-            <div style="background:#241533;border-radius:8px;border:1px solid #3a2650;overflow:hidden;">
-              <div style="display:grid;grid-template-columns:1.3fr 0.6fr 3fr 1fr 0.6fr;padding:12px 16px;background:#1c0f2b;font-size:12px;color:#b9a8cf;font-weight:600;">
+            <div style="background:#241533;border-radius:8px;border:1px solid #3a2650;overflow-x:auto;">
+              <div style="display:grid;min-width:680px;grid-template-columns:1.3fr 0.6fr 3fr 1fr 0.6fr;padding:12px 16px;background:#1c0f2b;font-size:12px;color:#b9a8cf;font-weight:600;">
                 <span>Name</span><span>Rating</span><span>Quote</span><span>Destination</span><span>Actions</span>
               </div>
               <sc-for list="{{ adminTestimonials }}" as="ts" hint-placeholder-count="6">
-                <div style="display:grid;grid-template-columns:1.3fr 0.6fr 3fr 1fr 0.6fr;padding:12px 16px;align-items:center;border-top:1px solid #2c1a40;font-size:13px;">
+                <div style="display:grid;min-width:680px;grid-template-columns:1.3fr 0.6fr 3fr 1fr 0.6fr;padding:12px 16px;align-items:center;border-top:1px solid #2c1a40;font-size:13px;">
                   <input value="{{ ts.name }}" onChange="{{ ts.onName }}" style="width:94%;box-sizing:border-box;padding:8px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:12.5px;"/>
                   <input value="{{ ts.rating }}" onChange="{{ ts.onRating }}" style="width:94%;box-sizing:border-box;padding:8px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:12.5px;"/>
                   <input value="{{ ts.quote }}" onChange="{{ ts.onQuote }}" style="width:94%;box-sizing:border-box;padding:8px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:12.5px;"/>
@@ -1315,14 +1317,15 @@
             <div style="display:flex;justify-content:flex-end;margin-bottom:18px;">
               <button onClick="{{ addPost }}" style="background:#5B2A86;color:#fff;border:none;padding:9px 18px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;">+ Add Article</button>
             </div>
-            <div style="background:#241533;border-radius:8px;border:1px solid #3a2650;overflow:hidden;">
-              <div style="display:grid;grid-template-columns:2.4fr 1fr 1fr 1fr 0.6fr;padding:12px 16px;background:#1c0f2b;font-size:12px;color:#b9a8cf;font-weight:600;">
-                <span>Title</span><span>Category</span><span>Author</span><span>Published</span><span>Actions</span>
+            <div style="background:#241533;border-radius:8px;border:1px solid #3a2650;overflow-x:auto;">
+              <div style="display:grid;min-width:680px;grid-template-columns:1.9fr 0.9fr 1.7fr 0.9fr 0.8fr 0.5fr;padding:12px 16px;background:#1c0f2b;font-size:12px;color:#b9a8cf;font-weight:600;">
+                <span>Title</span><span>Category</span><span>Image URL</span><span>Author</span><span>Published</span><span>Actions</span>
               </div>
               <sc-for list="{{ adminPosts }}" as="ap" hint-placeholder-count="7">
-                <div style="display:grid;grid-template-columns:2.4fr 1fr 1fr 1fr 0.6fr;padding:12px 16px;align-items:center;border-top:1px solid #2c1a40;font-size:13px;">
+                <div style="display:grid;min-width:680px;grid-template-columns:1.9fr 0.9fr 1.7fr 0.9fr 0.8fr 0.5fr;padding:12px 16px;align-items:center;border-top:1px solid #2c1a40;font-size:13px;">
                   <input value="{{ ap.title }}" onChange="{{ ap.onTitle }}" style="width:94%;box-sizing:border-box;padding:8px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:12.5px;"/>
                   <input value="{{ ap.category }}" onChange="{{ ap.onCategory }}" style="width:94%;box-sizing:border-box;padding:8px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:12.5px;"/>
+                  <input value="{{ ap.img }}" onChange="{{ ap.onImg }}" placeholder="uploads/…" style="width:94%;box-sizing:border-box;padding:8px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:12.5px;"/>
                   <input value="{{ ap.author }}" onChange="{{ ap.onAuthor }}" style="width:94%;box-sizing:border-box;padding:8px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:12.5px;"/>
                   <span style="color:#b9a8cf;">{{ ap.date }}</span>
                   <svg onClick="{{ ap.remove }}" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c0524a" stroke-width="2" style="cursor:pointer;"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
@@ -1337,12 +1340,12 @@
             <div style="display:flex;justify-content:flex-end;margin-bottom:18px;">
               <button onClick="{{ addFaq }}" style="background:#5B2A86;color:#fff;border:none;padding:9px 18px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;">+ Add FAQ</button>
             </div>
-            <div style="background:#241533;border-radius:8px;border:1px solid #3a2650;overflow:hidden;">
-              <div style="display:grid;grid-template-columns:2fr 3.4fr 0.5fr;padding:12px 16px;background:#1c0f2b;font-size:12px;color:#b9a8cf;font-weight:600;">
+            <div style="background:#241533;border-radius:8px;border:1px solid #3a2650;overflow-x:auto;">
+              <div style="display:grid;min-width:680px;grid-template-columns:2fr 3.4fr 0.5fr;padding:12px 16px;background:#1c0f2b;font-size:12px;color:#b9a8cf;font-weight:600;">
                 <span>Question</span><span>Answer</span><span>Actions</span>
               </div>
               <sc-for list="{{ adminFaqs }}" as="af" hint-placeholder-count="8">
-                <div style="display:grid;grid-template-columns:2fr 3.4fr 0.5fr;padding:12px 16px;align-items:center;border-top:1px solid #2c1a40;font-size:13px;gap:10px;">
+                <div style="display:grid;min-width:680px;grid-template-columns:2fr 3.4fr 0.5fr;padding:12px 16px;align-items:center;border-top:1px solid #2c1a40;font-size:13px;gap:10px;">
                   <input value="{{ af.q }}" onChange="{{ af.onQ }}" style="width:94%;box-sizing:border-box;padding:8px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:12.5px;"/>
                   <textarea rows="2" value="{{ af.a }}" onChange="{{ af.onA }}" style="width:94%;box-sizing:border-box;padding:8px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:12.5px;font-family:inherit;resize:vertical;"></textarea>
                   <svg onClick="{{ af.remove }}" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c0524a" stroke-width="2" style="cursor:pointer;"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
@@ -1362,7 +1365,7 @@
               </div>
               <button onClick="{{ addContentItem }}" style="background:#5B2A86;color:#fff;border:none;padding:9px 18px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;flex-shrink:0;">+ Add Item</button>
             </div>
-            <div style="background:#241533;border-radius:8px;border:1px solid #3a2650;overflow:hidden;">
+            <div style="background:#241533;border-radius:8px;border:1px solid #3a2650;overflow-x:auto;">
               <sc-for list="{{ contentRows }}" as="cr" hint-placeholder-count="6">
                 <div style="display:flex;gap:10px;align-items:flex-end;padding:14px 16px;border-top:1px solid #2c1a40;flex-wrap:wrap;">
                   <sc-for list="{{ cr.fields }}" as="cf" hint-placeholder-count="4">
@@ -1405,7 +1408,8 @@
 
         <sc-if value="{{isAdminHero}}" hint-placeholder-val="{{false}}">
           <div style="background:#241533;border-radius:8px;border:1px solid #3a2650;padding:24px;max-width:560px;display:flex;flex-direction:column;gap:14px;">
-            <div style="height:100px;border-radius:6px;background:linear-gradient(rgba(0,0,0,0.35),rgba(0,0,0,0.45)), url(uploads/hero-main.jpg) center/cover no-repeat;border:1px dashed #3a2650;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;text-shadow:0 1px 4px rgba(0,0,0,0.8);">Replace hero image / video</div>
+            <div style="height:130px;border-radius:6px;background:{{ heroPreviewBg }};border:1px solid #3a2650;"></div>
+            <label style="font-size:12px;color:#b9a8cf;">Hero Image URL<input value="{{ heroForm.image }}" onChange="{{ onHeroImageChange }}" placeholder="uploads/hero-main.jpg" style="display:block;width:100%;box-sizing:border-box;margin-top:4px;padding:10px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:13px;"/></label>
             <label style="font-size:12px;color:#b9a8cf;">Headline<input value="{{ heroForm.headline }}" onChange="{{ onHeadlineChange }}" style="display:block;width:100%;box-sizing:border-box;margin-top:4px;padding:10px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:13px;"/></label>
             <label style="font-size:12px;color:#b9a8cf;">Tagline<input value="{{ heroForm.tagline }}" onChange="{{ onTaglineChange }}" style="display:block;width:100%;box-sizing:border-box;margin-top:4px;padding:10px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:13px;"/></label>
             <label style="font-size:12px;color:#b9a8cf;">Subtext<input value="{{ heroForm.subtext }}" onChange="{{ onSubtextChange }}" style="display:block;width:100%;box-sizing:border-box;margin-top:4px;padding:10px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:13px;"/></label>
@@ -1428,12 +1432,12 @@
         </sc-if>
 
         <sc-if value="{{isAdminEnquiries}}" hint-placeholder-val="{{false}}">
-          <div style="background:#241533;border-radius:8px;border:1px solid #3a2650;overflow:hidden;">
-            <div style="display:grid;grid-template-columns:1.3fr 1.2fr 1fr 2fr 1fr 1fr;padding:12px 16px;background:#1c0f2b;font-size:12px;color:#b9a8cf;font-weight:600;">
+          <div style="background:#241533;border-radius:8px;border:1px solid #3a2650;overflow-x:auto;">
+            <div style="display:grid;min-width:680px;grid-template-columns:1.3fr 1.2fr 1fr 2fr 1fr 1fr;padding:12px 16px;background:#1c0f2b;font-size:12px;color:#b9a8cf;font-weight:600;">
               <span>Name</span><span>Phone</span><span>Destination</span><span>Message</span><span>Date</span><span>Status</span>
             </div>
             <sc-for list="{{ enquiries }}" as="en" hint-placeholder-count="8">
-              <div style="display:grid;grid-template-columns:1.3fr 1.2fr 1fr 2fr 1fr 1fr;padding:12px 16px;align-items:center;border-top:1px solid #2c1a40;font-size:13px;">
+              <div style="display:grid;min-width:680px;grid-template-columns:1.3fr 1.2fr 1fr 2fr 1fr 1fr;padding:12px 16px;align-items:center;border-top:1px solid #2c1a40;font-size:13px;">
                 <span>{{ en.name }}</span><span style="color:#b9a8cf;">{{ en.phone }}</span><span>{{ en.destination }}</span>
                 <span style="color:#b9a8cf;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{ en.message }}</span><span style="color:#b9a8cf;">{{ en.date }}</span>
                 <select value="{{ en.status }}" onChange="{{ en.onStatusChange }}" style="padding:6px 8px;border-radius:5px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;font-size:12px;">
@@ -1450,6 +1454,7 @@
             <label style="font-size:12px;color:#b9a8cf;">WhatsApp<input value="{{ settingsForm.whatsapp }}" onChange="{{ onWhatsappChange }}" style="display:block;width:100%;box-sizing:border-box;margin-top:4px;padding:10px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:13px;"/></label>
             <label style="font-size:12px;color:#b9a8cf;">Email<input value="{{ settingsForm.email }}" onChange="{{ onEmailChange }}" style="display:block;width:100%;box-sizing:border-box;margin-top:4px;padding:10px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:13px;"/></label>
             <label style="font-size:12px;color:#b9a8cf;">Address<input value="{{ settingsForm.address }}" onChange="{{ onAddressChange }}" style="display:block;width:100%;box-sizing:border-box;margin-top:4px;padding:10px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:13px;"/></label>
+            <label style="font-size:12px;color:#b9a8cf;">Contact Map Image URL<input value="{{ settingsForm.mapImage }}" onChange="{{ onMapImageChange }}" style="display:block;width:100%;box-sizing:border-box;margin-top:4px;padding:10px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:13px;"/></label>
             <div style="display:flex;gap:12px;">
               <label style="font-size:12px;color:#b9a8cf;flex:1;">Instagram<input value="{{ settingsForm.instagram }}" onChange="{{ onInstagramChange }}" style="display:block;width:100%;box-sizing:border-box;margin-top:4px;padding:10px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:13px;"/></label>
               <label style="font-size:12px;color:#b9a8cf;flex:1;">Facebook<input value="{{ settingsForm.facebook }}" onChange="{{ onFacebookChange }}" style="display:block;width:100%;box-sizing:border-box;margin-top:4px;padding:10px;background:#1c0f2b;color:#EDE6F2;border:1px solid #3a2650;border-radius:6px;font-size:13px;"/></label>
@@ -1492,6 +1497,7 @@ class Component extends DCLogic {
     selectedDestName: null,
     mobileMenuOpen: false,
     isMobile: false,
+    isTablet: false,
     contactForm: { name: '', phone: '', email: '', destination: '', message: '', travellers: '2', tripType: 'Couple' },
     contactSubmitted: false,
     loginEmail: '', loginPassword: '',
@@ -1521,7 +1527,8 @@ class Component extends DCLogic {
       tagline: 'Curated journeys for every kind of traveller.',
       subtext: 'From tropical islands to mountain trails — we plan, you pack.',
       ctaPrimary: 'Plan My Trip',
-      ctaSecondary: 'Explore Destinations'
+      ctaSecondary: 'Explore Destinations',
+      image: 'uploads/hero-main.jpg'
     },
     statsForm: { travellers: '25,000+', destinationsCount: '125+', years: '13+', rating: '4.8' },
     faqList: [
@@ -1538,6 +1545,7 @@ class Component extends DCLogic {
       phone: '+91 98200 11234', whatsapp: '+91 98200 11234', email: 'hello@mykabira.com',
       address: '204, Silver Arc, Andheri West, Mumbai, MH 400058',
       instagram: 'instagram.com/mykabira', facebook: 'facebook.com/mykabira',
+      mapImage: 'uploads/contact-map.jpg',
       primaryColor: '#5B2A86', accentColor: '#E8622A'
     },
     destinationsByCategory: {
@@ -1710,7 +1718,7 @@ class Component extends DCLogic {
     blogPosts: [
       {
         id: 1, title: 'Ten Things to Do in Bali That Are Not the Beach', category: 'Destinations',
-        author: 'Aisha Rahman', date: '12 Aug 2026', readTime: '6 min', tags: ['Bali', 'Indonesia', 'Itinerary'],
+        author: 'mykabira', date: '12 Aug 2026', readTime: '6 min', tags: ['Bali', 'Indonesia', 'Itinerary'],
         excerpt: 'Everyone arrives in Bali with a beach list. The travellers who come back happiest are the ones who spent at least two days inland.',
         body: [
           { h: 'Start in the middle, not the coast', p: 'Ubud is where most of the island character lives. Give it two full days before you move to the water: the rice terraces at Tegallalang in early morning light, the Campuhan ridge walk before eight, and a proper market breakfast. By the time you reach the beach you will have a sense of the place instead of just a swimming pool.' },
@@ -1754,7 +1762,7 @@ class Component extends DCLogic {
       },
       {
         id: 5, title: 'Kerala in Monsoon: Why the Wet Months Are the Best Ones', category: 'Destinations',
-        author: 'Aisha Rahman', date: '08 Jul 2026', readTime: '5 min', tags: ['Kerala', 'Monsoon', 'Ayurveda'],
+        author: 'mykabira', date: '08 Jul 2026', readTime: '5 min', tags: ['Kerala', 'Monsoon', 'Ayurveda'],
         excerpt: 'Half price, a quarter of the crowd, and the only season when Ayurvedic treatment is traditionally prescribed.',
         body: [
           { h: 'The rain is not what you imagine', p: 'Kerala monsoon is rarely all-day rain. It arrives in heavy bursts, usually afternoon, and leaves behind exactly the light that makes the backwaters photograph the way they do on postcards. Mornings are usually clear enough for everything you planned.' },
@@ -1833,6 +1841,12 @@ class Component extends DCLogic {
     }
   };
 
+  getPhotos = () => this.state.photosMap || this.photos;
+  editPhoto(kind, key, value) {
+    const p = this.getPhotos();
+    this.setState({ photosMap: { ...p, [kind]: { ...p[kind], [key]: value } } });
+  }
+
   photoBg = (src, i) => {
     if (!src) return this.gradients[i % this.gradients.length];
     return 'linear-gradient(rgba(18,10,28,0.18) 0%,rgba(18,10,28,0.34) 45%,rgba(18,10,28,0.78) 100%), url(' + src + ') center/cover no-repeat';
@@ -1864,7 +1878,7 @@ class Component extends DCLogic {
   ];
 
   teamData = [
-    { name: 'Aisha Rahman', role: 'Founder & Lead Consultant', initials: 'AR', speciality: 'Southeast Asia & Indonesia', bio: 'Started MyKabira after one badly planned trip to Ladakh. Has personally travelled 46 of the destinations we sell.' },
+    { name: 'mykabira', role: 'Founder & Lead Consultant', initials: 'AR', speciality: 'Southeast Asia & Indonesia', bio: 'Started MyKabira after one badly planned trip to Ladakh. Has personally travelled 46 of the destinations we sell.' },
     { name: 'Nikhil Deshpande', role: 'Head of International', initials: 'ND', speciality: 'Europe & the Gulf', bio: 'Twelve years in outbound travel. Builds the rail-heavy European itineraries our repeat travellers keep asking for.' },
     { name: 'Meera Iyer', role: 'Visa & Documentation Lead', initials: 'MI', speciality: 'Schengen, UK & US visas', bio: 'Has processed more than 6,000 visa applications with a 98 per cent approval rate. Knows every consulate quirk.' },
     { name: 'Vikram Chauhan', role: 'Adventure Desk', initials: 'VC', speciality: 'Himalaya & high-altitude', bio: 'Rides Ladakh every summer and has led 30 expeditions. Writes our altitude acclimatisation schedules.' },
@@ -1941,14 +1955,14 @@ class Component extends DCLogic {
   };
 
   galleryData = [
-    { caption: 'Sunrise over the Taj', location: 'Agra', bg: 'linear-gradient(135deg,#E8622A,#B0335A)' },
-    { caption: 'That Pangong blue', location: 'Ladakh', bg: 'linear-gradient(135deg,#2A0E4A,#8B4FC9)' },
-    { caption: 'Villa mornings', location: 'Maldives', bg: 'linear-gradient(135deg,#5B2A86,#8B4FC9)' },
-    { caption: 'Terraces before eight', location: 'Ubud, Bali', bg: 'linear-gradient(135deg,#3D1766,#E8622A)' },
-    { caption: 'Lantern hour', location: 'Hoi An, Vietnam', bg: 'linear-gradient(135deg,#B0335A,#5B2A86)' },
-    { caption: 'Desert gold at Sam', location: 'Jaisalmer', bg: 'linear-gradient(135deg,#E8622A,#3D1766)' },
-    { caption: 'Window seat, Glacier Express', location: 'Switzerland', bg: 'linear-gradient(135deg,#1a0b2e,#3D1766)' },
-    { caption: 'Backwaters at their slowest', location: 'Alleppey, Kerala', bg: 'linear-gradient(135deg,#5B2A86,#B0335A)' }
+    { caption: 'Sunrise over the Taj', location: 'Agra', bg: 'linear-gradient(135deg,#E8622A,#B0335A)', img: 'uploads/collage-1.jpg' },
+    { caption: 'That Pangong blue', location: 'Ladakh', bg: 'linear-gradient(135deg,#2A0E4A,#8B4FC9)', img: 'uploads/collage-2.jpg' },
+    { caption: 'Villa mornings', location: 'Maldives', bg: 'linear-gradient(135deg,#5B2A86,#8B4FC9)', img: 'uploads/collage-3.jpg' },
+    { caption: 'Terraces before eight', location: 'Ubud, Bali', bg: 'linear-gradient(135deg,#3D1766,#E8622A)', img: 'uploads/collage-4.jpg' },
+    { caption: 'Lantern hour', location: 'Hoi An, Vietnam', bg: 'linear-gradient(135deg,#B0335A,#5B2A86)', img: 'uploads/dest-vietnam.jpg' },
+    { caption: 'Desert gold at Sam', location: 'Jaisalmer', bg: 'linear-gradient(135deg,#E8622A,#3D1766)', img: 'uploads/dest-rajasthan.jpg' },
+    { caption: 'Window seat, Glacier Express', location: 'Switzerland', bg: 'linear-gradient(135deg,#1a0b2e,#3D1766)', img: 'uploads/dest-switzerland.jpg' },
+    { caption: 'Backwaters at their slowest', location: 'Alleppey, Kerala', bg: 'linear-gradient(135deg,#5B2A86,#B0335A)', img: 'uploads/dest-kerala.jpg' }
   ];
 
   awardsData = [
@@ -1967,7 +1981,7 @@ class Component extends DCLogic {
     'Why Us': { key: 'whyUsList', blank: { icon: '⭐', title: 'New point', detail: 'Detail here.' }, fields: [{ f: 'icon', label: 'Icon' }, { f: 'title', label: 'Title' }, { f: 'detail', label: 'Detail' }] },
     'How It Works': { key: 'processList', blank: { num: '05', icon: '🧭', title: 'New step', detail: 'Detail here.' }, fields: [{ f: 'num', label: 'No.' }, { f: 'icon', label: 'Icon' }, { f: 'title', label: 'Title' }, { f: 'detail', label: 'Detail' }] },
     'Package Perks': { key: 'perksList', blank: { icon: '🎫', title: 'New perk', detail: 'Detail here.' }, fields: [{ f: 'icon', label: 'Icon' }, { f: 'title', label: 'Title' }, { f: 'detail', label: 'Detail' }] },
-    'Gallery': { key: 'galleryList', blank: { caption: 'New moment', location: 'Somewhere', bg: 'linear-gradient(135deg,#5B2A86,#8B4FC9)' }, fields: [{ f: 'caption', label: 'Caption' }, { f: 'location', label: 'Location' }] },
+    'Gallery': { key: 'galleryList', blank: { caption: 'New moment', location: 'Somewhere', img: '', bg: 'linear-gradient(135deg,#5B2A86,#8B4FC9)' }, fields: [{ f: 'caption', label: 'Caption' }, { f: 'location', label: 'Location' }, { f: 'img', label: 'Image URL' }] },
     'Awards': { key: 'awardsList', blank: { text: 'New award' }, fields: [{ f: 'text', label: 'Award / mention' }] },
     'Team': { key: 'teamList', blank: { name: 'New Member', role: 'Consultant', initials: 'NM', speciality: 'Destinations', bio: 'Short bio.' }, fields: [{ f: 'name', label: 'Name' }, { f: 'initials', label: 'Initials' }, { f: 'role', label: 'Role' }, { f: 'speciality', label: 'Speciality' }, { f: 'bio', label: 'Bio' }] },
     'Milestones': { key: 'milestonesList', blank: { year: '2027', title: 'New milestone', detail: 'Detail here.' }, fields: [{ f: 'year', label: 'Year' }, { f: 'title', label: 'Title' }, { f: 'detail', label: 'Detail' }] },
@@ -2067,8 +2081,10 @@ class Component extends DCLogic {
     window.removeEventListener('hashchange', this.parseHash);
   }
   updateIsMobile = () => {
-    const m = window.innerWidth < 900;
-    if (m !== this.state.isMobile) this.setState({ isMobile: m });
+    const w = window.innerWidth;
+    const m = w < 900;
+    const t = w >= 900 && w < 1200;
+    if (m !== this.state.isMobile || t !== this.state.isTablet) this.setState({ isMobile: m, isTablet: t });
   };
 
   updateContactField(field, value) { this.setState(s => ({ contactForm: { ...s.contactForm, [field]: value } })); }
@@ -2094,6 +2110,8 @@ class Component extends DCLogic {
   onSubtextChange = (e) => this.updateHeroField('subtext', e.target.value);
   onCtaPrimaryChange = (e) => this.updateHeroField('ctaPrimary', e.target.value);
   onCtaSecondaryChange = (e) => this.updateHeroField('ctaSecondary', e.target.value);
+  onHeroImageChange = (e) => this.updateHeroField('image', e.target.value);
+  onMapImageChange = (e) => this.updateSettingsField('mapImage', e.target.value);
 
   updateStatsField(field, value) { this.setState(s => ({ statsForm: { ...s.statsForm, [field]: value } })); }
   onTravellersChange = (e) => this.updateStatsField('travellers', e.target.value);
@@ -2205,14 +2223,14 @@ class Component extends DCLogic {
   addFaq = () => this.setState(s => ({ faqList: [...s.faqList, { q: 'New question?', a: 'Write the answer here.' }] }));
   removeFaq(idx) { this.setState(s => ({ faqList: s.faqList.filter((_, i) => i !== idx) })); }
 
-  addPost = () => this.setState(s => ({ blogPosts: [...s.blogPosts, { id: Math.max(0, ...s.blogPosts.map(p => p.id)) + 1, title: 'New Article', category: 'Travel Tips', author: 'Aisha Rahman', date: 'Draft', readTime: '4 min', tags: ['Draft'], excerpt: 'Add a short standfirst for this article.', body: [{ h: 'Section heading', p: 'Write the section body here.' }] }] }));
+  addPost = () => this.setState(s => ({ blogPosts: [...s.blogPosts, { id: Math.max(0, ...s.blogPosts.map(p => p.id)) + 1, title: 'New Article', category: 'Travel Tips', author: 'mykabira', date: 'Draft', readTime: '4 min', tags: ['Draft'], excerpt: 'Add a short standfirst for this article.', body: [{ h: 'Section heading', p: 'Write the section body here.' }] }] }));
   removePost(idx) { this.setState(s => ({ blogPosts: s.blogPosts.filter((_, i) => i !== idx) })); }
 
   decorateDest = (d, i, category) => {
     const meta = this.destMetaData[d.name] || {};
     const isDomestic = category === 'Domestic';
     const wished = this.state.wishlist.indexOf(d.name) >= 0;
-    const bg = this.photoBg(this.photos.dest[d.name], i);
+    const bg = this.photoBg(this.getPhotos().dest[d.name], i);
     const full = {
       ...d, bg, category,
       priceNum: this.num(d.price),
@@ -2240,7 +2258,7 @@ class Component extends DCLogic {
   renderVals() {
     const s = this.state;
     const mobile = s.isMobile;
-    const grid = (n) => mobile ? '1fr' : `repeat(${n},1fr)`;
+    const grid = (n) => mobile ? '1fr' : (s.isTablet && n > 2 ? 'repeat(2,1fr)' : `repeat(${n},1fr)`);
 
     const pillStyle = (active) => active
       ? 'background:#5B2A86;color:#F5EFE6;border:1.5px solid #5B2A86;'
@@ -2289,7 +2307,9 @@ class Component extends DCLogic {
 
     const adminCat = s.destinationsByCategory[s.adminTab] || [];
     const adminDestinations = adminCat.map((d, i) => ({
-      ...d, bg: this.photoBg(this.photos.dest[d.name], i),
+      ...d, bg: this.photoBg(this.getPhotos().dest[d.name], i),
+      img: this.getPhotos().dest[d.name] || '',
+      onImg: (e) => this.editPhoto('dest', d.name, e.target.value),
       moveUp: () => this.moveDestination(s.adminTab, i, -1),
       moveDown: () => this.moveDestination(s.adminTab, i, 1),
       onName: (e) => this.editDestinationField(s.adminTab, i, 'name', e.target.value),
@@ -2318,7 +2338,7 @@ class Component extends DCLogic {
       const orig = this.num(p.original), disc = this.num(p.discounted);
       return {
         ...p, priceNum: disc,
-        bg: this.photoBg(this.photos.pkg[p.name], i),
+        bg: this.photoBg(this.getPhotos().pkg[p.name], i),
         savePct: orig > 0 ? Math.round((1 - disc / orig) * 100) : 0,
         reviews: p.reviews || 0,
         toggle: () => this.togglePkg(i),
@@ -2350,7 +2370,7 @@ class Component extends DCLogic {
     const decoratePost = (p, i) => {
       const full = {
         ...p,
-        bg: this.photoBg(this.photos.post[p.id], i),
+        bg: this.photoBg(this.getPhotos().post[p.id], i),
         authorInitials: p.author.split(' ').map(w => w[0]).join('').slice(0, 2)
       };
       full.open = () => this.openPost(full);
@@ -2362,6 +2382,8 @@ class Component extends DCLogic {
     const blogPosts = catPosts.slice(1);
     const homePosts = allPosts.slice(0, 3);
     const adminPosts = s.blogPosts.map((p, i) => ({ ...p,
+      img: this.getPhotos().post[p.id] || '',
+      onImg: (e) => this.editPhoto('post', p.id, e.target.value),
       onTitle: (e) => this.editListItem('blogPosts', i, 'title', e.target.value),
       onCategory: (e) => this.editListItem('blogPosts', i, 'category', e.target.value),
       onAuthor: (e) => this.editListItem('blogPosts', i, 'author', e.target.value),
@@ -2463,6 +2485,9 @@ class Component extends DCLogic {
       contactCols: mobile ? '1fr' : '1.3fr 1fr',
       footerCols: mobile ? '1fr' : '1.6fr 1fr 1fr 1fr 1.2fr',
       navDisplay: mobile ? 'none' : 'flex',
+      adminShellDir: mobile ? 'column' : 'row',
+      adminSideWidth: mobile ? '100%' : '230px',
+      adminSideDir: mobile ? 'row' : 'column',
       hamburgerDisplay: mobile ? 'block' : 'none',
       mobileMenuStyle: `display:${s.mobileMenuOpen ? 'flex' : 'none'};flex-direction:column;gap:2px;padding:16px 24px 22px;background:#1c0f2b;border-bottom:1px solid #3a2650;font-size:15px;color:#EDE6F2;`,
       toggleMobileMenu: this.toggleMobileMenu,
@@ -2494,6 +2519,8 @@ class Component extends DCLogic {
       pkgSort: s.pkgSort, onPkgSortChange: this.onPkgSortChange,
       packagePerks: this.getList('perksList'),
       adminPackages: s.packagesList.map((p, i) => ({ ...p,
+        img: this.getPhotos().pkg[p.name] || '',
+        onImg: (e) => this.editPhoto('pkg', p.name, e.target.value),
         onName: (e) => this.editListItem('packagesList', i, 'name', e.target.value),
         onDuration: (e) => this.editListItem('packagesList', i, 'duration', e.target.value),
         onRating: (e) => this.editListItem('packagesList', i, 'rating', e.target.value),
@@ -2522,9 +2549,13 @@ class Component extends DCLogic {
       ],
 
       monthChips, monthPicks, monthNote: monthInfo.note,
-      galleryItems: this.getList('galleryList'), awards: this.getList('awardsList').map(a => a.text),
+      galleryItems: this.getList('galleryList').map(g => ({ ...g, bg: g.img ? "url('" + g.img + "') center/cover no-repeat" : g.bg })), awards: this.getList('awardsList').map(a => a.text),
       packagesTestimonials: testimonials.slice(0, 3),
       scrollToTop: this.scrollTop,
+      heroBg: s.heroForm.image ? "linear-gradient(100deg,rgba(24,10,40,0.92) 0%,rgba(42,14,74,0.72) 38%,rgba(91,42,134,0.38) 70%,rgba(139,79,201,0.22) 100%), url('" + s.heroForm.image + "') center/cover no-repeat" : 'linear-gradient(120deg,#2A0E4A,#5B2A86 55%,#8B4FC9)',
+      heroPreviewBg: s.heroForm.image ? "url('" + s.heroForm.image + "') center/cover no-repeat" : '#120a1c',
+      mapBg: s.settingsForm.mapImage ? "linear-gradient(rgba(18,10,28,0.55),rgba(18,10,28,0.8)), url('" + s.settingsForm.mapImage + "') center/cover no-repeat" : 'linear-gradient(135deg,#1c0f2b,#3a2650)',
+      onHeroImageChange: this.onHeroImageChange, onMapImageChange: this.onMapImageChange,
       seoGlobal: s.seoGlobal, onSeoSiteNameChange: this.onSeoSiteNameChange,
       seoForm: s.seoByPage[s.seoPage],
       seoTitleLen: s.seoByPage[s.seoPage].title.length,
